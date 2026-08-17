@@ -1,5 +1,6 @@
 # SYNTHETIC — hand-written demonstration content, NOT extracted from any source.
-# Provenance fields below are fabricated placeholders. See docs/SLICE-FINDINGS.md.
+# Provenance fields below are fabricated placeholders. See docs/FINDINGS.md,
+# "What is not evidence".
 items:
 - id: conn
   type: definition

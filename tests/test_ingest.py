@@ -218,7 +218,7 @@ def test_session_identity_is_resolved_once_and_never_regrouped(tmp_path):
 
 
 def test_five_lectures_in_one_upload_do_not_merge(inbox, settings):
-    """The real defect from docs/CAPTURE-CORPUS-ANALYSIS.md Finding 1: one upload
+    """The real defect from docs/FINDINGS.md, "Session grouping and volume": one upload
     batch delivered five lectures inside fifteen minutes. Upload time cannot
     separate them; EXIF capture time can."""
     peers, made = [], []

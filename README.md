@@ -57,18 +57,16 @@ driver. `make check` is green from a clean clone.
 
 **What remains is measurement, not code.** The four Phase-0 spikes need real
 captures, and no extraction has ever been performed by this system — every
-extraction-side claim here is unverified. Read `docs/SETUP-REPORT.md` for what
-was executed, what it found, and what each remaining item is waiting on.
+extraction-side claim here is unverified. `STATE.md` says where the work stands;
+`docs/FINDINGS.md` says what examining real material has established so far.
 
 ## Reading order
 
 1. `CLAUDE.md` — the invariant, the hard rules, where to start
 2. `docs/implementation-plan.md` — the specification
 3. `rules/Common.txt` — precedence and ownership headers, then the rest
-4. `docs/SETUP-REPORT.md` — the state of the build, its findings, and what each
-   remaining item is blocked on
-5. `docs/S3-RESULTS.md`, `docs/SLICE-FINDINGS.md`,
-   `docs/RULE-INTEGRATION-FINDINGS.md` — what execution taught, including two
-   schema gaps and several rule defects found only by running real material
-   through the system
+4. `STATE.md` — where the work stands and what the open step is
+5. `docs/FINDINGS.md` — what examining real material established: the capture
+   constraints, the golden fixtures, the grouping defect, and what is not
+   evidence
 6. `docs/FIELD-ONBOARDING.md` — what "one-time setup per subject" concretely means

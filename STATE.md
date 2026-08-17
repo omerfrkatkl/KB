@@ -66,14 +66,17 @@ that is where every current claim was verified.
 
 ## What is blocked, and on what
 
-`docs/SETUP-REPORT.md` (2026-08-04) lists every remaining work package and what it
-waits on. Nothing on that list waits on code; all of it waits on Google Drive
-access and real captures.
+PART II of `docs/implementation-plan.md` lists every remaining work package.
+Nothing on that list waits on code; all of it waits on Google Drive access and
+real captures — WP0.3 and WP0.4 on the captures themselves, WP1.5's milestone and
+WP1.6–1.7 on the Complex Analysis PDF, WP2.4 on a second Complex Analysis source,
+WP3.5 on board captures in a configured field, WP4.3 on Task Scheduler, and
+WP5.2 on ODE material.
 
 ## Standing caution
 
 No extraction has ever been performed by this system. Every extraction-side claim
 in this repository is unverified. `tests/fixtures/synthetic/` is a renderer
 regression fixture and is never evidence about extraction quality —
-`docs/SLICE-FINDINGS.md` records what it cost the one time generated material was
-read as evidence.
+`docs/FINDINGS.md` ("What is not evidence") records what it cost the one time
+generated material was read as evidence.

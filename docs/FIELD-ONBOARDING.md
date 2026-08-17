@@ -122,7 +122,7 @@ consistent only forward of the ruling.
 ## Expected flag density
 
 **Not yet measured.** It needs a real calibration batch, and no extraction has
-been performed by this system (`docs/SLICE-FINDINGS.md`). Record the numbers
+been performed by this system (`docs/FINDINGS.md`). Record the numbers
 here after the first one:
 
 | Field | Batch size | new-term | unclassified | near-duplicate | pending-ref |

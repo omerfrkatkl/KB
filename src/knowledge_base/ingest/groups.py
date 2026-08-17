@@ -9,7 +9,8 @@ kinds of capture resolve it three different ways:
   and independent of filenames and of file timestamps.
 * **board x photo** — session identity by explicit precedence, because upload
   timestamps demonstrably do not carry it: one real upload batch merged five
-  lectures inside fifteen minutes (docs/CAPTURE-CORPUS-ANALYSIS.md, Finding 1).
+  lectures inside fifteen minutes (docs/FINDINGS.md, "Session grouping and
+  volume").
 
 The board precedence, in order:
 

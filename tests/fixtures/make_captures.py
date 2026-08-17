@@ -7,9 +7,9 @@ to exercise the plumbing — routing, hashing, grouping, the resolution gate's
 arithmetic — none of which has anything to do with what a model can read off a
 photograph of a board.
 
-`docs/SLICE-FINDINGS.md` records what it cost the last time generated material
-was mistaken for real material. The rule that follows from it: a fixture may test
-code, never fidelity.
+`docs/FINDINGS.md` ("What is not evidence") records what it cost the last time
+generated material was mistaken for real material. The rule that follows from it:
+a fixture may test code, never fidelity.
 """
 
 from __future__ import annotations

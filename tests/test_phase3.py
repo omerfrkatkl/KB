@@ -4,8 +4,8 @@
 programmatically drawn quadrilaterals: they prove the warp arithmetic, the area
 and aspect filters, and the edge-clipping rule behave as written. They say
 nothing about whether a real board photograph detects, which is B11 and needs the
-owner's 200 photographs (WP0.3). `docs/SLICE-FINDINGS.md` records what it cost
-the last time generated material was read as evidence.
+owner's 200 photographs (WP0.3). `docs/FINDINGS.md` ("What is not evidence")
+records what it cost the last time generated material was read as evidence.
 """
 
 from pathlib import Path

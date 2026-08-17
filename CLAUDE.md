@@ -75,8 +75,8 @@ uncertainty B15 in the plan.
    statement, and proof convention. Precedence: field file > Proof_Style >
    Common. Ownership headers are in `rules/Common.txt`. These are hand-edited by
    the owner; you may propose changes but never silently rewrite them.
-3. **`docs/*FINDINGS*.md`, `docs/S3-RESULTS.md`** — what was learned by executing
-   parts of this system on real material. Read before re-deriving anything.
+3. **`docs/FINDINGS.md`** — what was learned by examining real material, in one
+   document. Read before re-deriving anything.
 4. **`STATE.md`** — where the work currently stands and what the open step is.
    Read it before starting anything. It is the only live status record; every
    other status statement in this repository is a dated historical report.
@@ -84,7 +84,7 @@ uncertainty B15 in the plan.
 ## What is already built
 
 A large amount of this system is built and tested. `STATE.md` says what, and
-`docs/SETUP-REPORT.md` (2026-08-04) records how it got there.
+`DECISIONS-TAKEN.md` records why each non-obvious choice along the way was made.
 
 **Do not rewrite existing modules; extend them.** Where a module exists, it was
 built against the specification and in several cases verified against the real
@@ -175,7 +175,7 @@ reads the mandated strings out of `rules/` at test time and asserts that
 
 An earlier "vertical slice" was recorded as an extraction from a real lecture. It
 was not — the content was hand-written, and the board photographs are a different
-subject entirely. `docs/SLICE-FINDINGS.md` now states this. The consequence for
+subject entirely. `docs/FINDINGS.md` now states this. The consequence for
 you: **no extraction has ever been performed by this system.** Treat every
 extraction-side claim as unverified, and treat `tests/fixtures/synthetic/` as a
 renderer regression fixture only, never as evidence about extraction quality.

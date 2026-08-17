@@ -4,7 +4,8 @@ NOT extracted from any source. The provenance photo references below are
 fabricated placeholders retained only so the emitter exercises that code path.
 
 Every item: provenance kind=board (session 2026-05-03) => exam_star derives TRUE.
-Excluded regions and duplicate merges are recorded in FINDINGS.md, not here.
+This set is a renderer regression fixture only — see docs/FINDINGS.md,
+"What is not evidence".
 Math dialect: typst (config default; runtime-model fluency = B13, still open).
 """
 import sys

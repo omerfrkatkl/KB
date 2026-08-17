@@ -250,7 +250,8 @@ Context   : CLAUDE.md and plan Phase 3 both require this to be raised once,
             hold no board captures; the ~200 board photographs are Linear
             Algebra and Abstract Algebra.
 Chosen    : Built all Phase 3 *code* — photo chain, continuation, figures,
-            audit — and reported the choice in `docs/SETUP-REPORT.md` rather
+            audit — and reported the choice in `docs/SETUP-REPORT.md` (deleted;
+            the surviving findings are now in `docs/FINDINGS.md`) rather
             than promoting either subject to a field. Building a book for a
             subject the owner did not ask for is the expensive error; the
             reversible one is to ask at the point where it matters.
