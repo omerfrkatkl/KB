@@ -23,8 +23,29 @@ rules:                ## compile rules/ -> generated/ (lexicon, symbols, validat
 	$(PY) -m knowledge_base.rules.compile_rules
 	@git diff --quiet generated/ || echo "generated/ changed — review and commit"
 
+# Resolve a real POSIX shell to run install-hooks.sh with, rather than
+# trusting the name `bash` on PATH: on Windows, `bash` found via PATH may be
+# the zero-byte WSL launcher stub that ships with Windows itself — invoking
+# it silently drops into a WSL2 Ubuntu instance and runs the script against
+# Linux paths instead of this checkout. Prefer, in order: `sh` if it
+# resolves to a real shell, then Git for Windows' bundled sh.exe, then
+# `bash`. On a POSIX machine `sh` is real, so it is used directly.
+ifeq ($(OS),Windows_NT)
+  SH_ON_PATH := $(shell where sh 2>NUL)
+  GIT_SH := C:/Program Files/Git/bin/sh.exe
+  ifneq ($(strip $(SH_ON_PATH)),)
+    HOOK_SHELL := sh
+  else ifneq ($(shell if exist "$(GIT_SH)" echo yes),)
+    HOOK_SHELL := $(GIT_SH)
+  else
+    HOOK_SHELL := bash
+  endif
+else
+  HOOK_SHELL := $(shell command -v sh 2>/dev/null || command -v bash)
+endif
+
 hooks:                ## install the pre-commit guard from bin/
-	bash bin/install-hooks.sh
+	"$(HOOK_SHELL)" bin/install-hooks.sh
 
 clean:
 	rm -rf build/ .pytest_cache **/__pycache__
