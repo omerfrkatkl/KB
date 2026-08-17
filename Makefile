@@ -10,7 +10,7 @@
 # uv as absent even when it is on PATH. Branch on $(OS) and use a cmd-native
 # probe on Windows, `command -v` on POSIX.
 ifeq ($(OS),Windows_NT)
-  UV := $(shell where uv 2>NUL)
+  UV := $(shell where uv)
 else
   UV := $(shell command -v uv 2>/dev/null)
 endif
@@ -41,7 +41,7 @@ rules:                ## compile rules/ -> generated/ (lexicon, symbols, validat
 # resolves to a real shell, then Git for Windows' bundled sh.exe, then
 # `bash`. On a POSIX machine `sh` is real, so it is used directly.
 ifeq ($(OS),Windows_NT)
-  SH_ON_PATH := $(shell where sh 2>NUL)
+  SH_ON_PATH := $(shell where sh)
   GIT_SH := C:/Program Files/Git/bin/sh.exe
   ifneq ($(strip $(SH_ON_PATH)),)
     HOOK_SHELL := sh
@@ -58,4 +58,4 @@ hooks:                ## install the pre-commit guard from bin/
 	"$(HOOK_SHELL)" bin/install-hooks.sh
 
 clean:
-	rm -rf build/ .pytest_cache **/__pycache__
+	$(PY) -B -m knowledge_base.ops.clean
