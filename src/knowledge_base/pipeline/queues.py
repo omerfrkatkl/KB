@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -27,6 +28,23 @@ from typing import Any, Iterable
 from ruamel.yaml import YAML
 
 from knowledge_base.config import ROOT
+
+_ILLEGAL_FILENAME_CHARS = re.compile(r'[<>:"/\\|?*\x00-\x1f]')
+_RUN_OF_HYPHENS = re.compile(r"-{2,}")
+
+
+# Sanitised on every platform, not only Windows: an entry id is stored as-is
+# inside the file, but the filename derived from it must be identical on
+# Linux and Windows, or the same repository's queue/ directory would disagree
+# with itself between checkouts.
+def _sanitise_filename(entry_id: str) -> str:
+    name = _ILLEGAL_FILENAME_CHARS.sub("-", entry_id)
+    name = name.rstrip(". ")
+    name = _RUN_OF_HYPHENS.sub("-", name).strip("-")
+    if not name:
+        raise ValueError(f"entry id {entry_id!r} sanitises to an empty filename")
+    return name
+
 
 NAMES = (
     "new-term",
@@ -88,7 +106,7 @@ class Queues:
         stage neither multiplies entries nor overwrites a partially-worked one."""
         d = self.dir(name)
         eid = entry_id or _digest(name, payload)
-        path = d / f"{eid}.yaml"
+        path = d / f"{_sanitise_filename(eid)}.yaml"
         if path.exists():
             return path
         d.mkdir(parents=True, exist_ok=True)
@@ -125,7 +143,7 @@ class Queues:
     def resolve(self, name: str, entry_id: str) -> bool:
         """Remove a worked entry. The ruling itself is recorded in
         `decisions.log` by the review CLI — this only clears the pending work."""
-        p = self.dir(name) / f"{entry_id}.yaml"
+        p = self.dir(name) / f"{_sanitise_filename(entry_id)}.yaml"
         if not p.exists():
             return False
         p.unlink()

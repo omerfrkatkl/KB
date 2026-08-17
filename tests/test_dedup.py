@@ -216,6 +216,17 @@ def test_only_the_documented_queues_exist(tmp_path):
         Queues(tmp_path).add("invented-queue", {})
 
 
+def test_entry_id_with_illegal_filename_characters_is_sanitised(tmp_path):
+    q = Queues(tmp_path)
+    entry_id = "unsorted-complex-analysis-2026-08-17T11:42:44+00:00"
+    path = q.add("new-source", {"field": "complex-analysis"}, entry_id=entry_id)
+
+    assert ":" not in path.name
+    entries = q.list("new-source")
+    assert len(entries) == 1
+    assert entries[0].id == entry_id
+
+
 def test_review_records_every_ruling_and_clears_the_entry(tmp_path):
     from knowledge_base.cli.review import read_rulings, work
 
