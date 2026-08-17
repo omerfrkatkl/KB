@@ -49,7 +49,7 @@ def build_field(field_key: str, settings: Settings, root: Path = ROOT,
         log.warning("toolchain absent — emitted %s but did not compile", written["main"])
         return BuildResult(field=field_key, typ=written["main"], pdf=None,
                            item_count=len(renderable),
-                           stderr="tools/typst missing; run `make bootstrap`")
+                           stderr="typst not installed or not on PATH")
 
     title = settings.fields[field_key].title.replace(" ", "-")
     result = C.compile_doc(written["main"], root=root, out=out_dir / f"{title}.pdf")

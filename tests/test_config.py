@@ -60,6 +60,31 @@ def test_bootstrap_is_idempotent():
     assert manifest.read_bytes() == before
 
 
+@pytest.mark.skipif(not shutil.which("typst"), reason="typst is not on PATH")
+def test_bootstrap_detects_a_typst_version_mismatch(monkeypatch, capsys):
+    """A wrong typst-version pin must fail the check, not warn."""
+    from knowledge_base.ops import bootstrap
+
+    # MANIFEST.relative_to(ROOT) requires the manifest to live under ROOT, so the
+    # substitute pin file is placed there too rather than under a stray tmp_path.
+    required = "0.0.0-does-not-exist"
+    bogus_manifest = ROOT / "template" / "TOOL-SHAS.test-mismatch.txt"
+    bogus_manifest.write_text(f"typst-version {required}\n", encoding="utf-8", newline="")
+    monkeypatch.setattr(bootstrap, "MANIFEST", bogus_manifest)
+
+    try:
+        found = bootstrap.typst_version(bootstrap.find_typst())
+
+        rc = bootstrap.main(["--check"])
+        out = capsys.readouterr().out
+
+        assert rc != 0
+        assert required in out
+        assert found in out
+    finally:
+        bogus_manifest.unlink()
+
+
 @pytest.mark.skipif(not HAVE_FONTS, reason="run `make bootstrap` to vendor the fonts")
 def test_bootstrap_detects_a_tampered_artefact(tmp_path):
     """The pin is the whole point: a changed byte must fail, not warn."""

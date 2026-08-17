@@ -340,13 +340,20 @@ def status() -> None:
     """Report what is built, what is vendored, what is measured, and what remains."""
     from knowledge_base.ingest.registry import Registry
     from knowledge_base.models.profile import load_profile
+    from knowledge_base.ops.bootstrap import find_typst, read_manifest, typst_version
     from knowledge_base.pipeline.queues import Queues
     from knowledge_base.pipeline.store import Store
 
     settings = config.load(ROOT / "config.yaml")
-    typst = ROOT / "tools" / "typst"
+    required, _ = read_manifest()
+    typst = find_typst()
+    if typst is None:
+        typer.echo(f"toolchain : typst not installed or not on PATH — requires {required}")
+    else:
+        found = typst_version(typst)
+        match = "matches pin" if found == required else f"MISMATCH — pin is {required}"
+        typer.echo(f"toolchain : typst {found} ({typst}) — {match}")
     fonts = list((ROOT / "fonts").glob("*")) if (ROOT / "fonts").exists() else []
-    typer.echo(f"toolchain : {'vendored' if typst.exists() else 'MISSING — run bootstrap'}")
     typer.echo(f"fonts     : {len(fonts)} vendored")
     for name, measured in settings.measured().items():
         typer.echo(f"measured  : {name} = {'set' if measured else 'UNMEASURED (Phase 0)'}")
