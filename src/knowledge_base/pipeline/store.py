@@ -118,18 +118,24 @@ class Store:
 def _atomic_write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
-    with tmp.open("w", encoding="utf-8") as fh:
+    with tmp.open("w", encoding="utf-8", newline="") as fh:
         fh.write(text)
         fh.flush()
         os.fsync(fh.fileno())
     os.replace(tmp, path)
     # fsync the directory too: replace() is atomic, but its durability across a
     # power loss is not guaranteed until the directory entry is on disk.
-    fd = os.open(path.parent, os.O_RDONLY)
-    try:
-        os.fsync(fd)
-    finally:
-        os.close(fd)
+    # Only POSIX allows this: a directory can be opened as a file descriptor and
+    # fsynced, and that is what makes the rename itself durable. Windows exposes
+    # no equivalent through the standard library — opening a directory fails — so
+    # there the content fsync above still applies and the durability of the
+    # rename is left to the operating system.
+    if os.name == "posix":
+        fd = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
 
 
 # ── git helper ────────────────────────────────────────────────────────

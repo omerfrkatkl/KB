@@ -24,7 +24,7 @@ def test_numbering_parity(tmp_path):
     solved = simulate(PLAN)
     shutil.copy(ROOT / "template" / "template-star.typ", tmp_path)
     doc = tmp_path / "torture.typ"
-    doc.write_text(generate(solved))
+    doc.write_text(generate(solved), encoding="utf-8", newline="")
 
     c = subprocess.run([str(TYPST), "compile", "--font-path", str(FONTS), str(doc)],
                        capture_output=True, text=True, cwd=tmp_path)

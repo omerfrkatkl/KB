@@ -51,7 +51,7 @@ class RunState:
                    "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                    "stages": {k: asdict(v) for k, v in self.stages.items()}}
         tmp = path.with_suffix(".json.tmp")
-        tmp.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        tmp.write_text(json.dumps(payload, indent=2), encoding="utf-8", newline="")
         tmp.replace(path)
 
     def begin(self, stage: str) -> StageState:

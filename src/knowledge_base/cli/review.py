@@ -46,7 +46,7 @@ def record_ruling(ruling: Ruling, root: Path = ROOT) -> None:
     """Append-only. Never rewritten, never compacted."""
     path = log_path(root)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a", encoding="utf-8") as fh:
+    with path.open("a", encoding="utf-8", newline="") as fh:
         fh.write(json.dumps(ruling.__dict__, sort_keys=True) + "\n")
 
 
@@ -54,7 +54,7 @@ def read_rulings(root: Path = ROOT) -> list[Ruling]:
     path = log_path(root)
     if not path.exists():
         return []
-    return [Ruling(**json.loads(line)) for line in path.read_text().splitlines() if line]
+    return [Ruling(**json.loads(line)) for line in path.read_text(encoding="utf-8").splitlines() if line]
 
 
 # ── per-queue options ─────────────────────────────────────────────────

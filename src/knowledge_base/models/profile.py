@@ -176,7 +176,7 @@ def _read(path: Path, model: type[_Model], default: dict | None = None):
         if default is None:
             raise FileNotFoundError(f"profile file missing: {path}")
         return model.model_validate(default)
-    return model.model_validate(_plain(_yaml().load(path.read_text())) or default or {})
+    return model.model_validate(_plain(_yaml().load(path.read_text(encoding="utf-8"))) or default or {})
 
 
 def profile_dir(field: str, root: Path = ROOT) -> Path:

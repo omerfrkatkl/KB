@@ -56,7 +56,7 @@ def read_manifest() -> dict[str, str]:
     if not MANIFEST.exists():
         return {}
     out = {}
-    for line in MANIFEST.read_text().splitlines():
+    for line in MANIFEST.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
@@ -72,7 +72,7 @@ def write_manifest(entries: dict[str, str]) -> None:
         f"# typst {TYPST_VERSION} ({TYPST_TARGET})",
     ]
     lines += [f"{digest}  {name}" for name, digest in sorted(entries.items())]
-    MANIFEST.write_text("\n".join(lines) + "\n")
+    MANIFEST.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="")
 
 
 def fetch(url: str, dest: Path) -> None:

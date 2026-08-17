@@ -245,8 +245,8 @@ def write(items: list[Item], profile: Profile, title: str, out_dir: Path,
     out_dir.mkdir(parents=True, exist_ok=True)
     main = out_dir / "main.typ"
     symbols = out_dir / "symbols-gen.typ"
-    main.write_text(emit(items, profile, title), encoding="utf-8")
-    symbols.write_text(emit_symbols(profile), encoding="utf-8")
+    main.write_text(emit(items, profile, title), encoding="utf-8", newline="")
+    symbols.write_text(emit_symbols(profile), encoding="utf-8", newline="")
     target = out_dir / template.name
     if target.resolve() != template.resolve():
         target.write_bytes(template.read_bytes())

@@ -28,9 +28,9 @@ def test_round_trip(tmp_path):
 
 def test_unknown_key_is_rejected(tmp_path):
     """A silently ignored setting is indistinguishable from one never applied."""
-    text = (ROOT / "config.yaml").read_text() + "\nmax_pages: 12\n"
+    text = (ROOT / "config.yaml").read_text(encoding="utf-8") + "\nmax_pages: 12\n"
     p = tmp_path / "config.yaml"
-    p.write_text(text)
+    p.write_text(text, encoding="utf-8", newline="")
     with pytest.raises(Exception):
         config.load(p)
 

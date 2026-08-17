@@ -79,12 +79,12 @@ def smoke(body: str, work: Path, template: Path, symbols: str = "",
     work.mkdir(parents=True, exist_ok=True)
     (work / template.name).write_bytes(template.read_bytes())
     if symbols:
-        (work / "symbols-gen.typ").write_text(symbols, encoding="utf-8")
+        (work / "symbols-gen.typ").write_text(symbols, encoding="utf-8", newline="")
     source = work / "smoke.typ"
     source.write_text(
         f'#import "{template.name}": *\n'
         + ('#import "symbols-gen.typ": *\n' if symbols else "")
         + '#show: project.with(title: "smoke", date: none)\n\n'
         + body + "\n",
-        encoding="utf-8")
+        encoding="utf-8", newline="")
     return compile_doc(source, root=root)

@@ -722,7 +722,7 @@ def run(root: Path = ROOT, check: bool = False) -> int:
                     stale.append(str(path.relative_to(root)))
                 continue
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text, encoding="utf-8")
+            path.write_text(text, encoding="utf-8", newline="")
         if not check:
             queued = _queue_demoted(field_key, compiled, root)
             log.info("%s: %d banned terms, %d notation forms, %d validator rules, "

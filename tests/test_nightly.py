@@ -91,16 +91,16 @@ def test_a_measured_budget_is_used_as_given(settings):
 
 def test_a_full_run_without_captures_completes(workspace, settings):
     assert nightly.run(root=workspace, settings=settings) == 0
-    report = (workspace / "build" / "report.md").read_text()
+    report = (workspace / "build" / "report.md").read_text(encoding="utf-8")
     assert "rclone is not installed" in report
     assert "ingest:" in report and "build:" in report
 
 
 def test_the_run_is_idempotent(workspace, settings):
     assert nightly.run(root=workspace, settings=settings) == 0
-    first = (workspace / "build" / "complex-analysis" / "main.typ").read_text()
+    first = (workspace / "build" / "complex-analysis" / "main.typ").read_text(encoding="utf-8")
     assert nightly.run(root=workspace, settings=settings) == 0
-    assert (workspace / "build" / "complex-analysis" / "main.typ").read_text() == first
+    assert (workspace / "build" / "complex-analysis" / "main.typ").read_text(encoding="utf-8") == first
 
 
 def test_a_completed_stage_is_not_repeated_on_resume(workspace, settings):
@@ -134,7 +134,7 @@ def test_a_failing_stage_commits_what_is_done_and_reports(workspace, settings):
         nightly.HANDLERS["build"] = original
 
     assert code == 1, "a stage error exits non-zero"
-    report = (workspace / "build" / "report.md").read_text()
+    report = (workspace / "build" / "report.md").read_text(encoding="utf-8")
     assert "simulated build failure" in report
     assert "ingest:" in report, "work done before the failure is still reported"
     assert RunState.load("testrun", workspace).failed_stages() == ["build"]
@@ -146,7 +146,7 @@ def test_the_report_names_the_queues(workspace, settings):
 
     Queues(workspace).add("new-term", {"term": "quasiregular"})
     nightly.run(root=workspace, settings=settings)
-    assert "new-term" in (workspace / "build" / "report.md").read_text()
+    assert "new-term" in (workspace / "build" / "report.md").read_text(encoding="utf-8")
 
 
 def test_a_second_run_uses_a_new_run_id(workspace, settings, monkeypatch):

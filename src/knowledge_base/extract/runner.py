@@ -86,7 +86,7 @@ def record(rec: CallRecord, root: Path = ROOT) -> Path:
     path = d / f"{rec.call_id}.json"
     payload = rec.__dict__
     tmp = path.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    tmp.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8", newline="")
     tmp.replace(path)
     return path
 

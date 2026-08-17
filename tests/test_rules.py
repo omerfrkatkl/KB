@@ -293,12 +293,13 @@ def test_a_qualifier_demotes_unless_the_pair_is_allowlisted(tmp_path):
     (rules_dir / "fields").mkdir(parents=True)
     for name in ("Common.txt", "Proof_Style.txt"):
         (rules_dir / name).write_text((ROOT / "tests" / "fixtures" / "rules_mini"
-                                       / name).read_text(), encoding="utf-8")
+                                       / name).read_text(encoding="utf-8"), encoding="utf-8",
+                                      newline="")
     (rules_dir / "fields" / "mini.txt").write_text(
         '= 1. Terminology\n\n'
         'ALWAYS use "analytic" — NEVER "holomorphic".\n\n'
         'ALWAYS use "contour" — NEVER "path" when the curve is piecewise smooth.\n',
-        encoding="utf-8")
+        encoding="utf-8", newline="")
 
     import knowledge_base.rules.compile_rules as cr
 
@@ -321,7 +322,7 @@ def test_a_qualifier_demotes_unless_the_pair_is_allowlisted(tmp_path):
             "  - term: path\n"
             "    section: mini §1\n"
             "    reason: the qualifier describes the only kind of curve used\n",
-            encoding="utf-8")
+            encoding="utf-8", newline="")
         allowed = cr.compile_field("mini", rules_dir)
         assert allowed.lexicon["banned"]["path"] == "contour"
     finally:
@@ -398,19 +399,20 @@ def test_a_conflicting_use_outranks_the_allowlist(tmp_path):
     rules_dir = tmp_path / "rules"
     (rules_dir / "fields").mkdir(parents=True)
     for name in ("Common.txt", "Proof_Style.txt"):
-        (rules_dir / name).write_text((MINI / name).read_text(), encoding="utf-8")
+        (rules_dir / name).write_text((MINI / name).read_text(encoding="utf-8"), encoding="utf-8",
+                                      newline="")
     (rules_dir / "fields" / "mini.txt").write_text(
         '= 1. Terminology\n\n'
         'ALWAYS use "mapping" — NEVER "transformation".\n\n'
         '= 2. Named results\n\n'
         'ALWAYS use "linear fractional transformation" in full.\n',
-        encoding="utf-8")
+        encoding="utf-8", newline="")
     (rules_dir / "enforcement-allowlist.yaml").write_text(
         "allowlist:\n"
         "  - term: transformation\n"
         "    section: mini §1\n"
         "    reason: mistakenly granted\n",
-        encoding="utf-8")
+        encoding="utf-8", newline="")
 
     import knowledge_base.rules.compile_rules as cr
 
@@ -453,12 +455,14 @@ def _mini_rules(tmp_path, mini_txt, ode_txt=None, allowlist=None):
     rules_dir = tmp_path / "rules"
     (rules_dir / "fields").mkdir(parents=True)
     for name in ("Common.txt", "Proof_Style.txt"):
-        (rules_dir / name).write_text((MINI / name).read_text(), encoding="utf-8")
-    (rules_dir / "fields" / "mini.txt").write_text(mini_txt, encoding="utf-8")
+        (rules_dir / name).write_text((MINI / name).read_text(encoding="utf-8"), encoding="utf-8",
+                                      newline="")
+    (rules_dir / "fields" / "mini.txt").write_text(mini_txt, encoding="utf-8", newline="")
     if ode_txt is not None:
-        (rules_dir / "fields" / "sibling.txt").write_text(ode_txt, encoding="utf-8")
+        (rules_dir / "fields" / "sibling.txt").write_text(ode_txt, encoding="utf-8", newline="")
     if allowlist is not None:
-        (rules_dir / "enforcement-allowlist.yaml").write_text(allowlist, encoding="utf-8")
+        (rules_dir / "enforcement-allowlist.yaml").write_text(allowlist, encoding="utf-8",
+                                                              newline="")
     return rules_dir
 
 
@@ -572,7 +576,8 @@ def test_check_mode_detects_staleness(tmp_path):
     assert run(root=tmp_path, check=True) == 0, "freshly generated must be clean"
 
     target = outputs("complex-analysis", tmp_path)["lexicon"]
-    target.write_text(target.read_text() + "\n  fake: entry\n")
+    target.write_text(target.read_text(encoding="utf-8") + "\n  fake: entry\n", encoding="utf-8",
+                      newline="")
     assert run(root=tmp_path, check=True) == 1, "a hand edit must be detected"
 
 

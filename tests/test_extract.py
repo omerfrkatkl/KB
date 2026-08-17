@@ -268,7 +268,7 @@ def test_calls_are_recorded_with_their_prompt_hash(tmp_path, monkeypatch):
                           root=tmp_path)
     files = list((tmp_path / "state" / "calls").glob("*.json"))
     assert files
-    assert json.loads(files[0].read_text())["prompt_hash"] == "ph1"
+    assert json.loads(files[0].read_text(encoding="utf-8"))["prompt_hash"] == "ph1"
 
 
 def test_a_malformed_response_retries_with_the_errors_appended(tmp_path, monkeypatch):

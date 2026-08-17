@@ -139,7 +139,7 @@ def test_put_is_atomic(tmp_path, monkeypatch):
     st = Store("complex-analysis", tmp_path)
     it = mk()
     st.put(it)
-    good = st.path(it.id).read_text()
+    good = st.path(it.id).read_text(encoding="utf-8")
 
     real_replace = os.replace
 
@@ -151,7 +151,7 @@ def test_put_is_atomic(tmp_path, monkeypatch):
         st.put(it.model_copy(update={"title": "half-written"}))
     monkeypatch.setattr(os, "replace", real_replace)
 
-    assert st.path(it.id).read_text() == good
+    assert st.path(it.id).read_text(encoding="utf-8") == good
     assert st.get(it.id).title is None
 
 

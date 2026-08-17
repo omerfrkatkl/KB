@@ -207,7 +207,7 @@ def test_emission_is_byte_identical_across_runs(profile):
 def test_golden_file(profile):
     out = emitter.emit(corpus(), profile, "Complex Analysis")
     if not GOLDEN.exists():                       # first run records the golden
-        GOLDEN.write_text(out, encoding="utf-8")
+        GOLDEN.write_text(out, encoding="utf-8", newline="")
     assert out == GOLDEN.read_text(encoding="utf-8"), (
         "emitter output changed. If the change is intended, delete "
         "tests/fixtures/golden_main.typ and re-run to re-record it.")
@@ -242,9 +242,10 @@ def test_numbering_matches_the_compiler(tmp_path, profile):
     work = tmp_path / "doc"
     work.mkdir()
     shutil.copy(TEMPLATE, work)
-    (work / "symbols-gen.typ").write_text("", encoding="utf-8")
+    (work / "symbols-gen.typ").write_text("", encoding="utf-8", newline="")
     plan = emitter.plan(corpus(), profile)
-    (work / "main.typ").write_text(emitter.emit(corpus(), profile, "t"), encoding="utf-8")
+    (work / "main.typ").write_text(emitter.emit(corpus(), profile, "t"), encoding="utf-8",
+                                   newline="")
 
     assert C.compile_doc(work / "main.typ", root=ROOT).ok
     queried = C.query(work / "main.typ", 'figure.where(kind: "math-env")', root=ROOT)

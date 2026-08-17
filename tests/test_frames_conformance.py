@@ -227,7 +227,7 @@ def test_no_frame_writes_qed_or_completes_the_proof(proof_style):
     text = mandated(proof_style, "3.3")
     assert "NEVER write `This completes the proof.`" in text
     assert "NEVER write `QED`" in text
-    source = (ROOT / "src" / "knowledge_base" / "build" / "frames.py").read_text()
+    source = (ROOT / "src" / "knowledge_base" / "build" / "frames.py").read_text(encoding="utf-8")
     assert "This completes the proof" not in source
     assert "QED" not in source
     assert "square.filled" not in source, "the #proof environment adds it"

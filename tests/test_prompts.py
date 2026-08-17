@@ -18,35 +18,35 @@ def test_renders_deterministically():
 
 def test_no_template_leaks():
     for f in (EX, AU):
-        t = f.read_text()
+        t = f.read_text(encoding="utf-8")
         assert "{{" not in t and "{%" not in t and "Undefined" not in t
 
 def test_contract_blocks_are_valid_json():
     for f in (EX, AU):
-        for blk in re.findall(r"```json\n(.*?)```", f.read_text(), re.S):
+        for blk in re.findall(r"```json\n(.*?)```", f.read_text(encoding="utf-8"), re.S):
             json.loads(re.sub(r"<[^>]*>", "x", re.sub(r'"<[^"]*>"', '"x"', blk)))
 
 def test_every_contract_field_is_explained():
-    t = EX.read_text()
+    t = EX.read_text(encoding="utf-8")
     for k in ["items","fragments","duplicates","unclassified","figures",
               "pending_refs","coverage","terms","notes"]:
         assert t.count(k) >= 2, k
 
 def test_section_numbering_contiguous():
-    ns = [int(n) for n in re.findall(r"^# (\d+)\. ", EX.read_text(), re.M)]
+    ns = [int(n) for n in re.findall(r"^# (\d+)\. ", EX.read_text(encoding="utf-8"), re.M)]
     assert ns == list(range(1, len(ns) + 1))
 
 def test_exclusion_vocabulary_shared():
     """The auditor validates the extractor's exclusions, so both must use one list."""
     pat = r"^\| `([a-z-]+)` \| "
-    ex = set(re.findall(pat, EX.read_text(), re.M))
-    au = set(re.findall(pat, AU.read_text(), re.M))
+    ex = set(re.findall(pat, EX.read_text(encoding="utf-8"), re.M))
+    au = set(re.findall(pat, AU.read_text(encoding="utf-8"), re.M))
     shared = {"question","problem","solution","worked-demonstration",
               "recall-repeat","narrative","non-content"}
     assert shared <= ex and shared <= au
 
 def test_load_bearing_rules_present():
-    t = " ".join(EX.read_text().split())
+    t = " ".join(EX.read_text(encoding="utf-8").split())
     for probe in ["never write a number into slot text",
                   "A forced fit is silent distortion",
                   "Fabricated rigor is worse",
@@ -55,7 +55,7 @@ def test_load_bearing_rules_present():
         assert probe in t, probe
 
 def test_audit_is_adversarially_framed():
-    t = " ".join(AU.read_text().split())
+    t = " ".join(AU.read_text(encoding="utf-8").split())
     assert "find its mistakes" in t
     assert "Both arrays empty means the batch passes" in t
     assert "do not withhold one to appear agreeable" in t

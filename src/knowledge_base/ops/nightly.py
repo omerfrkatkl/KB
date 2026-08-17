@@ -285,7 +285,7 @@ HANDLERS = {
 def _write_report(report: RunReport, root: Path) -> Path:
     path = Path(root) / "build" / "report.md"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(report.markdown(), encoding="utf-8")
+    path.write_text(report.markdown(), encoding="utf-8", newline="")
     return path
 
 

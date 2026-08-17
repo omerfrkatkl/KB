@@ -57,5 +57,5 @@ def generate(plan_solved):
 
 if __name__ == "__main__":
     solved = simulate(PLAN)
-    open("torture.typ","w").write(generate(solved))
+    open("torture.typ","w",encoding="utf-8",newline="").write(generate(solved))
     print("expected labels:", [e["label"] for e in solved if e.get("label")])

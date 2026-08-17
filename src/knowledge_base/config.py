@@ -105,13 +105,13 @@ def _yaml() -> YAML:
 
 def load(path: Path | str = DEFAULT_CONFIG) -> Settings:
     path = Path(path)
-    data = _yaml().load(path.read_text())
+    data = _yaml().load(path.read_text(encoding="utf-8"))
     return Settings.model_validate(_plain(data))
 
 
 def dump(settings: Settings, path: Path | str) -> None:
     """Write settings back. Used by the Phase-0 spikes to record measurements."""
-    with Path(path).open("w") as fh:
+    with Path(path).open("w", encoding="utf-8", newline="") as fh:
         _yaml().dump(settings.model_dump(mode="json"), fh)
 
 

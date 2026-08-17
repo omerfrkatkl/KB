@@ -95,8 +95,9 @@ au = audit_context(
   fragments=[dict(continues="01J9XA")], duplicates=[dict(tmp_id="tmp-2", of="01J9XB")])
 au_text, au_hash = render("audit.md.j2", au)
 
-open(Path(__file__).parent / "rendered_extract.md","w").write(ex_text)
-open(Path(__file__).parent / "rendered_audit.md","w").write(au_text)
+# These fixtures are committed with LF; write them with LF on every platform.
+open(Path(__file__).parent / "rendered_extract.md","w",encoding="utf-8",newline="").write(ex_text)
+open(Path(__file__).parent / "rendered_audit.md","w",encoding="utf-8",newline="").write(au_text)
 for name, t, h in (("extract", ex_text, ex_hash), ("audit", au_text, au_hash)):
     print(f"{name:8} {len(t):>6} chars  ~{len(t)//4:>5} tokens  hash={h}")
 

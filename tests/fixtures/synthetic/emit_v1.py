@@ -182,7 +182,8 @@ def emit():
 
 if __name__ == "__main__":
     typ, label = emit()
-    open("main.typ", "w").write(typ)
-    yaml.safe_dump({"items": ITEMS, "outline": OUTLINE}, open("items.yaml", "w"),
+    open("main.typ", "w", encoding="utf-8", newline="").write(typ)
+    yaml.safe_dump({"items": ITEMS, "outline": OUTLINE},
+                   open("items.yaml", "w", encoding="utf-8", newline=""),
                    allow_unicode=True, sort_keys=False)
     print("emitted", len(ITEMS), "items; labels:", ", ".join(label.values()))
