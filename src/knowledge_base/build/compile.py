@@ -1,8 +1,10 @@
-"""Compiling and querying with the vendored toolchain (§I-11, §I-8 step 9).
+"""Compiling and querying with the pinned toolchain (§I-11, §I-8 step 9).
 
-Builds always use the pinned binary and `--font-path fonts/`. Zero dependence on
-system state is not fussiness: a font substituted five years from now would
-change every line break on every page, and nothing would report it.
+Builds always use the version-pinned compiler and `--font-path fonts/`. Zero
+dependence on unpinned state is not fussiness: a font substituted five years from
+now would change every line break on every page, and nothing would report it.
+The compiler itself is located on PATH — `knowledge_base.ops.bootstrap` holds the
+single definition of which typst that is, and verifies its version.
 
 `smoke` is validation step 9 — one item, emitted standalone, compiled. It catches
 dialect and escaping bugs at the item that caused them rather than at a book
@@ -17,16 +19,16 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from knowledge_base.config import ROOT
+from knowledge_base.ops.bootstrap import find_typst, read_manifest
 from knowledge_base.ops.log import get
 
 log = get("compile")
 
-TYPST = ROOT / "tools" / "typst"
 FONTS = ROOT / "fonts"
 
 
 class ToolchainMissing(RuntimeError):
-    """The vendored compiler is absent. Hard stop 3 — run `make bootstrap`."""
+    """The compiler is absent. Hard stop 3 — typst is not installed or not on PATH."""
 
 
 @dataclass
@@ -37,15 +39,22 @@ class CompileResult:
 
 
 def available(root: Path = ROOT) -> bool:
-    return (Path(root) / "tools" / "typst").exists()
+    """Whether a build can compile.
+
+    `root` is kept in the signature — callers pass a workspace root — but the
+    compiler is found on PATH, not inside the tree.
+    """
+    return find_typst() is not None
 
 
 def _binary(root: Path) -> Path:
-    typst = Path(root) / "tools" / "typst"
-    if not typst.exists():
+    typst = find_typst()
+    if typst is None:
         raise ToolchainMissing(
-            "tools/typst is missing — run `make bootstrap`. Never fall back to a "
-            "system typst: the build must be reproducible for decades.")
+            f"typst is not installed or not on PATH — install typst {read_manifest()[0]} "
+            "and re-run. The required version is pinned in template/TOOL-SHAS.txt "
+            "and `make bootstrap` verifies it: the build must be reproducible for "
+            "decades.")
     return typst
 
 

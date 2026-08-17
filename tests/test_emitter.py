@@ -25,7 +25,7 @@ GOLDEN = ROOT / "tests" / "fixtures" / "golden_main.typ"
 TEMPLATE = ROOT / "template" / "template-star.typ"
 
 pytestmark_toolchain = pytest.mark.skipif(
-    not C.available(ROOT), reason="run `make bootstrap` to vendor typst")
+    not C.available(ROOT), reason="typst is not installed or not on PATH")
 
 
 @pytest.fixture(scope="module")
@@ -219,8 +219,6 @@ def test_golden_file(profile):
 def test_store_to_pdf(tmp_path, settings):
     for name in ("fields", "template", "generated"):
         shutil.copytree(ROOT / name, tmp_path / name)
-    (tmp_path / "tools").mkdir()
-    (tmp_path / "tools" / "typst").symlink_to((ROOT / "tools" / "typst").resolve())
     (tmp_path / "fonts").symlink_to((ROOT / "fonts").resolve())
 
     store = Store(FIELD, tmp_path)

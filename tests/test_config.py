@@ -44,10 +44,10 @@ def test_measured_values_start_unset():
     }
 
 
-TYPST = ROOT / "tools" / "typst"
+HAVE_FONTS = (ROOT / "fonts").is_dir()
 
 
-@pytest.mark.skipif(not TYPST.exists(), reason="run `make bootstrap` to vendor typst")
+@pytest.mark.skipif(not HAVE_FONTS, reason="run `make bootstrap` to vendor the fonts")
 def test_bootstrap_is_idempotent():
     """A second run must fetch nothing and must not rewrite the manifest."""
     manifest = ROOT / "template" / "TOOL-SHAS.txt"
@@ -60,7 +60,7 @@ def test_bootstrap_is_idempotent():
     assert manifest.read_bytes() == before
 
 
-@pytest.mark.skipif(not TYPST.exists(), reason="run `make bootstrap` to vendor typst")
+@pytest.mark.skipif(not HAVE_FONTS, reason="run `make bootstrap` to vendor the fonts")
 def test_bootstrap_detects_a_tampered_artefact(tmp_path):
     """The pin is the whole point: a changed byte must fail, not warn."""
     font = ROOT / "fonts" / "FiraSans-Regular.ttf"

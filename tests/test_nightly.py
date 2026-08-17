@@ -27,8 +27,6 @@ def workspace(tmp_path, monkeypatch):
     for name in ("fields", "template", "generated", "prompts"):
         shutil.copytree(ROOT / name, tmp_path / name)
     shutil.copy(ROOT / "config.yaml", tmp_path / "config.yaml")
-    (tmp_path / "tools").mkdir()
-    (tmp_path / "tools" / "typst").symlink_to((ROOT / "tools" / "typst").resolve())
     (tmp_path / "fonts").symlink_to((ROOT / "fonts").resolve())
     for key in ("complex-analysis", "ordinary-differential-equations"):
         (tmp_path / "inbox" / key / "Lecture-Boards").mkdir(parents=True)

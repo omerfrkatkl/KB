@@ -1,7 +1,7 @@
 """Parity: the numbering simulation must equal what typst actually assigns.
 
-Requires the vendored toolchain (`make bootstrap`); skipped otherwise so a fresh
-clone reports a clean suite rather than a spurious failure.
+Requires typst on PATH; skipped otherwise so a fresh clone reports a clean suite
+rather than a spurious failure.
 """
 import json
 import shutil
@@ -12,13 +12,14 @@ import pytest
 from gen_torture import PLAN, generate
 
 from knowledge_base.build.numbering_sim import simulate
+from knowledge_base.ops.bootstrap import find_typst
 
 ROOT = Path(__file__).resolve().parents[1]
-TYPST = ROOT / "tools" / "typst"
+TYPST = find_typst()
 FONTS = ROOT / "fonts"
 FIXTURES = ROOT / "tests" / "fixtures"
 pytestmark = pytest.mark.skipif(
-    not TYPST.exists(), reason="run `make bootstrap` to vendor typst")
+    TYPST is None, reason="typst is not installed or not on PATH")
 
 def test_numbering_parity(tmp_path):
     solved = simulate(PLAN)
