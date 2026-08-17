@@ -6,6 +6,7 @@ rather than to work — WP4.2's live behaviour needs a configured remote.
 """
 
 import shutil
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -158,5 +159,22 @@ def test_a_second_run_uses_a_new_run_id(workspace, settings, monkeypatch):
 
 
 def test_the_nightly_script_is_executable():
+    """The nightly script must be executable when checked out on a POSIX machine.
+
+    NTFS carries no executable bit, so the filesystem permission is meaningless on
+    Windows; what actually determines executability on checkout is the mode git
+    records for the blob, so that is what is asserted here.
+    """
     script = ROOT / "bin" / "nightly.sh"
-    assert script.exists() and script.stat().st_mode & 0o111
+    assert script.exists()
+
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "-s", "bin/nightly.sh"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError) as exc:
+        pytest.skip(f"git is not available or {ROOT} is not a git work tree: {exc}")
+
+    mode = result.stdout.split()[0]
+    assert mode == "100755"
