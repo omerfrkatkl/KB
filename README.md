@@ -17,7 +17,7 @@ output is ever printed.
 ```
 docs/           the specification and the findings from executing parts of it
 rules/          four authored documents defining every convention (hand-edited)
-template/       the Typst template, its exam-star patch, pinned font hashes
+template/       the Typst template, its exam-star patch, the toolchain pins
 prompts/        the extraction and audit prompt packs
 src/knowledge_base/         implementation
 tests/          test suite; fixtures/ holds real material used as golden cases
@@ -25,20 +25,24 @@ reference/      compiled PDFs proving the verified pieces work end to end
 ```
 
 Created at runtime and not tracked: `inbox/` `derived/` `build/` `state/`
-`logs/` `tools/` `fonts/`. Tracked but never hand-edited: `generated/`.
+`logs/` `fonts/`. Tracked but never hand-edited: `generated/`.
 
 ## Getting started
 
+`typst` is not vendored — install it first with your package manager, at the
+version pinned in `template/TOOL-SHAS.txt`. Then:
+
 ```
 uv sync --extra dev     # or: pip install -e ".[dev]"
-make bootstrap          # vendor pinned typst + fonts
+make bootstrap          # vendor the pinned fonts; verify typst's version
 make rules              # compile rules/ -> generated/
 make check              # ruff + pytest
 make hooks              # install the pre-commit guard
 ```
 
-`make check` passes on a fresh clone. Before `make bootstrap` the tests that need
-the compiler skip rather than fail.
+`make check` passes on a fresh clone. Before `make bootstrap`, and without typst
+on PATH, the tests that need them skip rather than fail. A typst whose version
+does not match the pin fails `make bootstrap` — it is not a warning.
 
 Then `knowledge-base status` reports what is vendored, what is measured, what is
 stored, and what is queued.

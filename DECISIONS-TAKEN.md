@@ -281,3 +281,61 @@ Authority : CLAUDE.md hard rules (provenance) · plan §I-3 (provenance is
 Reversal  : cheap to add attributes; the test is a guard, not a behavior
             change — do not remove either without also fixing `prompts.py`
             to normalize line endings before hashing.
+
+## 2026-08-17 · The runtime is native Windows, not WSL2
+Context   : Plan §I-1 named WSL2 Ubuntu with Python 3.12 as the host, and the
+            code carried POSIX-only assumptions to match: a post-rename
+            directory fsync, `fcntl` locking, shell scripts as the only entry
+            to the hooks, and default text encoding everywhere. The owner works
+            in Windows and knows it well. A system meant to be used and
+            maintained for decades has to be maintainable by the person who
+            owns it; a platform he does not otherwise use is a permanent
+            maintenance debt, paid every time something breaks.
+Chosen    : Ported to native Windows, keeping the code dual-platform rather
+            than Windows-only. `store.py` keeps the content fsync and leaves
+            the rename's durability to the OS, since Windows has no directory
+            fsync. Every text-mode open carries `encoding="utf-8"`, every
+            text-mode write `newline=""`, so files are written LF on both
+            platforms as `.gitattributes` requires. `locks.py` uses `fcntl` on
+            POSIX and `msvcrt.locking` on Windows, both non-blocking, behind
+            one `AlreadyRunning` contract, verified by a two-process exclusion
+            test. Queue entry ids are sanitised before becoming filenames on
+            every platform, so `queue/` is identical across checkouts; the id
+            inside the file is left unsanitised. `bin/nightly.sh`,
+            `bin/install-hooks.sh` and `bin/pre-commit` are now recorded in git
+            as mode 100755 — they were 100644, so a POSIX clone received them
+            non-executable — and the test asserts the git-recorded mode rather
+            than the filesystem bit. `install-hooks.sh` sets
+            `git config core.hooksPath` instead of creating a symlink. The
+            Makefile branches on `$(OS)` to detect `uv` and to resolve a real
+            shell, because GNU Make on Windows runs `$(shell …)` through
+            cmd.exe. `make clean` is now `src/knowledge_base/ops/clean.py`.
+            Suite: 272 passed, 0 skipped, 0 failed.
+Authority : owner decision · plan §I-1 amended by revision 18
+Reversal  : moderate — nothing here is Windows-only, so running under WSL2
+            again needs no code removed, but the environment, the toolchain
+            install and every path in `config.yaml` would have to be rebuilt.
+
+## 2026-08-17 · typst is verified by version, not vendored and hashed
+Context   : Plan §I-1 specified a vendored `typst` binary in `tools/`, pinned by
+            sha256 and fetched by the bootstrap script, for "zero dependence on
+            system state, reproducible for life". On Windows that pin buys much
+            less than it costs: the release asset differs by platform, so the
+            hash is per-machine rather than per-project, and the owner already
+            installs and updates typst through scoop. Two mechanisms managing
+            the same binary is how one of them goes stale unnoticed.
+Chosen    : `typst` is installed by the system package manager and found on
+            PATH; bootstrap verifies its `VERSION` against
+            `template/TOOL-SHAS.txt` and treats a mismatch as a hard error, not
+            a warning. The version is what actually matters —
+            `build/numbering_sim.py` reproduces the numbering behaviour of one
+            specific release, and a release that changed it would produce wrong
+            reference numbers rather than a failure; `tests/test_parity.py` is
+            the check that catches a real divergence. The fonts stay vendored
+            and sha256-verified: they are not packaged, and `--font-path fonts/`
+            deliberately bypasses system fonts, so a substitution would silently
+            change every page.
+Authority : owner decision · amends plan §I-1's vendored-tools clause
+Reversal  : cheap — restoring the download-and-hash branch in
+            `ops/bootstrap.py` and a `tools/` entry in `.gitignore`, since the
+            pin file already carries the exact version to fetch.

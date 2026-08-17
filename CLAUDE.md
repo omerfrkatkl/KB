@@ -30,16 +30,23 @@ to update it.
 
 ## Environment
 
-**Not yet settled. Do not guess.**
+**Settled: native Windows.** Not WSL2. The code is dual-platform — POSIX paths
+are kept and tested — but this machine is Windows and that is where every claim
+in this repository was verified.
 
-The specification (plan §I-1) assumes WSL2 Ubuntu with Python 3.12 and `uv`. The
-owner's machine currently runs this repository under native Windows with Python
-3.14 and no `uv` on PATH, so the Makefile, `bin/*.sh`, the file locks and the
-rclone paths have not been exercised as specified.
+Installed: `uv` 0.12.5, `typst` 0.15.1, GNU `make` 4.4.1 (all via scoop) and
+`git` 2.55.0. Python is 3.12.14, managed by `uv`; the project's `.venv` uses it.
 
-Until this section says otherwise: do not create a virtual environment, do not
-install dependencies, do not run `make`, and do not run the test suite. If a step
-appears to require any of these, stop and report that the environment is unsettled.
+**Run everything through `uv`.** A bare `python` on PATH resolves to the
+Microsoft Store stub, not an interpreter. Use `uv run --extra dev …`; `make`
+does this for you.
+
+`typst` is **not vendored**. It is installed by the package manager, found on
+PATH, and its version is verified against `template/TOOL-SHAS.txt` — a mismatch
+is a hard error. The fonts *are* vendored and still verified by sha256.
+
+`rclone` is **not installed**. Anything that touches Google Drive — sync,
+ingestion from captures, the nightly driver's first stage — cannot run yet.
 
 ## The invariant that defines the architecture
 
@@ -130,7 +137,7 @@ Read `STATE.md`. It names the open step. Do that step, and nothing beyond it.
 ## Commands
 
 ```
-make bootstrap              # fetch pinned typst + fonts, verify sha256
+make bootstrap              # fetch pinned fonts, verify sha256; verify typst's version
 make check                  # ruff + pytest — the gate for every work package
 make rules                  # compile rules/ -> generated/
 make hooks                  # install the pre-commit guard
