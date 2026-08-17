@@ -3,7 +3,17 @@
 # Run inside the project environment when uv is available, so `make check` means
 # the same thing on a fresh clone as it does anywhere else. Without uv, fall back
 # to whatever python3/ruff/pytest are on PATH — the commands are identical.
-UV := $(shell command -v uv 2>/dev/null)
+#
+# Detected the same way the `hooks` target resolves its shell below: GNU Make
+# for Windows runs $(shell ...) through cmd.exe, where `command -v` does not
+# exist and always returns empty, so a POSIX-only probe would wrongly report
+# uv as absent even when it is on PATH. Branch on $(OS) and use a cmd-native
+# probe on Windows, `command -v` on POSIX.
+ifeq ($(OS),Windows_NT)
+  UV := $(shell where uv 2>NUL)
+else
+  UV := $(shell command -v uv 2>/dev/null)
+endif
 ifdef UV
   RUN := uv run --extra dev
   PY  := uv run --extra dev python
