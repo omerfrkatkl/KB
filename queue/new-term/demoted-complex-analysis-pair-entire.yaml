@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-entire
+payload:
+  field: complex-analysis
+  term: entire
+  proposed_canonical: an entire function
+  section: complex-analysis §5.1
+  evidence: ALWAYS write "an entire function" — NEVER "entire" as a standalone adjective without 
+    "function".
+  why: 'complex-analysis §5.1 bans “entire”, but Common.txt §4.2 mandates it: “ALWAYS use "range" exclusively
+    for $f(S)$ where $S$ is the entire domain of definition of $f$.”. Enforcing the pair would rewrite
+    text the documents require. A conflicting use is a fact about the documents, so no allowlist entry
+    overrides it.'
+context_paths: []

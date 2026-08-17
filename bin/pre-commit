@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Pre-commit hook (I-1). Install with `bin/install-hooks.sh`.
+#
+# Three guards, in the order that fails cheapest first:
+#   1. nothing under build/ may be committed — it is output, never input;
+#   2. nothing under generated/ may differ from what the rule compiler emits —
+#      that is what "never hand-edit generated/" means operationally;
+#   3. staged Python must pass ruff.
+set -uo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root" || exit 1
+
+staged() { git diff --cached --name-only --diff-filter=ACMR; }
+
+fail() { echo "pre-commit: $*" >&2; exit 1; }
+
+# 1. build/ is output
+if staged | grep -q '^build/'; then
+  fail "build/ is generated output and must never be committed. Fix the input and rebuild."
+fi
+
+# Run inside the project environment when uv is available, exactly as the
+# Makefile does — otherwise the guards below silently skip on a machine whose
+# bare python3 cannot import the package.
+if command -v uv >/dev/null 2>&1; then
+  RUN="uv run --extra dev"
+else
+  RUN=""
+fi
+
+# 2. generated/ must match the compiler
+if staged | grep -q '^generated/'; then
+  if $RUN python -c "import knowledge_base.rules.compile_rules" 2>/dev/null; then
+    $RUN python -m knowledge_base.rules.compile_rules --check \
+      || fail "generated/ does not match rules/. Run 'make rules' and commit the result; never hand-edit generated/."
+  else
+    fail "the rule compiler is not importable, so the generated/ guard cannot run. Fix the environment (uv sync --extra dev) rather than committing generated/ unchecked."
+  fi
+fi
+
+# 3. ruff on staged Python
+py=$(staged | grep '\.py$' || true)
+if [ -n "$py" ]; then
+  if [ -n "$RUN" ] || command -v ruff >/dev/null 2>&1; then
+    # shellcheck disable=SC2086
+    $RUN ruff check $py || fail "ruff reported problems in staged Python."
+  else
+    echo "pre-commit: ruff not on PATH — skipping the lint check." >&2
+  fi
+fi
+
+exit 0

@@ -1,0 +1,76 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+canonical:
+- term: Dirichlet problem
+  section: complex-analysis §17.11
+- term: Maclaurin series
+  section: complex-analysis §10.1
+- term: Neumann problem
+  section: complex-analysis §17.11
+- term: Poisson kernel
+  section: complex-analysis §17.11
+- term: Reflection Principle
+  section: complex-analysis §17.8
+- term: Rouché's Theorem
+  section: complex-analysis §17.7
+- term: accumulation point
+  section: complex-analysis §17.1
+- term: an entire function
+  section: complex-analysis §5.1
+- term: analytic
+  section: complex-analysis §5.1
+- term: conformal mapping
+  section: complex-analysis §12
+- term: contour integral
+  section: complex-analysis §8
+- term: essential singular point
+  section: complex-analysis §11.2
+- term: independent of path
+  section: complex-analysis §17.4
+- term: isolated singular point
+  section: complex-analysis §11.2
+- term: linear fractional transformation
+  section: complex-analysis §13
+- term: mapping
+  section: complex-analysis §5.5
+- term: multiply connected domain
+  section: complex-analysis §17.1
+- term: normal derivative
+  section: complex-analysis §17.11
+- term: principal branch
+  section: complex-analysis §3.3
+- term: punctured disk
+  section: complex-analysis §7.4
+- term: removable singular point
+  section: complex-analysis §11.2
+- term: simple arc
+  section: complex-analysis §7.1
+- term: simple closed curve
+  section: complex-analysis §7.1
+- term: simple pole
+  section: complex-analysis §11.2
+- term: simply connected domain
+  section: complex-analysis §17.1
+banned:
+  Dirichlet boundary value problem: Dirichlet problem
+  Jordan arc: simple arc
+  Jordan curve: simple closed curve
+  Möbius transformation: linear fractional transformation
+  Neumann boundary value problem: Neumann problem
+  Poisson integral kernel: Poisson kernel
+  Rouche's Theorem: Rouché's Theorem
+  Schwarz Reflection Principle: Reflection Principle
+  Taylor series about the origin: Maclaurin series
+  bilinear transformation: linear fractional transformation
+  conformal map: conformal mapping
+  essential singularity: essential singular point
+  holomorphic: analytic
+  isolated singularity: isolated singular point
+  limit point: accumulation point
+  multiply connected region: multiply connected domain
+  outward normal derivative: normal derivative
+  path-independent: independent of path
+  pole of order 1: simple pole
+  regular: analytic
+  removable singularity: removable singular point
+  simply connected region: simply connected domain

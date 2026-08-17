@@ -1,0 +1,14 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-deleted-neighborhood
+payload:
+  field: complex-analysis
+  term: deleted neighborhood
+  proposed_canonical: punctured disk
+  section: complex-analysis §7.4
+  evidence: ALWAYS use "punctured disk" for the set $0 < |z - z_0| < R$. NEVER use "deleted 
+    neighborhood" for the set $0 < |z - z_0| < R$.
+  why: §7.4 scopes the ban to $0 < |z - z_0| < R$. A neighborhood of infinity is $|z| > 1/epsilon$ 
+    (§17.1), which is not a disk, so substituting "punctured disk" there produces a false statement.
+    The scope is prose this compiler cannot represent, so the pair awaits a ruling.
+context_paths: []

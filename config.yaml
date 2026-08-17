@@ -1,0 +1,35 @@
+# Drive paths are relative to the Drive root and were created 2026-07-31.
+# See "Mathematics/READ-ME-Structure-and-Conventions" for the conventions.
+
+drive_remote: gdrive
+drive_root: "Mathematics"
+
+fields:
+  complex-analysis:
+    title: "Complex Analysis"
+    captures: "Mathematics/10-Source-Captures/Complex-Analysis"
+  ordinary-differential-equations:
+    title: "Ordinary Differential Equations"
+    captures: "Mathematics/10-Source-Captures/Ordinary-Differential-Equations"
+
+# Subject folders that exist in Drive but are not yet pipeline fields. Promoting
+# one requires a rule document and a profile (a one-time setup, see the plan).
+inactive_subjects: ["Linear-Algebra", "Abstract-Algebra"]
+
+# Within a field's capture folder these two subfolders determine provenance kind.
+# kind is NEVER inferred from the image: it decides the exam star (A23).
+capture_folders:
+  board:    "Lecture-Boards"
+  textbook: "Texts"
+  unsorted: "Texts/Unsorted"          # source assigned via review queue (A25)
+
+output_folder:  "Mathematics/20-Knowledge-Base"
+reports_folder: "Mathematics/00-Knowledge-Base-Pipeline/Run-Reports"
+
+budget:   {max_pages_per_night: 0}        # measured in WP0.4 (B3)
+batching: {pdf_pages: 8, board_crops: 6, raster_captures: 6}
+groups:   {session_gap_minutes: 45}       # board x photo only
+resolution_floor_px: 0                    # measured in WP0.3 (B16)
+dedup:    {auto_confirm: 0.93, queue_floor: 0.75}   # tuned in WP2.4 (B6)
+dialect:  typst                           # A/B measured in WP0.3 (B13)
+model:    default

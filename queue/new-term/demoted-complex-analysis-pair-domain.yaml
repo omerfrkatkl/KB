@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-domain
+payload:
+  field: complex-analysis
+  term: domain
+  proposed_canonical: the domain of definition of $f$
+  section: complex-analysis §5.4
+  evidence: '"domain of definition" — ALWAYS the full phrase, for the set on which a function is defined.
+    Example: "the domain of definition of $f$" NEVER write "domain" alone in this sense.'
+  why: 'complex-analysis §5.4 bans “domain”, but Common.txt §4.2 mandates it: “ALWAYS use "range" exclusively
+    for $f(S)$ where $S$ is the entire domain of definition of $f$.”. Enforcing the pair would rewrite
+    text the documents require. A conflicting use is a fact about the documents, so no allowlist entry
+    overrides it.'
+context_paths: []

@@ -1,0 +1,14 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-ordinary-differential-equations-pair-phase-space
+payload:
+  field: ordinary-differential-equations
+  term: phase space
+  proposed_canonical: phase plane
+  section: ode §14.1
+  evidence: ALWAYS "phase plane" for two-dimensional autonomous systems. NEVER "phase space" for 
+    two-dimensional systems.
+  why: §14.1 scopes the ban by dimension, which no substitution can detect. For a system of 
+    dimension three or higher "phase space" is correct, so the pair is ruled on in review and never 
+    applied automatically.
+context_paths: []

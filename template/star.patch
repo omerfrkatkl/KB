@@ -1,0 +1,152 @@
+--- template.typ	2026-07-20 19:49:40.437555618 +0000
++++ template-star.typ	2026-07-20 20:13:20.697399311 +0000
+@@ -59,10 +59,13 @@
+ 
+ #let semi-envs = ("Claim", "Recall")
+ 
++// ── exam-relevance star marker (set per item, read by the show rule) ──
++#let math-env-star = state("math-env-star", false)
++
+ // ═════════════════════════════════════════════════
+ // TIER 1 — boxed renderer: badge header + bordered body
+ // ═════════════════════════════════════════════════
+-#let thm-box(name, number, body, title: none, accent: black, bg: white, icon: "•") = {
++#let thm-box(name, number, body, title: none, accent: black, bg: white, icon: "•", star: false) = {
+   v(0.6em)
+   block(breakable: true, width: 100%, below: 1em, above: 0pt, {
+     block(inset: 0pt, outset: 0pt, below: 0pt, above: 0pt, width: 100%, breakable: false, {
+@@ -71,7 +74,7 @@
+         radius: (top-left: 3pt, top-right: 3pt),
+         inset: (x: 11pt, y: 5.5pt),
+         text(fill: white, weight: "bold", size: 9.5pt, font: heading-font)[
+-          #icon #h(2pt) #smallcaps(name) #number
++          #if star [★ ]#icon #h(2pt) #smallcaps(name) #number
+           #if title != none { text(fill: white, weight: "regular")[ — #title] }
+         ],
+       )
+@@ -102,7 +105,7 @@
+ // ═════════════════════════════════════════════════
+ // TIER 2 — semi-formal renderer: badge header, no fill
+ // ═════════════════════════════════════════════════
+-#let semi-box(name, number, body, title: none, accent: black, icon: "•") = {
++#let semi-box(name, number, body, title: none, accent: black, icon: "•", star: false) = {
+   v(0.6em)
+   block(breakable: true, width: 100%, below: 1em, above: 0pt, {
+     block(inset: 0pt, outset: 0pt, below: 0pt, above: 0pt, width: 100%, breakable: false, {
+@@ -111,7 +114,7 @@
+         radius: (top-left: 3pt, top-right: 3pt),
+         inset: (x: 11pt, y: 5.5pt),
+         text(fill: white, weight: "bold", size: 9.5pt, font: heading-font)[
+-          #icon #h(2pt) #smallcaps(name) #number
++          #if star [★ ]#icon #h(2pt) #smallcaps(name) #number
+           #if title != none { text(fill: white, weight: "regular")[ — #title] }
+         ],
+       )
+@@ -142,7 +145,7 @@
+ // ═════════════════════════════════════════════════
+ // TIER 3 — light renderer: left border only
+ // ═════════════════════════════════════════════════
+-#let light-box(name, number, body, title: none, accent: black, icon: "•") = {
++#let light-box(name, number, body, title: none, accent: black, icon: "•", star: false) = {
+   v(0.4em)
+   block(
+     inset: (left: 1.1em, top: 0.6em, bottom: 0.6em, right: 0.5em),
+@@ -151,7 +154,7 @@
+     below: 1em,
+     breakable: true,
+     {
+-      text(fill: accent, weight: "bold", size: 10.5pt, font: heading-font)[#icon #h(1pt) #name]
++      text(fill: accent, weight: "bold", size: 10.5pt, font: heading-font)[#if star [★ ]#icon #h(1pt) #name]
+       if number != "" {
+         text(fill: accent, weight: "bold", size: 10.5pt, font: heading-font)[ #number]
+       }
+@@ -277,7 +280,8 @@
+     }
+   }
+ 
+-  show figure.where(kind: "math-env"): it => {
++  show figure.where(kind: "math-env"): it => context {
++    let starred = math-env-star.at(it.location())
+     let supp = it.supplement.text
+     let key = lower(supp)
+     let p = if key in palette { palette.at(key) } else { palette.at("recall") }
+@@ -294,11 +298,11 @@
+     let env-title = if it.caption != none { it.caption.body } else { none }
+ 
+     if supp in boxed-envs {
+-      thm-box(supp, number, it.body, title: env-title, accent: p.accent, bg: p.bg, icon: p.icon)
++      thm-box(supp, number, it.body, title: env-title, accent: p.accent, bg: p.bg, icon: p.icon, star: starred)
+     } else if supp in semi-envs {
+-      semi-box(supp, number, it.body, title: env-title, accent: p.accent, icon: p.icon)
++      semi-box(supp, number, it.body, title: env-title, accent: p.accent, icon: p.icon, star: starred)
+     } else {
+-      light-box(supp, number, it.body, title: env-title, accent: p.accent, icon: p.icon)
++      light-box(supp, number, it.body, title: env-title, accent: p.accent, icon: p.icon, star: starred)
+     }
+   }
+ 
+@@ -355,8 +359,8 @@
+ 
+ // key (e.g. "thm", "def") builds the auto-label matching this
+ // environment's own displayed number — see the file header note.
+-#let math-item(body, title, supplement, key, nl: false) = [
+-  #context {
++#let math-item(body, title, supplement, key, nl: false, star: false) = [
++  #math-env-star.update(star)#context {
+     let h = counter(heading).get()
+     let section = if h.len() > 0 { h.first() } else { 0 }
+     let next-n = counter(figure.where(kind: "math-env")).get().first() + 1
+@@ -376,35 +380,38 @@
+   }
+ ]
+ 
+-#let math-item-unnumbered(body, title, supplement, nl: false) = figure(
++#let math-item-unnumbered(body, title, supplement, nl: false, star: false) = {
++  math-env-star.update(star)
++  figure(
+   if nl { parbreak() + body } else { body },
+   kind: "math-env",
+   supplement: supplement,
+   caption: _title-content(title),
+   numbering: none,
+   outlined: false,
+-)
++  )
++}
+ 
+ // ═════════════════════════════════════════════════
+ // TIER 1 — boxed environments
+ // ═════════════════════════════════════════════════
+-#let thm(body, title: none, nl: false) = math-item(body, title, "Theorem", "thm", nl: nl)
+-#let def(body, title: none, nl: false) = math-item(body, title, "Definition", "def", nl: nl)
+-#let lem(body, title: none, nl: false) = math-item(body, title, "Lemma", "lem", nl: nl)
+-#let prop(body, title: none, nl: false) = math-item(body, title, "Proposition", "prop", nl: nl)
+-#let cor(body, title: none, nl: false) = math-item(body, title, "Corollary", "cor", nl: nl)
+-#let axiom(body, title: none, nl: false) = math-item(body, title, "Axiom", "axiom", nl: nl)
+-#let postulate(body, title: none, nl: false) = math-item(body, title, "Postulate", "postulate", nl: nl)
+-#let conjecture(body, title: none, nl: false) = math-item(body, title, "Conjecture", "conjecture", nl: nl)
+-#let claim(body, title: none, nl: false) = math-item(body, title, "Claim", "claim", nl: nl)
++#let thm(body, title: none, nl: false, star: false) = math-item(body, title, "Theorem", "thm", nl: nl, star: star)
++#let def(body, title: none, nl: false, star: false) = math-item(body, title, "Definition", "def", nl: nl, star: star)
++#let lem(body, title: none, nl: false, star: false) = math-item(body, title, "Lemma", "lem", nl: nl, star: star)
++#let prop(body, title: none, nl: false, star: false) = math-item(body, title, "Proposition", "prop", nl: nl, star: star)
++#let cor(body, title: none, nl: false, star: false) = math-item(body, title, "Corollary", "cor", nl: nl, star: star)
++#let axiom(body, title: none, nl: false, star: false) = math-item(body, title, "Axiom", "axiom", nl: nl, star: star)
++#let postulate(body, title: none, nl: false, star: false) = math-item(body, title, "Postulate", "postulate", nl: nl, star: star)
++#let conjecture(body, title: none, nl: false, star: false) = math-item(body, title, "Conjecture", "conjecture", nl: nl, star: star)
++#let claim(body, title: none, nl: false, star: false) = math-item(body, title, "Claim", "claim", nl: nl, star: star)
+ 
+ // ═════════════════════════════════════════════════
+ // TIER 2 & 3 — unnumbered environments
+ // ═════════════════════════════════════════════════
+-#let recall(body, title: none, nl: false) = math-item-unnumbered(body, title, "Recall", nl: nl)
+-#let remark(body, title: none, nl: false) = math-item-unnumbered(body, title, "Remark", nl: nl)
+-#let ex(body, title: none, nl: false) = math-item-unnumbered(body, title, "Example", nl: nl)
+-#let notation(body, title: none, nl: false) = math-item-unnumbered(body, title, "Notation", nl: nl)
++#let recall(body, title: none, nl: false, star: false) = math-item-unnumbered(body, title, "Recall", nl: nl, star: star)
++#let remark(body, title: none, nl: false, star: false) = math-item-unnumbered(body, title, "Remark", nl: nl, star: star)
++#let ex(body, title: none, nl: false, star: false) = math-item-unnumbered(body, title, "Example", nl: nl, star: star)
++#let notation(body, title: none, nl: false, star: false) = math-item-unnumbered(body, title, "Notation", nl: nl, star: star)
+ 
+ // ═════════════════════════════════════════════════
+ // TIER 4 — plain blocks

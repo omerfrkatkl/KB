@@ -1,0 +1,82 @@
+# Taxonomy for Ordinary Differential Equations (plan §I-5).
+#
+# This file IS the emitter allowlist: a type absent from `types` cannot be
+# rendered, which is how A9's exclusions are enforced without deleting template
+# code. `render` names a template function in template/template-star.typ and
+# `numbered` must agree with whether that function is numbered — the numbering
+# simulation reads this, and a disagreement shows up as a parity failure.
+#
+# The `excluded` block is embedded verbatim in both prompts, so the extractor and
+# the auditor validate against one written policy rather than two copies.
+
+types:
+  - key: definition
+    render: def
+    numbered: true
+    schema: DefinitionSlots
+    note: introduces or names a concept
+  - key: theorem
+    render: thm
+    numbered: true
+    schema: ResultSlots
+    note: a major or source-labelled result
+  - key: lemma
+    render: lem
+    numbered: true
+    schema: ResultSlots
+    note: an auxiliary result used to prove another
+  - key: proposition
+    render: prop
+    numbered: true
+    schema: ResultSlots
+    note: an asserted result, the default for unlabelled results
+  - key: corollary
+    render: cor
+    numbered: true
+    schema: ResultSlots
+    note: a result following immediately from a previous one
+  - key: axiom
+    render: axiom
+    numbered: true
+    schema: ProseSlots
+    note: an assumed starting point
+  - key: claim
+    render: claim
+    numbered: true
+    schema: ClaimSlots
+    note: a local asserted fact
+  - key: counterexample
+    render: claim
+    numbered: true
+    schema: CounterexampleSlots
+    note: establishes that a converse fails or a hypothesis is necessary
+  - key: notation
+    render: notation
+    numbered: false
+    schema: ProseSlots
+    note: a symbol or writing convention being introduced
+  - key: remark
+    render: remark
+    numbered: false
+    schema: ProseSlots
+    note: a qualitative or contextual fact worth keeping
+
+excluded:
+  - key: question
+    definition: anything posed to the reader to answer
+  - key: problem
+    definition: an exercise, set problem, or homework item
+  - key: solution
+    definition: the worked answer to a question or problem
+  - key: worked-demonstration
+    definition: applies a known result to a specific object and establishes no new general fact
+  - key: recall-repeat
+    definition: material already stated earlier, restated for review
+  - key: source-correction
+    definition: an erratum or typo note about a textbook; true, but commentary on the source rather than mathematics
+  - key: narrative
+    definition: connective or meta prose carrying no fact, including assertions of derivability
+  - key: non-content
+    definition: logistics, announcements, and any reader annotation over the content
+  - key: foreign-subject
+    definition: a fully visible board belonging to a different course

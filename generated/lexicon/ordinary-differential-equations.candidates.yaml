@@ -1,0 +1,329 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+candidates:
+- proposed_canonical: $...$
+  proposed_banned: $exists!$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+- proposed_canonical: $...$
+  proposed_banned: $exists$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+- proposed_canonical: $...$
+  proposed_banned: $forall$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+  demoted: true
+  reason: 'Common §1.1 bans “$forall$”, but Common.txt §1.1 mandates it: “IF inside $...$: ALWAYS use symbols — $forall$, $exists$, $exists!$”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: $L[y] = y'' + p(t) y' + q(t) y$
+  proposed_banned: $D$
+  section: ode §4.3
+  is_math: true
+  evidence: ALWAYS write $L[y] = y'' + p(t) y' + q(t) y$ with square brackets. NEVER write $L(y)$ with round brackets for the operator. NEVER use $D$ as a derivative operator — it is not defined in this system.
+- proposed_canonical: $W[y_1, y_2](t)$
+  proposed_banned: $W(t)$
+  section: ode §8.2
+  is_math: true
+  evidence: ALWAYS write $W[y_1, y_2](t)$ with square brackets and explicit $t$-argument. NEVER write $W(y_1, y_2)$ or $W(t)$ alone.
+- proposed_canonical: $Y$
+  proposed_banned: $y_P$
+  section: ode §9.1
+  is_math: true
+  evidence: 'where: $y_c(t)$ ALWAYS denotes the complementary solution — the general solution of the corresponding homogeneous equation. NEVER call it "homogeneous solution". $Y(t)$ ALWAYS denotes the particular solution — a single solution of the nonhomogeneous equation. ALWAYS use capital $Y$. NEVER $y_p$ or $'
+- proposed_canonical: $Y$
+  proposed_banned: $y_p$
+  section: ode §9.1
+  is_math: true
+  evidence: 'where: $y_c(t)$ ALWAYS denotes the complementary solution — the general solution of the corresponding homogeneous equation. NEVER call it "homogeneous solution". $Y(t)$ ALWAYS denotes the particular solution — a single solution of the nonhomogeneous equation. ALWAYS use capital $Y$. NEVER $y_p$ or $'
+- proposed_canonical: $c$ is an arbitrary constant
+  proposed_banned: arbitrary constant
+  section: ode §2.4
+  is_math: true
+  evidence: ALWAYS use $c$, $c_1$, $c_2$, etc. for arbitrary constants. ALWAYS write "$c$ is an arbitrary constant" when first introducing it. NEVER write "integration constant" — always "arbitrary constant".
+- proposed_canonical: $c$ is an arbitrary constant
+  proposed_banned: integration constant
+  section: ode §2.4
+  is_math: true
+  evidence: ALWAYS use $c$, $c_1$, $c_2$, etc. for arbitrary constants. ALWAYS write "$c$ is an arbitrary constant" when first introducing it. NEVER write "integration constant" — always "arbitrary constant".
+- proposed_canonical: $cal(L){f(t)} = F(s)$
+  proposed_banned: $L$
+  section: ode §11.1
+  is_math: true
+  evidence: ALWAYS $cal(L){f(t)} = F(s)$ — curly $cal(L)$, NEVER straight $L$. ALWAYS $cal(L)^(-1){F(s)} = f(t)$ for the inverse.
+- proposed_canonical: $dif x$
+  proposed_banned: $d x$
+  section: ode §7.2
+  is_math: true
+  evidence: 'Differential form: ALWAYS $M(x) dif x + N(y) dif y = 0$. ALWAYS write $dif x$ as two separate tokens in Typst source: the keyword $dif$ followed by the variable. NEVER write $difx$ as a single token. NEVER write $d x$ with a standalone $d$.'
+- proposed_canonical: $dif x$
+  proposed_banned: $d$
+  section: ode §7.2
+  is_math: true
+  evidence: 'Differential form: ALWAYS $M(x) dif x + N(y) dif y = 0$. ALWAYS write $dif x$ as two separate tokens in Typst source: the keyword $dif$ followed by the variable. NEVER write $difx$ as a single token. NEVER write $d x$ with a standalone $d$.'
+- proposed_canonical: $dif x$
+  proposed_banned: $difx$
+  section: ode §7.2
+  is_math: true
+  evidence: 'Differential form: ALWAYS $M(x) dif x + N(y) dif y = 0$. ALWAYS write $dif x$ as two separate tokens in Typst source: the keyword $dif$ followed by the variable. NEVER write $difx$ as a single token. NEVER write $d x$ with a standalone $d$.'
+- proposed_canonical: $f compose g$
+  proposed_banned: $f circ g$
+  section: Common §4.3
+  is_math: true
+  evidence: ALWAYS write $f compose g$. NEVER write $f(g)$, $f circ g$, or $f g$.
+- proposed_canonical: $f compose g$
+  proposed_banned: $f g$
+  section: Common §4.3
+  is_math: true
+  evidence: ALWAYS write $f compose g$. NEVER write $f(g)$, $f circ g$, or $f g$.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $Big$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $Bigg$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $bigg$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $m$
+  proposed_banned: $n$
+  section: ode §12.1
+  is_math: true
+  evidence: ALWAYS use $m$ as the summation index — NEVER $n$ for Fourier series.
+  demoted: true
+  reason: 'ode §12.1 bans “$n$”, but Proof_Style.txt §4.4 mandates it: “Opening: ALWAYS `Proceed by induction on $n$.`”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: $phi(t)$
+  proposed_banned: $phi$
+  section: ode §2.3
+  is_math: true
+  evidence: ALWAYS denote the solution function as $phi(t)$ (or $phi(x)$) when distinguishing the solution from the dependent variable $y$. NEVER write $y(t)$ to mean the solution function — $y$ is the dependent variable, $phi$ is the solution.
+- proposed_canonical: $phi(t)$
+  proposed_banned: $y$
+  section: ode §2.3
+  is_math: true
+  evidence: ALWAYS denote the solution function as $phi(t)$ (or $phi(x)$) when distinguishing the solution from the dependent variable $y$. NEVER write $y(t)$ to mean the solution function — $y$ is the dependent variable, $phi$ is the solution.
+- proposed_canonical: $r_1$
+  proposed_banned: $lambda$
+  section: ode §8.1
+  is_math: true
+  evidence: 'Standard form: $a r^2 + b r + c = 0$. Roots: ALWAYS denoted $r_1$ and $r_2$. NEVER use $lambda$ for roots of the characteristic equation of a scalar ODE — $lambda$ is reserved for eigenvalues of matrices (see Section 13).'
+  demoted: true
+  reason: 'ode §8.1 bans “$lambda$”, but ode.txt §13.2 mandates it: “ALWAYS use $lambda$ for eigenvalues.”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: $sigma$
+  proposed_banned: $alpha$
+  section: ode §8.5
+  is_math: true
+  evidence: 'Complex roots $r_(1,2) = sigma plus.minus i omega$: ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$ ALWAYS use $sigma$ for the real part and $omega$ for the imaginary part of the complex root. NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for complex root components — $lambda$ is res'
+- proposed_canonical: $sigma$
+  proposed_banned: $beta$
+  section: ode §8.5
+  is_math: true
+  evidence: 'Complex roots $r_(1,2) = sigma plus.minus i omega$: ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$ ALWAYS use $sigma$ for the real part and $omega$ for the imaginary part of the complex root. NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for complex root components — $lambda$ is res'
+- proposed_canonical: $sigma$
+  proposed_banned: $c_1 e^((sigma + i omega) t) + c_2 e^((sigma - i omega) t)$
+  section: ode §8.5
+  is_math: true
+  evidence: 'Complex roots $r_(1,2) = sigma plus.minus i omega$: ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$ ALWAYS use $sigma$ for the real part and $omega$ for the imaginary part of the complex root. NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for complex root components — $lambda$ is res'
+- proposed_canonical: $sigma$
+  proposed_banned: $lambda$
+  section: ode §8.5
+  is_math: true
+  evidence: 'Complex roots $r_(1,2) = sigma plus.minus i omega$: ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$ ALWAYS use $sigma$ for the real part and $omega$ for the imaginary part of the complex root. NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for complex root components — $lambda$ is res'
+- proposed_canonical: $sigma$
+  proposed_banned: $mu$
+  section: ode §8.5
+  is_math: true
+  evidence: 'Complex roots $r_(1,2) = sigma plus.minus i omega$: ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$ ALWAYS use $sigma$ for the real part and $omega$ for the imaginary part of the complex root. NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for complex root components — $lambda$ is res'
+- proposed_canonical: $subset.neq$
+  proposed_banned: $subset$
+  section: Common §2.1
+  is_math: true
+  evidence: ALWAYS use $subset.eq$ to mean "subset or equal to". ALWAYS use $subset.neq$ to mean "proper subset". NEVER use $subset$ alone — it is ambiguous and forbidden.
+- proposed_canonical: $sup(E)$
+  proposed_banned: $inf E$
+  section: Common §7
+  is_math: true
+  evidence: ALWAYS write $sup(E)$ and $inf(E)$ with parentheses. NEVER write $sup E$ or $inf E$ without parentheses.
+- proposed_canonical: $tau$
+  proposed_banned: $s$
+  section: ode §11.6
+  is_math: true
+  evidence: ALWAYS $(f * g)(t) = integral_0^t f(t - tau) g(tau) dif tau$. ALWAYS use $tau$ as the dummy variable of integration in convolution integrals. NEVER use $s$ or another letter. ALWAYS "Convolution Theorem" when citing the theorem.
+- proposed_canonical: $xi$
+  proposed_banned: $r$
+  section: ode §13.2
+  is_math: true
+  evidence: ALWAYS use $lambda$ for eigenvalues. ALWAYS use $xi$ (Greek letter xi) for eigenvectors. NEVER use $r$ for eigenvalues (reserved for characteristic equation roots of scalar ODEs). NEVER use $bold(v)$ or other letters for eigenvectors in ODE systems.
+- proposed_canonical: $y_c(t)$
+  proposed_banned: $Y(t)$
+  section: ode §9.1
+  is_math: true
+  evidence: 'where: $y_c(t)$ ALWAYS denotes the complementary solution — the general solution of the corresponding homogeneous equation. NEVER call it "homogeneous solution". $Y(t)$ ALWAYS denotes the particular solution — a single solution of the nonhomogeneous equation. ALWAYS use capital $Y$. NEVER $y_p$ or $'
+- proposed_canonical: Dirac delta function
+  proposed_banned: delta function
+  section: ode §11.5
+  is_math: false
+  evidence: ALWAYS "Dirac delta function" — NEVER "delta function" alone or "unit impulse function".
+- proposed_canonical: Dirac delta function
+  proposed_banned: unit impulse function
+  section: ode §11.5
+  is_math: false
+  evidence: ALWAYS "Dirac delta function" — NEVER "delta function" alone or "unit impulse function". ALWAYS $delta(t - t_0)$. ALWAYS "impulse" for the physical quantity — NEVER "kick" or other informal terms.
+- proposed_canonical: Euler-Fourier formulas
+  proposed_banned: Fourier formulas
+  section: ode §12.2
+  is_math: false
+  evidence: ALWAYS "Euler-Fourier formulas" — NEVER "Fourier formulas" alone.
+- proposed_canonical: assume that
+  proposed_banned: WLOG suppose
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: WLOG we may assume
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: without loss of generality
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: wlog
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: cannot
+  proposed_banned: and
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: cannot
+  proposed_banned: can not
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: constant
+  proposed_banned: parameter
+  section: ode §1.2
+  is_math: false
+  evidence: ALWAYS use "parameter" for constants that may vary across experiments or systems. ALWAYS use "constant" for fixed physical values. NEVER use "parameter" and "constant" interchangeably.
+- proposed_canonical: equilibrium solution
+  proposed_banned: fixed point
+  section: ode §14.2
+  is_math: false
+  evidence: ALWAYS "critical point" when referring to a point $(x_0, y_0)$ where the right-hand side of the autonomous system is zero. ALWAYS "equilibrium solution" when referring analytically to a constant solution $bold(x)(t) = bold(x)_0$. NEVER "fixed point" or "stationary point".
+- proposed_canonical: equilibrium solution
+  proposed_banned: stationary point
+  section: ode §14.2
+  is_math: false
+  evidence: ALWAYS "critical point" when referring to a point $(x_0, y_0)$ where the right-hand side of the autonomous system is zero. ALWAYS "equilibrium solution" when referring analytically to a constant solution $bold(x)(t) = bold(x)_0$. NEVER "fixed point" or "stationary point".
+- proposed_canonical: for example
+  proposed_banned: cannot
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: for example
+  proposed_banned: e.g
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: for example
+  proposed_banned: e.g.
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: if and only if
+  proposed_banned: iff
+  section: Common §1.2
+  is_math: false
+  evidence: 'ALWAYS write "if and only if" in full in prose. NEVER write "iff" in prose. In mathematical expressions inside $...$: use $<==>$.'
+  demoted: true
+  reason: Common §1.2 attaches a qualifier to the prohibition (“in prose”), so the ban is narrower than an unconditional substitution. The compiler represents unconditional pairs only and therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not actually narrow the ban.
+- proposed_canonical: inverting the transform
+  proposed_banned: inverse transforming
+  section: ode §11.3
+  is_math: false
+  evidence: ALWAYS "piecewise continuous" — NEVER "piecewise smooth". ALWAYS "of exponential order as $t -> infinity$" — this full phrase, not abbreviated. ALWAYS "inverting the transform" for the process of finding $f(t)$ from $F(s)$. NEVER "inverse transforming".
+- proposed_canonical: order of the equation
+  proposed_banned: degree of the differential equation
+  section: ode §1.1
+  is_math: false
+  evidence: ALWAYS write "order of the equation" for the highest derivative that appears. NEVER write "degree of the equation" or "degree of the differential equation" for the order.
+  demoted: true
+  reason: ode §1.1 attaches a qualifier to the prohibition (“for the order”), so the ban is narrower than an unconditional substitution. The compiler represents unconditional pairs only and therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not actually narrow the ban.
+- proposed_canonical: order of the equation
+  proposed_banned: degree of the equation
+  section: ode §1.1
+  is_math: false
+  evidence: ALWAYS write "order of the equation" for the highest derivative that appears. NEVER write "degree of the equation" or "degree of the differential equation" for the order.
+  demoted: true
+  reason: ode §1.1 attaches a qualifier to the prohibition (“for the order”), so the ban is narrower than an unconditional substitution. The compiler represents unconditional pairs only and therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not actually narrow the ban.
+- proposed_canonical: ordinary differential equation
+  proposed_banned: ODE
+  section: ode §1.1
+  is_math: false
+  evidence: ALWAYS write "ordinary differential equation" in full. NEVER abbreviate as "ODE" in mathematical text.
+  demoted: true
+  reason: "ode §1.1 bans “ODE”, but ode.txt §3 mandates it: “ALWAYS use prime notation throughout all ODE documents: $y'$ for the first derivative $y''$ for the second derivative $y^((n))$ for the $n$-th derivative”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it."
+- proposed_canonical: particular solution
+  proposed_banned: complete solution
+  section: ode §5.1
+  is_math: false
+  evidence: ALWAYS "general solution" for the solution containing arbitrary constants that represents all solutions. ALWAYS "particular solution" for a specific solution satisfying given initial conditions. NEVER "complete solution", "specific solution", or "special solution".
+- proposed_canonical: particular solution
+  proposed_banned: special solution
+  section: ode §5.1
+  is_math: false
+  evidence: ALWAYS "general solution" for the solution containing arbitrary constants that represents all solutions. ALWAYS "particular solution" for a specific solution satisfying given initial conditions. NEVER "complete solution", "specific solution", or "special solution".
+- proposed_canonical: particular solution
+  proposed_banned: specific solution
+  section: ode §5.1
+  is_math: false
+  evidence: ALWAYS "general solution" for the solution containing arbitrary constants that represents all solutions. ALWAYS "particular solution" for a specific solution satisfying given initial conditions. NEVER "complete solution", "specific solution", or "special solution".
+- proposed_canonical: phase plane
+  proposed_banned: phase space
+  section: ode §14.1
+  is_math: false
+  evidence: ALWAYS "phase plane" for two-dimensional autonomous systems. NEVER "phase space" for two-dimensional systems.
+  demoted: true
+  reason: §14.1 scopes the ban by dimension, which no substitution can detect. For a system of dimension three or higher "phase space" is correct, so the pair is ruled on in review and never applied automatically.
+- proposed_canonical: preimage
+  proposed_banned: inverse image
+  section: Common §4.2
+  is_math: false
+  evidence: ALWAYS use "image" for the image of any subset $A$ under $f$. ALWAYS use "range" exclusively for $f(S)$ where $S$ is the entire domain of definition of $f$. NEVER use "range" for the image of a proper subset. ALWAYS use the word "preimage". NEVER use "inverse image".
+- proposed_canonical: so
+  proposed_banned: it follows that
+  section: Common §14
+  is_math: false
+  evidence: '"clearly" — forbidden "trivially" — forbidden "obviously" — forbidden "we" — forbidden as a token, in every phrase and every position, including "we have", "we get", "we need to show", "we observe", "we conclude", "we obtain", "we see", "we know", "we consider", "we proceed", "we show", "we construc'
+- proposed_canonical: that is
+  proposed_banned: for example
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: that is
+  proposed_banned: i.e
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: that is
+  proposed_banned: i.e.
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: unit step function
+  proposed_banned: step function
+  section: ode §11.4
+  is_math: false
+  evidence: ALWAYS "unit step function" — NEVER "Heaviside function" or "step function" alone.

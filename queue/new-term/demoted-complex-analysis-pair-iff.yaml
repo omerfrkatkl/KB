@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-iff
+payload:
+  field: complex-analysis
+  term: iff
+  proposed_canonical: if and only if
+  section: Common §1.2
+  evidence: 'ALWAYS write "if and only if" in full in prose. NEVER write "iff" in prose. In mathematical
+    expressions inside $...$: use $<==>$.'
+  why: Common §1.2 attaches a qualifier to the prohibition (“in prose”), so the ban is narrower than
+    an unconditional substitution. The compiler represents unconditional pairs only and therefore 
+    fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not 
+    actually narrow the ban.
+context_paths: []

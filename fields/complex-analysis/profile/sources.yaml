@@ -1,0 +1,7 @@
+# Registered sources (§I-5). `kind` takes the same two values as provenance.kind.
+# `rank` feeds the within-topic ordering key and the near-duplicate CLI's default
+# suggestion; textbooks rank ahead of boards. `conventions` is the one-time
+# typographic profile embedded in that source's prompts.
+#
+# Entries are added by the new-source queue at first ingestion, not by hand.
+sources: []

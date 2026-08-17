@@ -1,0 +1,59 @@
+[project]
+name = "knowledge-base-pipeline"
+version = "0.1.0"
+description = "Personal knowledge-base pipeline: captures -> canonical item store -> Typst -> PDF"
+requires-python = ">=3.12"
+
+# CLOSED LIST. Adding to it requires a justification in the commit message.
+dependencies = [
+  "pydantic>=2.7",              # item models; JSON Schemas for prompts derive from these
+  "ruamel.yaml>=0.18",          # round-trip-safe store files
+  "pymupdf>=1.24",              # PDF page renders, text layer, embedded images
+  "opencv-python-headless>=4.9", # board-quad detection, resolution gate
+  "rapidfuzz>=3.9",             # near-duplicate similarity
+  "typer>=0.12",                # CLI
+  "rich>=13.7",                 # review UI
+  "python-ulid>=2.7",           # item ids
+  "jinja2>=3.1",                # prompt pack templates
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2", "ruff>=0.5"]
+
+[project.scripts]
+knowledge-base = "knowledge_base.cli.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/knowledge_base"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+# Explicit rule set. Rationale: E/F catch real defects (undefined names, unused
+# imports, syntax problems); I keeps imports ordered so diffs stay small over a
+# corpus that will be edited for years. Stylistic rules that fire on fixture data
+# are deliberately excluded — a gate that cries wolf gets disabled, and this gate
+# must stay meaningful.
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]   # long lines are acceptable in prompt/rule strings
+
+[tool.ruff.lint.per-file-ignores]
+"tests/fixtures/*" = ["E402"]   # fixtures set sys.path before importing
+
+# Declared rather than inferred. Ruff's first-party detection gave different
+# answers in the working tree and in a fresh clone — `make check` passed in one
+# and failed in the other on import order alone — because inference depends on
+# which directories happen to exist at lint time. A gate whose result depends on
+# the checkout is not a gate.
+[tool.ruff.lint.isort]
+known-first-party = ["knowledge_base"]

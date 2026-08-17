@@ -1,0 +1,187 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+forms:
+- always: $Delta w$
+  never:
+  - $delta z$
+  note:
+  section: complex-analysis §17.2
+- always: $F(z) |_(z_1)^(z_2) = F(z_2) - F(z_1)$
+  never:
+  - $[F(z)]_(z_1)^(z_2)$
+  note:
+  section: complex-analysis §17.4
+- always: $emptyset$
+  never:
+  - $diameter$
+  note:
+  section: Common §2.2
+- always: $f compose g$
+  never:
+  - $f(g)$
+  note:
+  section: Common §4.3
+- always: $inf(E)$
+  never:
+  - $inf E$
+  note:
+  section: Common §7
+- always: $integral.double_R$
+  never:
+  - $integral integral_R$
+  note:
+  section: complex-analysis §8
+- always: $ln$
+  never:
+  - $log$
+  note:
+  section: complex-analysis §3.1
+- always: $lr((...))$
+  never:
+  - $big$
+  note:
+  section: Common §12
+- always: $n = 0, plus.minus 1, plus.minus 2, dots.h$
+  never:
+  - $n in ZZ$
+  note:
+  section: complex-analysis §2.2
+- always: $nabla^2 u = 0$
+  never:
+  - $Delta u = 0$
+  note:
+  section: complex-analysis §6
+- always: $overline(z)$
+  never:
+  - $z^*$
+  note:
+  section: complex-analysis §1.4
+- always: $sup(E)$
+  never:
+  - $sup E$
+  note:
+  section: Common §7
+- always: $z = r e^(i theta)$
+  never:
+  - $z = r(cos theta + i sin theta)$
+  note:
+  section: complex-analysis §2.1
+- always: $z$
+  never:
+  - $z^"c"$
+  note:
+  section: complex-analysis §1.4
+- always: '${ x in A : P(x) }$'
+  never:
+  - $|$
+  note:
+  section: Common §2.4
+- always: $|z|$
+  never:
+  - $"mod"(z)$
+  note:
+  section: complex-analysis §1.3
+- always: (see Common §10)
+  never:
+  - $arrow(v)$
+  note:
+  section: Common §10
+- always: (see Common §6)
+  never:
+  - $(diff f) / (diff x)$
+  - $partial_x f$
+  note:
+  section: Common §6
+- always: (see Common §8)
+  never:
+  - $epsilon$ neighborhood
+  note:
+  section: Common §8
+- always: (see complex-analysis §3.5)
+  never:
+  - $z^(1/n)$
+  note:
+  section: complex-analysis §3.5
+- always: (see complex-analysis §4.2)
+  never:
+  - $cosh z$
+  - $sinh z$
+  note:
+  section: complex-analysis §4.2
+- always: (see complex-analysis §4.3)
+  never:
+  - $sin^(-1)(z)$
+  - $sinh^(-1)(z)$
+  note:
+  section: complex-analysis §4.3
+- always: Cauchy principal value of $integral_(-infinity)^(infinity) f(x) dif x$
+  never:
+  - P.V.
+  - p.v.
+  note:
+  section: complex-analysis §15
+- always: Principal part of $f$ at $z_0$
+  never:
+  - singular part
+  note:
+  section: complex-analysis §10.2
+- always: Taylor series about $z_0$
+  never:
+  - Taylor series at $z_0$
+  - Taylor series centered at $z_0$
+  note:
+  section: complex-analysis §10.1
+- always: '[function] is harmonic in $D$'
+  never:
+  - harmonic on $D$
+  note:
+  section: complex-analysis §6
+- always: a zero of $f$
+  never:
+  - a root of $f$
+  note:
+  section: complex-analysis §4.4
+- always: antiderivative of $f$
+  never:
+  - indefinite integral of $f$
+  - primitive of $f$
+  note:
+  section: complex-analysis §17.4
+- always: differentiable at $z_0$
+  never:
+  - has a derivative at $z_0$
+  - is derivable at $z_0$
+  note:
+  section: complex-analysis §17.2
+- always: harmonic conjugate of $u$
+  never:
+  - conjugate harmonic function
+  note:
+  section: complex-analysis §6
+- always: interior to and on $C$
+  never:
+  - inside and on $C$
+  - within and on $C$
+  note:
+  section: complex-analysis §9.1
+- always: meromorphic in $D$
+  never:
+  - meromorphic on $D$
+  note:
+  section: complex-analysis §17.3
+- always: principal branch of $z^c$
+  never:
+  - principal value branch
+  note:
+  section: complex-analysis §17.9
+- always: the inverse of $z$ with respect to the circle
+  never:
+  - reflection of $z$
+  - symmetric point of $z$
+  note:
+  section: complex-analysis §17.12
+- always: zero of order $m$
+  never:
+  - zero of multiplicity $m$
+  note:
+  section: complex-analysis §4.4

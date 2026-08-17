@@ -1,0 +1,94 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+forms:
+- always: $L[y] = y'' + p(t) y' + q(t) y$
+  never:
+  - $L(y)$
+  note:
+  section: ode §4.3
+- always: $W[y_1, y_2](t)$
+  never:
+  - $W(y_1, y_2)$
+  note:
+  section: ode §8.2
+- always: $a_0 / 2$
+  never:
+  - $a_0$
+  note:
+  section: ode §12.1
+- always: $emptyset$
+  never:
+  - $diameter$
+  note:
+  section: Common §2.2
+- always: $f compose g$
+  never:
+  - $f(g)$
+  note:
+  section: Common §4.3
+- always: $inf(E)$
+  never:
+  - $inf E$
+  note:
+  section: Common §7
+- always: $lr((...))$
+  never:
+  - $big$
+  note:
+  section: Common §12
+- always: $sup(E)$
+  never:
+  - $sup E$
+  note:
+  section: Common §7
+- always: $t$
+  never:
+  - $W(t)$
+  note:
+  section: ode §8.2
+- always: $y = (c_1 + c_2 t) e^(r t)$
+  never:
+  - $y = c_1 e^(r t) + c_2 t e^(r t)$
+  note:
+  section: ode §8.5
+- always: $y(t_0) = y_0$
+  never:
+  - $y|_(t=t_0) = y_0$
+  note:
+  section: ode §6
+- always: '${ x in A : P(x) }$'
+  never:
+  - $|$
+  note:
+  section: Common §2.4
+- always: (see Common §10)
+  never:
+  - $arrow(v)$
+  note:
+  section: Common §10
+- always: (see Common §6)
+  never:
+  - $(diff f) / (diff x)$
+  - $partial_x f$
+  note:
+  section: Common §6
+- always: (see Common §8)
+  never:
+  - $epsilon$ neighborhood
+  note:
+  section: Common §8
+- always: (see ode §2.3)
+  never:
+  - $y(t)$
+  note:
+  section: ode §2.3
+- always: period $2L$
+  never:
+  - period $T$
+  note:
+  section: ode §12.1
+- always: solutions are defined implicitly by $psi(x, y) = c$
+  never:
+  - implicit solution
+  note:
+  section: ode §7.3

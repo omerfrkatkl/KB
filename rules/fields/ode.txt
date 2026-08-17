@@ -1,0 +1,569 @@
+// ============================================================
+// Ordinary Differential Equations.typ
+// Field-specific notation and language conventions
+// Applies to all Ordinary Differential Equations documents
+// Supplement to Common.typ — both files apply simultaneously
+// Primary source: Boyce, DiPrima & Meade, Elementary
+// Differential Equations and Boundary Value Problems, 11th ed.
+// ============================================================
+
+// ------------------------------------------------------------
+// HOW TO READ THIS FILE
+//
+// Each rule is stated in one of three forms:
+//
+//   ALWAYS   — the only acceptable form, no exceptions
+//   NEVER    — forbidden in all contexts, no exceptions
+//   IF...THEN — context-dependent rule, fully specified
+//
+// No rule is open to interpretation. Every rule has exactly
+// one correct output for every input situation.
+//
+// PRECEDENCE and OWNERSHIP: see the header of Common.txt.
+// This file has highest precedence for ODE documents and wins
+// over Common.txt and Proof_Style.txt on any conflict.
+// ------------------------------------------------------------
+
+// ------------------------------------------------------------
+// RELATION TO Common.typ
+//
+// This file OVERRIDES NOTHING in Common.txt. Common.txt
+// Section 6 already mandates prime notation for all
+// derivatives and already forbids Leibniz notation.
+//
+// Section 3 below restates the prime rule and applies it to
+// the dependent variable $y$, because it is the single most
+// frequently broken convention in this field. It is a
+// restatement for emphasis, not an override, and it does not
+// conflict with Common.txt.
+// ------------------------------------------------------------
+
+= 1. Classification of Differential Equations
+
+== 1.1 Core Terminology
+
+ALWAYS write "ordinary differential equation" in full.
+NEVER abbreviate as "ODE" in mathematical text.
+
+ALWAYS write "partial differential equation" in full.
+NEVER abbreviate as "PDE" in mathematical text.
+
+ALWAYS write "system of differential equations" in full.
+NEVER write "system of ODEs".
+
+ALWAYS write "order of the equation" for the highest
+derivative that appears.
+NEVER write "degree of the equation" or "degree of the
+differential equation" for the order.
+
+The ban is on those phrases only. The bare word "degree" is
+CORRECT in its own sense and must never be rewritten: a
+polynomial has a degree, a differential equation has an order.
+"degree of a polynomial" and "second degree term" are correct
+and must survive unchanged.
+
+ALWAYS use "linear" and "nonlinear" — these are the two
+primary classifications of differential equations.
+
+== 1.2 Mathematical Models
+
+ALWAYS write "mathematical model of [the process]" when
+describing a differential equation derived from a physical
+process.
+
+ALWAYS use "parameter" for constants that may vary across
+experiments or systems.
+ALWAYS use "constant" for fixed physical values.
+NEVER use "parameter" and "constant" interchangeably.
+
+== 1.3 Direction Fields
+
+ALWAYS "direction field" for a plot of slope indicators.
+NEVER "slope field" or "vector field".
+
+= 2. Variables and Functions
+
+== 2.1 Independent Variable
+
+ALWAYS use $t$ as the independent variable when the context
+is temporal (time-based problems).
+ALWAYS use $x$ as the independent variable when the context
+is spatial.
+Once a choice is made in a document or proof, ALWAYS use
+that letter consistently throughout.
+NEVER switch between $t$ and $x$ without explicit
+redefinition.
+
+== 2.2 Dependent Variable
+
+ALWAYS use $y$ as the dependent variable for a scalar
+equation, unless the problem explicitly uses different
+notation.
+
+== 2.3 Solution Function
+
+ALWAYS denote the solution function as $phi(t)$ (or
+$phi(x)$) when distinguishing the solution from the
+dependent variable $y$.
+NEVER write $y(t)$ to mean the solution function — $y$
+is the dependent variable, $phi$ is the solution.
+
+== 2.4 Arbitrary Constants
+
+ALWAYS use $c$, $c_1$, $c_2$, etc. for arbitrary constants.
+ALWAYS write "$c$ is an arbitrary constant" when first
+introducing it.
+NEVER write "integration constant" — always "arbitrary
+constant".
+
+= 3. Derivative Notation
+
+Restates Common.txt Section 6 for this field; see the header.
+
+ALWAYS use prime notation throughout all ODE documents:
+  $y'$ for the first derivative
+  $y''$ for the second derivative
+  $y^((n))$ for the $n$-th derivative
+
+NEVER use Leibniz notation $dif y \/ dif t$,
+$dif^2 y \/ dif t^2$, or $dif^n y \/ dif t^n$ in any ODE
+document.
+
+This rule applies to all expressions, all proofs, and all
+statements without exception.
+
+= 4. Standard Forms
+
+== 4.1 First-Order Linear Equation
+
+ALWAYS write the standard form as:
+  $y' + p(t) y = g(t)$
+
+where $p$ and $g$ are the standard letter choices.
+NEVER write it in any other arrangement.
+
+== 4.2 Second-Order Linear Equation
+
+ALWAYS write the homogeneous form as:
+  $a y'' + b y' + c y = 0$
+
+with coefficients in descending order of differentiation.
+ALWAYS write the general $n$-th order linear equation as:
+  $a_0(t) y^((n)) + a_1(t) y^((n-1)) + dots.c + a_n(t) y
+  = g(t)$
+
+NEVER write in ascending order.
+
+== 4.3 Differential Operator Notation
+
+ALWAYS write $L[y] = y'' + p(t) y' + q(t) y$ with square
+brackets.
+NEVER write $L(y)$ with round brackets for the operator.
+NEVER use $D$ as a derivative operator — it is not defined
+in this system.
+
+= 5. Solutions
+
+== 5.1 General and Particular Solutions
+
+ALWAYS "general solution" for the solution containing
+arbitrary constants that represents all solutions.
+ALWAYS "particular solution" for a specific solution
+satisfying given initial conditions.
+NEVER "complete solution", "specific solution", or
+"special solution".
+
+== 5.2 Integral Curves
+
+ALWAYS "integral curves" for the curves in the
+appropriate plane satisfying the differential equation:
+  $(t,y)$ plane for temporal problems ($t$ independent)
+  $(x,y)$ plane for spatial problems ($x$ independent)
+NEVER "solution curves".
+
+= 6. Initial Value Problems
+
+ALWAYS write "initial value problem" in full.
+NEVER abbreviate as "IVP".
+
+First-order initial condition:
+  ALWAYS $y(t_0) = y_0$ — NEVER $y|_(t=t_0) = y_0$
+
+Second-order initial conditions:
+  ALWAYS $y(t_0) = y_0$, $y'(t_0) = y'_0$ as a pair —
+  these two conditions are always stated together.
+
+Rectangle for existence theorem:
+  ALWAYS $R: |t| lt.eq a, |y| lt.eq b$
+
+= 7. First-Order Equations
+
+== 7.1 Integrating Factor
+
+ALWAYS $mu(t)$ for the integrating factor.
+NEVER any other letter.
+
+== 7.2 Separable Equations
+
+ALWAYS "separable equation" (not "separable differential
+equation" every time — the short form is acceptable after
+first use).
+
+Differential form: ALWAYS $M(x) dif x + N(y) dif y = 0$.
+ALWAYS write $dif x$ as two separate tokens in Typst source:
+the keyword $dif$ followed by the variable.
+NEVER write $difx$ as a single token.
+NEVER write $d x$ with a standalone $d$.
+
+== 7.3 Exact Equations
+
+ALWAYS "exact differential equation" in full.
+
+Potential function: ALWAYS $psi(x, y)$.
+NEVER any other letter for the potential function.
+
+Exactness condition: ALWAYS $M_y (x, y) = N_x (x, y)$.
+This uses subscript notation — consistent with Common.typ.
+
+ALWAYS write: "solutions are defined implicitly by
+$psi(x, y) = c$".
+NEVER write "implicit solution" without the full statement.
+
+= 8. Second-Order Linear Equations
+
+== 8.1 Characteristic Equation
+
+ALWAYS "characteristic equation" — NEVER "auxiliary
+equation".
+
+Standard form: $a r^2 + b r + c = 0$.
+Roots: ALWAYS denoted $r_1$ and $r_2$.
+NEVER use $lambda$ for roots of the characteristic equation
+of a scalar ODE — $lambda$ is reserved for eigenvalues
+of matrices (see Section 13).
+
+== 8.2 Wronskian
+
+ALWAYS write $W[y_1, y_2](t)$ with square brackets and
+explicit $t$-argument.
+NEVER write $W(y_1, y_2)$ or $W(t)$ alone.
+
+For a system of $n$ solutions:
+  ALWAYS $W[y_1, dots.c, y_n](t) = det X(t)$
+
+== 8.3 Fundamental Set of Solutions
+
+ALWAYS "fundamental set of solutions" — NEVER "basis of
+solutions" or "fundamental system".
+
+Condition: $y_1$ and $y_2$ form a fundamental set if and
+only if $W[y_1, y_2](t) != 0$ on the interval.
+
+== 8.4 Superposition
+
+ALWAYS "Principle of Superposition" when citing the theorem.
+
+== 8.5 General Solution Forms
+
+Real distinct roots $r_1 != r_2$:
+  ALWAYS $y = c_1 e^(r_1 t) + c_2 e^(r_2 t)$
+
+Complex roots $r_(1,2) = sigma plus.minus i omega$:
+  ALWAYS $y = e^(sigma t)(c_1 cos(omega t) + c_2 sin(omega t))$
+  ALWAYS use $sigma$ for the real part and $omega$ for the
+  imaginary part of the complex root.
+  NEVER use $lambda$ or $mu$ or $alpha$ or $beta$ for
+  complex root components — $lambda$ is reserved for
+  eigenvalues (Section 13), $alpha$ and $beta$ are reserved
+  for Euler equation parameters (Section 10.2).
+  NEVER write $c_1 e^((sigma + i omega) t) + c_2 e^((sigma - i omega) t)$
+  as the final answer.
+
+Repeated root $r_1 = r_2 = r$:
+  ALWAYS $y = (c_1 + c_2 t) e^(r t)$
+  NEVER $y = c_1 e^(r t) + c_2 t e^(r t)$
+
+== 8.6 Reduction of Order
+
+ALWAYS "reduction of order" — NEVER "d'Alembert's method".
+
+== 8.7 Abel's Theorem
+
+ALWAYS cite as "Abel's Theorem" when using the formula for
+the Wronskian in terms of $p(t)$.
+
+= 9. Nonhomogeneous Equations
+
+== 9.1 Structure of General Solution
+
+ALWAYS write:
+  $y = y_c (t) + Y(t)$
+
+where:
+  $y_c(t)$ ALWAYS denotes the complementary solution —
+    the general solution of the corresponding homogeneous
+    equation. NEVER call it "homogeneous solution".
+  $Y(t)$ ALWAYS denotes the particular solution — a single
+    solution of the nonhomogeneous equation. ALWAYS use
+    capital $Y$. NEVER $y_p$ or $y_P$.
+
+== 9.2 Methods
+
+ALWAYS "method of undetermined coefficients" — NEVER
+"undetermined coefficients method".
+
+ALWAYS "method of variation of parameters" — NEVER
+"variation of parameters method".
+
+= 10. Series Solutions
+
+== 10.1 Singular Points
+
+ALWAYS "ordinary point" for a point where $P(x) != 0$.
+ALWAYS "singular point" for a point where $P(x) = 0$.
+ALWAYS "regular singular point" — NEVER "regular
+singularity".
+ALWAYS "irregular singular point" — NEVER "irregular
+singularity".
+
+== 10.2 Euler Equations
+
+ALWAYS "Euler equation" — NEVER "Cauchy-Euler equation" or
+"equidimensional equation".
+
+Standard form: ALWAYS $L[y] = x^2 y'' + alpha x y' + beta y = 0$.
+
+Indicial equation: ALWAYS "indicial equation" for
+$F(r) = r(r-1) + alpha r + beta = 0$.
+NEVER "indicial polynomial equation".
+
+= 11. The Laplace Transform
+
+== 11.1 Notation
+
+ALWAYS $cal(L){f(t)} = F(s)$ — curly $cal(L)$, NEVER
+straight $L$.
+ALWAYS $cal(L)^(-1){F(s)} = f(t)$ for the inverse.
+
+Transform pair convention:
+  ALWAYS $F(s)$ for the Laplace transform.
+  ALWAYS $f(t)$ for the original function.
+  These letters are fixed for this context.
+
+== 11.2 Domains
+
+ALWAYS "$t$-domain" (hyphenated) for the time domain.
+ALWAYS "$s$-domain" (hyphenated) for the transform domain.
+
+== 11.3 Terminology
+
+ALWAYS "piecewise continuous" — NEVER "piecewise smooth".
+ALWAYS "of exponential order as $t -> infinity$" —
+this full phrase, not abbreviated.
+ALWAYS "inverting the transform" for the process of
+finding $f(t)$ from $F(s)$.
+NEVER "inverse transforming".
+
+== 11.4 Unit Step Function
+
+ALWAYS "unit step function" — NEVER "Heaviside function"
+or "step function" alone.
+ALWAYS $u_c (t)$ with subscript $c$.
+Definition: $u_c (t) = 0$ for $t < c$ and $u_c (t) = 1$
+for $t gt.eq c$.
+
+== 11.5 Dirac Delta Function
+
+ALWAYS "Dirac delta function" — NEVER "delta function"
+alone or "unit impulse function".
+ALWAYS $delta(t - t_0)$.
+ALWAYS "impulse" for the physical quantity — NEVER "kick"
+or other informal terms.
+
+== 11.6 Convolution
+
+ALWAYS $(f * g)(t) = integral_0^t f(t - tau) g(tau) dif tau$.
+ALWAYS use $tau$ as the dummy variable of integration in
+convolution integrals. NEVER use $s$ or another letter.
+ALWAYS "Convolution Theorem" when citing the theorem.
+
+= 12. Fourier Series
+
+== 12.1 Standard Form
+
+ALWAYS write the Fourier series as:
+  $f(x) = a_0/2 + sum_(m=1)^(infinity)
+  (a_m cos((m pi x)/L) + b_m sin((m pi x)/L))$
+
+ALWAYS use $a_0 / 2$ — NEVER $a_0$ alone in the constant
+term.
+ALWAYS use $m$ as the summation index — NEVER $n$ for
+Fourier series.
+ALWAYS "period $2L$" — NEVER "period $T$".
+
+== 12.2 Euler-Fourier Formulas
+
+ALWAYS "Euler-Fourier formulas" — NEVER "Fourier formulas"
+alone.
+
+Coefficient formulas:
+  $a_m = 1/L integral_(-L)^(L) f(x) cos((m pi x)/L) dif x$
+  $b_m = 1/L integral_(-L)^(L) f(x) sin((m pi x)/L) dif x$
+
+= 13. Systems of Differential Equations
+
+== 13.1 Matrix-Vector Form
+
+ALWAYS write a system as $bold(x)' = P(t) bold(x) + bold(g)(t)$.
+Bold vectors: ALWAYS $bold(x)$, $bold(g)$.
+NEVER write component-wise form as the primary expression.
+
+Homogeneous system: ALWAYS $bold(x)' = P(t) bold(x)$.
+
+== 13.2 Eigenvalues and Eigenvectors
+
+ALWAYS use $lambda$ for eigenvalues.
+ALWAYS use $xi$ (Greek letter xi) for eigenvectors.
+NEVER use $r$ for eigenvalues (reserved for characteristic
+equation roots of scalar ODEs).
+NEVER use $bold(v)$ or other letters for eigenvectors in
+ODE systems.
+
+Characteristic equation: ALWAYS $det(A - lambda I) = 0$.
+
+== 13.3 Fundamental Matrix
+
+ALWAYS $X(t)$ for the fundamental matrix whose columns are
+solution vectors $bold(x)^((1)), dots.c, bold(x)^((n))$.
+
+Wronskian of a system:
+  ALWAYS $W[bold(x)^((1)), dots.c, bold(x)^((n))](t)
+  = det X(t)$
+
+= 14. Qualitative Theory and Stability
+
+== 14.1 Phase Plane
+
+ALWAYS "phase plane" for two-dimensional autonomous systems.
+NEVER "phase space" for two-dimensional systems.
+
+This rule is scoped by dimension, which no substitution can
+detect. For a system of dimension three or higher, "phase
+space" is CORRECT. The pair is therefore a proposal, ruled on
+in review, and is never applied automatically.
+
+ALWAYS "trajectory" for a curve in the phase plane.
+NEVER "orbit" or "path".
+
+== 14.2 Critical Points
+
+ALWAYS "critical point" when referring to a point $(x_0, y_0)$
+where the right-hand side of the autonomous system is zero.
+ALWAYS "equilibrium solution" when referring analytically
+to a constant solution $bold(x)(t) = bold(x)_0$.
+NEVER "fixed point" or "stationary point".
+
+== 14.3 Stability
+
+ALWAYS use the following full phrases:
+
+  "asymptotically stable critical point" — for a critical
+    point that attracts nearby trajectories as $t -> infinity$.
+
+  "stable critical point" — for a critical point near which
+    trajectories remain bounded (Lyapunov stability).
+
+  "unstable critical point" — for a critical point that
+    repels nearby trajectories.
+
+NEVER abbreviate to "stable" or "unstable" alone without
+"critical point" when describing a specific point.
+
+== 14.4 Autonomous Systems
+
+ALWAYS "autonomous system" for a system of the form
+$bold(x)' = bold(f)(bold(x))$.
+
+== 14.5 Carrying Capacity
+
+ALWAYS $K$ for carrying capacity in logistic models.
+
+= 15. Sturm-Liouville Theory
+
+== 15.1 Standard Form
+
+ALWAYS write the Sturm-Liouville equation as:
+  $(p(x) y')' - q(x) y + lambda r(x) y = 0$
+
+with the differential operator on the left in this exact
+form.
+
+== 15.2 Terminology
+
+ALWAYS "regular Sturm-Liouville problem" when $p(x) > 0$
+and $r(x) > 0$ on the closed interval.
+
+ALWAYS "eigenfunction" — NEVER "characteristic function".
+
+ALWAYS "weight function" for $r(x)$ in the Sturm-Liouville
+equation.
+
+ALWAYS "separated boundary conditions" for boundary
+conditions of the form $alpha_1 y(a) + alpha_2 y'(a) = 0$,
+$beta_1 y(b) + beta_2 y'(b) = 0$, where $[a, b]$ is the
+interval of the problem.
+NEVER "decoupled boundary conditions".
+
+ALWAYS "Lagrange's identity" when citing the integral
+identity $integral_0^1 L[u] v dif x = integral_0^1 u L[v]
+dif x + [p(x)(u v' - u' v)]_0^1$.
+
+= 16. Complete Theorem Name List
+
+The following theorems are ALWAYS cited by their full name.
+NEVER cite by theorem number. If unnamed, use "by the fact
+that [content]".
+
+  Abel's Theorem
+  Convolution Theorem
+  Existence and Uniqueness Theorem
+    (NEVER "Picard's Theorem" or "Picard-Lindelöf Theorem")
+  Lagrange's Identity
+  Principle of Superposition
+
+Named formulas:
+  Euler-Fourier formulas (not a theorem — always plural)
+  Fourier Convergence Theorem
+
+= 17. Variable Naming Conventions
+
+In ordinary differential equations, the following letter
+assignments are fixed unless explicitly redefined:
+
+  $t$ or $x$ — independent variable (one per document)
+  $y$ — dependent variable (scalar equations)
+  $phi(t)$ — solution function
+  $c, c_1, c_2$ — arbitrary constants
+  $p(t), q(t), g(t)$ — coefficient functions
+  $mu(t)$ — integrating factor
+  $psi(x,y)$ — potential function (exact equations)
+  $r_1, r_2$ — roots of characteristic equation (scalar)
+  $lambda$ — eigenvalue (matrices and systems)
+  $sigma$ — real part of complex root (scalar ODE)
+  $omega$ — imaginary part of complex root (scalar ODE)
+  $xi$ — eigenvector (systems)
+  $X(t)$ — fundamental matrix (systems)
+  $y_c(t)$ — complementary solution
+  $Y(t)$ — particular solution (capital Y)
+  $F(s)$ — Laplace transform
+  $f(t)$ — original function (Laplace context)
+  $u_c(t)$ — unit step function
+  $delta(t)$ — Dirac delta function
+  $tau$ — dummy variable in convolution integrals
+  $K$ — carrying capacity
+  $L$ — half-period in Fourier series
+  $m$ — summation index in Fourier series
+  $r(x)$ — weight function (Sturm-Liouville)
+  $p(x), q(x)$ — coefficient functions (Sturm-Liouville)
+
+NEVER reassign these letters without explicit statement.

@@ -1,0 +1,353 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+candidates:
+- proposed_canonical: $...$
+  proposed_banned: $exists!$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+- proposed_canonical: $...$
+  proposed_banned: $exists$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+- proposed_canonical: $...$
+  proposed_banned: $forall$
+  section: Common §1.1
+  is_math: true
+  evidence: 'IF outside $...$ (prose): ALWAYS use words — "for all", "there exists", "there exists a unique" NEVER use $forall$, $exists$, $exists!$ in prose'
+  demoted: true
+  reason: 'Common §1.1 bans “$forall$”, but Common.txt §1.1 mandates it: “IF inside $...$: ALWAYS use symbols — $forall$, $exists$, $exists!$”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: $Arg(z)$
+  proposed_banned: $"arg"(z)$
+  section: complex-analysis §2.2
+  is_math: true
+  evidence: 'Multi-valued argument: ALWAYS $arg(z)$ with parentheses. Principal argument: ALWAYS $Arg(z)$ with capital A and parentheses. NEVER write $arg z$ or $Arg z$ without parentheses. NEVER write $"arg"(z)$ — use the upright $arg$ operator.'
+- proposed_canonical: $Arg(z)$
+  proposed_banned: $Arg z$
+  section: complex-analysis §2.2
+  is_math: true
+  evidence: 'Multi-valued argument: ALWAYS $arg(z)$ with parentheses. Principal argument: ALWAYS $Arg(z)$ with capital A and parentheses. NEVER write $arg z$ or $Arg z$ without parentheses. NEVER write $"arg"(z)$ — use the upright $arg$ operator.'
+- proposed_canonical: $Arg(z)$
+  proposed_banned: $arg z$
+  section: complex-analysis §2.2
+  is_math: true
+  evidence: 'Multi-valued argument: ALWAYS $arg(z)$ with parentheses. Principal argument: ALWAYS $Arg(z)$ with capital A and parentheses. NEVER write $arg z$ or $Arg z$ without parentheses. NEVER write $"arg"(z)$ — use the upright $arg$ operator.'
+- proposed_canonical: $Arg(z)$
+  proposed_banned: $arg$
+  section: complex-analysis §2.2
+  is_math: true
+  evidence: 'Multi-valued argument: ALWAYS $arg(z)$ with parentheses. Principal argument: ALWAYS $Arg(z)$ with capital A and parentheses. NEVER write $arg z$ or $Arg z$ without parentheses. NEVER write $"arg"(z)$ — use the upright $arg$ operator.'
+- proposed_canonical: $Log(z)$
+  proposed_banned: $Log z$
+  section: complex-analysis §3.2
+  is_math: true
+  evidence: 'Multi-valued complex logarithm: ALWAYS $log(z)$ with parentheses. Principal branch: ALWAYS $Log(z)$ with capital L and parentheses. NEVER write $log z$ or $Log z$ without parentheses.'
+- proposed_canonical: $Log(z)$
+  proposed_banned: $log z$
+  section: complex-analysis §3.2
+  is_math: true
+  evidence: 'Multi-valued complex logarithm: ALWAYS $log(z)$ with parentheses. Principal branch: ALWAYS $Log(z)$ with capital L and parentheses. NEVER write $log z$ or $Log z$ without parentheses.'
+- proposed_canonical: $Re(z)$
+  proposed_banned: $Im z$
+  section: complex-analysis §1.2
+  is_math: true
+  evidence: 'ALWAYS write $Re(z)$ and $Im(z)$ with parentheses. NEVER write $Re z$ or $Im z$ without parentheses. This applies regardless of how simple the argument is: ALWAYS $Re(z)$, $Re(z_0)$, $Re(z_1 + z_2)$, $Re(e^z)$'
+- proposed_canonical: $Re(z)$
+  proposed_banned: $Re z$
+  section: complex-analysis §1.2
+  is_math: true
+  evidence: 'ALWAYS write $Re(z)$ and $Im(z)$ with parentheses. NEVER write $Re z$ or $Im z$ without parentheses. This applies regardless of how simple the argument is: ALWAYS $Re(z)$, $Re(z_0)$, $Re(z_1 + z_2)$, $Re(e^z)$'
+- proposed_canonical: $arcsin(z)$
+  proposed_banned: $cos^(-1)(z)$
+  section: complex-analysis §4.3
+  is_math: true
+  evidence: ALWAYS use $arcsin(z)$, $arccos(z)$, $arctan(z)$. NEVER use $sin^(-1)(z)$, $cos^(-1)(z)$, $tan^(-1)(z)$.
+- proposed_canonical: $arcsin(z)$
+  proposed_banned: $tan^(-1)(z)$
+  section: complex-analysis §4.3
+  is_math: true
+  evidence: ALWAYS use $arcsin(z)$, $arccos(z)$, $arctan(z)$. NEVER use $sin^(-1)(z)$, $cos^(-1)(z)$, $tan^(-1)(z)$.
+- proposed_canonical: $dif z$
+  proposed_banned: $d z$
+  section: complex-analysis §8
+  is_math: true
+  evidence: ALWAYS write $integral_C f(z) dif z$ — the contour $C$ appears as a subscript. ALWAYS write $dif z$ for the differential — this is the correct Typst notation for the differential operator. NEVER write $d z$ (with space) or $dz$ (without space, not a differential in Typst).
+- proposed_canonical: $dif z$
+  proposed_banned: $dz$
+  section: complex-analysis §8
+  is_math: true
+  evidence: ALWAYS write $integral_C f(z) dif z$ — the contour $C$ appears as a subscript. ALWAYS write $dif z$ for the differential — this is the correct Typst notation for the differential operator. NEVER write $d z$ (with space) or $dz$ (without space, not a differential in Typst).
+- proposed_canonical: $f compose g$
+  proposed_banned: $f circ g$
+  section: Common §4.3
+  is_math: true
+  evidence: ALWAYS write $f compose g$. NEVER write $f(g)$, $f circ g$, or $f g$.
+- proposed_canonical: $f compose g$
+  proposed_banned: $f g$
+  section: Common §4.3
+  is_math: true
+  evidence: ALWAYS write $f compose g$. NEVER write $f(g)$, $f circ g$, or $f g$.
+- proposed_canonical: $i$
+  proposed_banned: $j$
+  section: complex-analysis §1.1
+  is_math: true
+  evidence: ALWAYS write a complex number as $z = x + i y$. NEVER write $z = x + y i$. The imaginary unit is ALWAYS $i$. NEVER use $j$ for the imaginary unit.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $Big$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $Bigg$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $lr((...))$
+  proposed_banned: $bigg$
+  section: Common §12
+  is_math: true
+  evidence: ALWAYS use automatic sizing via $lr((...))$ for all delimiters that contain tall expressions. NEVER manually size delimiters with $big$, $Big$, $bigg$, $Bigg$.
+- proposed_canonical: $nabla^2 u = 0$
+  proposed_banned: $u_(x x) + u_(y y) = 0$
+  section: complex-analysis §6
+  is_math: true
+  evidence: "Laplace's equation: ALWAYS named and stated as $nabla^2 u = 0$. NEVER write $Delta u = 0$ for it. NEVER write $u_(x x) + u_(y y) = 0$ as the NAME of the equation."
+- proposed_canonical: $overline(z)$
+  proposed_banned: $z^"c"$
+  section: complex-analysis §1.4
+  is_math: true
+  evidence: ALWAYS write $overline(z)$ for the complex conjugate of $z$. NEVER use $z^*$ or $z^"c"$ or any other notation.
+- proposed_canonical: $subset.neq$
+  proposed_banned: $subset$
+  section: Common §2.1
+  is_math: true
+  evidence: ALWAYS use $subset.eq$ to mean "subset or equal to". ALWAYS use $subset.neq$ to mean "proper subset". NEVER use $subset$ alone — it is ambiguous and forbidden.
+- proposed_canonical: $sup(E)$
+  proposed_banned: $inf E$
+  section: Common §7
+  is_math: true
+  evidence: ALWAYS write $sup(E)$ and $inf(E)$ with parentheses. NEVER write $sup E$ or $inf E$ without parentheses.
+- proposed_canonical: $w = f(z)$
+  proposed_banned: '$f : z mapsto w$'
+  section: complex-analysis §5.5
+  is_math: true
+  evidence: 'ALWAYS use "mapping" — NEVER "transformation" for the act of applying $f$. ALWAYS write $w = f(z)$ for a mapping from the $z$ plane to the $w$ plane. NEVER write $f : z mapsto w$ in any context.'
+- proposed_canonical: $z = x + i y$
+  proposed_banned: $z = x + y i$
+  section: complex-analysis §1.1
+  is_math: true
+  evidence: ALWAYS write a complex number as $z = x + i y$. NEVER write $z = x + y i$. The imaginary unit is ALWAYS $i$. NEVER use $j$ for the imaginary unit.
+- proposed_canonical: $z^c = exp(c dot.op log(z))$
+  proposed_banned: $z^c$
+  section: complex-analysis §3.4
+  is_math: true
+  evidence: 'For $z^c$ where $c$ is complex: ALWAYS define via $z^c = exp(c dot.op log(z))$ and state which branch of $log(z)$ is being used. NEVER write $z^c$ without specifying the branch.'
+  demoted: true
+  reason: 'complex-analysis §3.4 bans “$z^c$”, but complex-analysis.txt §17.9 mandates it: “ALWAYS "principal branch of $z^c$" — NEVER "principal value branch".”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: $|integral_C f(z) dif z| <= M L$
+  proposed_banned: $L$
+  section: complex-analysis §17.5
+  is_math: true
+  evidence: ALWAYS "the ML inequality" when referring to the bound $|integral_C f(z) dif z| <= M L$. NEVER cite by theorem number. $L$ ALWAYS denotes the length of the contour $C$.
+- proposed_canonical: $|z|$
+  proposed_banned: $abs(z)$
+  section: complex-analysis §1.3
+  is_math: true
+  evidence: The modulus of $z$ is ALWAYS written $|z|$. NEVER write $"mod"(z)$, $abs(z)$, or $r$ without defining it.
+- proposed_canonical: $|z|$
+  proposed_banned: $r$
+  section: complex-analysis §1.3
+  is_math: true
+  evidence: The modulus of $z$ is ALWAYS written $|z|$. NEVER write $"mod"(z)$, $abs(z)$, or $r$ without defining it.
+- proposed_canonical: '[function] is harmonic in $D$'
+  proposed_banned: harmonic in $D$
+  section: complex-analysis §6
+  is_math: true
+  evidence: ALWAYS use the phrase "[function] is harmonic in $D$" where [function] is whatever letter denotes the function. NEVER write "harmonic on $D$" — always "harmonic in $D$".
+- proposed_canonical: a zero of $f$
+  proposed_banned: root
+  section: complex-analysis §4.4
+  is_math: true
+  evidence: ALWAYS use "a zero of $f$" for a point where $f(z) = 0$. NEVER use "a root of $f$" — reserve "root" for equations, not for zeros of functions.
+- proposed_canonical: an entire function
+  proposed_banned: entire
+  section: complex-analysis §5.1
+  is_math: false
+  evidence: ALWAYS write "an entire function" — NEVER "entire" as a standalone adjective without "function".
+  demoted: true
+  reason: 'complex-analysis §5.1 bans “entire”, but Common.txt §4.2 mandates it: “ALWAYS use "range" exclusively for $f(S)$ where $S$ is the entire domain of definition of $f$.”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: an entire function
+  proposed_banned: function
+  section: complex-analysis §5.1
+  is_math: false
+  evidence: ALWAYS use "entire function" for a function analytic everywhere in the complex plane. ALWAYS write "an entire function" — NEVER "entire" as a standalone adjective without "function".
+- proposed_canonical: assume that
+  proposed_banned: WLOG suppose
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: WLOG we may assume
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: without loss of generality
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: assume that
+  proposed_banned: wlog
+  section: Common §1.5
+  is_math: false
+  evidence: ALWAYS write "WLOG assume that [statement]." ALWAYS place WLOG at the beginning of the sentence. ALWAYS follow WLOG with "assume that", never "suppose that". NEVER write "without loss of generality" in full. NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+- proposed_canonical: branch point
+  proposed_banned: branch-cut
+  section: complex-analysis §3.3
+  is_math: false
+  evidence: ALWAYS use "branch cut" (two words, no hyphen). ALWAYS use "branch point" (two words, no hyphen). NEVER write "branchcut" or "branch-cut".
+- proposed_canonical: branch point
+  proposed_banned: branchcut
+  section: complex-analysis §3.3
+  is_math: false
+  evidence: ALWAYS use "branch cut" (two words, no hyphen). ALWAYS use "branch point" (two words, no hyphen). NEVER write "branchcut" or "branch-cut".
+- proposed_canonical: cannot
+  proposed_banned: and
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: cannot
+  proposed_banned: can not
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: conformal mapping
+  proposed_banned: Schwarz–Christoffel Transformation
+  section: complex-analysis §12
+  is_math: false
+  evidence: 'ALWAYS use "conformal mapping" — NEVER "conformal map" (use the full word "mapping"). NEVER use "transformation" as a generic descriptor for a conformal mapping. EXCEPTION: The following are proper names and must always be cited in full — the word "transformation" in these names is not a generic des'
+- proposed_canonical: conformal mapping
+  proposed_banned: transformation
+  section: complex-analysis §12
+  is_math: false
+  evidence: 'ALWAYS use "conformal mapping" — NEVER "conformal map" (use the full word "mapping"). NEVER use "transformation" as a generic descriptor for a conformal mapping. EXCEPTION: The following are proper names and must always be cited in full — the word "transformation" in these names is not a generic des'
+- proposed_canonical: contour integral
+  proposed_banned: line integral
+  section: complex-analysis §8
+  is_math: false
+  evidence: ALWAYS use "contour integral" — NEVER "line integral" when referring to integration in the complex plane.
+  demoted: true
+  reason: complex-analysis §8 attaches a qualifier to the prohibition (“when referring to integration in the complex plane”), so the ban is narrower than an unconditional substitution. The compiler represents unconditional pairs only and therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not actually narrow the ban.
+- proposed_canonical: extended $z$ plane
+  proposed_banned: Riemann sphere
+  section: complex-analysis §13
+  is_math: true
+  evidence: ALWAYS use "extended $z$ plane" when $z$ is the domain variable. For the full rule on extended planes, see Section 17.1. NEVER use "Riemann sphere" in linear fractional transformation context — it is reserved for stereographic projection only.
+  demoted: true
+  reason: 'complex-analysis §13 bans “Riemann sphere”, but complex-analysis.txt §17.1 mandates it: “ALWAYS "Riemann sphere" — only for the geometric sphere model in the context of stereographic projection.”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: for example
+  proposed_banned: cannot
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: for example
+  proposed_banned: e.g
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: for example
+  proposed_banned: e.g.
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: if and only if
+  proposed_banned: iff
+  section: Common §1.2
+  is_math: false
+  evidence: 'ALWAYS write "if and only if" in full in prose. NEVER write "iff" in prose. In mathematical expressions inside $...$: use $<==>$.'
+  demoted: true
+  reason: Common §1.2 attaches a qualifier to the prohibition (“in prose”), so the ban is narrower than an unconditional substitution. The compiler represents unconditional pairs only and therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does not actually narrow the ban.
+- proposed_canonical: mapping
+  proposed_banned: transformation
+  section: complex-analysis §5.5
+  is_math: false
+  evidence: ALWAYS use "mapping" — NEVER "transformation" for the act of applying $f$.
+  demoted: true
+  reason: 'complex-analysis §5.5 bans “transformation”, but complex-analysis.txt §13 mandates it: “ALWAYS use "linear fractional transformation".”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: negatively oriented
+  proposed_banned: clockwise direction
+  section: complex-analysis §7.2
+  is_math: false
+  evidence: ALWAYS use "positively oriented" for counterclockwise orientation. ALWAYS use "negatively oriented" for clockwise orientation. NEVER write "counterclockwise direction" or "clockwise direction" as the primary description — use the orientation terminology above.
+- proposed_canonical: negatively oriented
+  proposed_banned: counterclockwise direction
+  section: complex-analysis §7.2
+  is_math: false
+  evidence: ALWAYS use "positively oriented" for counterclockwise orientation. ALWAYS use "negatively oriented" for clockwise orientation. NEVER write "counterclockwise direction" or "clockwise direction" as the primary description — use the orientation terminology above.
+- proposed_canonical: preimage
+  proposed_banned: inverse image
+  section: Common §4.2
+  is_math: false
+  evidence: ALWAYS use "image" for the image of any subset $A$ under $f$. ALWAYS use "range" exclusively for $f(S)$ where $S$ is the entire domain of definition of $f$. NEVER use "range" for the image of a proper subset. ALWAYS use the word "preimage". NEVER use "inverse image".
+- proposed_canonical: principal branch
+  proposed_banned: principal value
+  section: complex-analysis §3.3
+  is_math: false
+  evidence: ALWAYS use "principal branch" when referring to $Log(z)$. NEVER use "principal value" for the logarithm.
+  demoted: true
+  reason: 'complex-analysis §3.3 bans “principal value”, but complex-analysis.txt §15 mandates it: “When the Cauchy principal value of an improper integral is meant: ALWAYS write "Cauchy principal value of $integral_(-infinity)^(infinity) f(x) dif x$" in full.”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+- proposed_canonical: principal value of $z^c$
+  proposed_banned: P.V. $z^c$
+  section: complex-analysis §17.9
+  is_math: true
+  evidence: ALWAYS "principal branch of $z^c$" — NEVER "principal value branch". ALWAYS "principal value of $z^c$" written in full — NEVER "P.V. $z^c$".
+- proposed_canonical: punctured disk
+  proposed_banned: deleted neighborhood
+  section: complex-analysis §7.4
+  is_math: false
+  evidence: ALWAYS use "punctured disk" for the set $0 < |z - z_0| < R$. NEVER use "deleted neighborhood" for the set $0 < |z - z_0| < R$.
+  demoted: true
+  reason: §7.4 scopes the ban to $0 < |z - z_0| < R$. A neighborhood of infinity is $|z| > 1/epsilon$ (§17.1), which is not a disk, so substituting "punctured disk" there produces a false statement. The scope is prose this compiler cannot represent, so the pair awaits a ruling.
+- proposed_canonical: range
+  proposed_banned: codomain
+  section: complex-analysis §5.5
+  is_math: false
+  evidence: 'Image of a set $A$: ALWAYS $f(A)$. Range of $f$: ALWAYS $f(S)$ where $S$ is the domain of definition. The word "range" is used only for this case. NEVER use "range" for the image of a proper subset. NEVER use "codomain".'
+- proposed_canonical: region
+  proposed_banned: domain
+  section: complex-analysis §17.1
+  is_math: false
+  evidence: ALWAYS use "region" for a domain together with some, none, or all of its boundary points. NEVER use "region" as a synonym for "domain".
+- proposed_canonical: so
+  proposed_banned: it follows that
+  section: Common §14
+  is_math: false
+  evidence: '"clearly" — forbidden "trivially" — forbidden "obviously" — forbidden "we" — forbidden as a token, in every phrase and every position, including "we have", "we get", "we need to show", "we observe", "we conclude", "we obtain", "we see", "we know", "we consider", "we proceed", "we show", "we construc'
+- proposed_canonical: that is
+  proposed_banned: for example
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: that is
+  proposed_banned: i.e
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: that is
+  proposed_banned: i.e.
+  section: Common §18
+  is_math: false
+  evidence: '"that is" — ALWAYS in full. NEVER "i.e." or "i.e" "for example" — ALWAYS in full. NEVER "e.g." or "e.g" "cannot" — ALWAYS one word. NEVER "can not" "and" — ALWAYS written in full in prose. The symbol & is reserved exclusively for mathematical alignment environments (align, cases, matrix).'
+- proposed_canonical: the
+  proposed_banned: infinity
+  section: complex-analysis §17.1
+  is_math: false
+  evidence: ALWAYS use "the point at infinity" — ALWAYS with "the". NEVER write "infinity" alone as a point.
+- proposed_canonical: the domain of definition of $f$
+  proposed_banned: domain
+  section: complex-analysis §5.4
+  is_math: true
+  evidence: '"domain of definition" — ALWAYS the full phrase, for the set on which a function is defined. Example: "the domain of definition of $f$" NEVER write "domain" alone in this sense.'
+  demoted: true
+  reason: 'complex-analysis §5.4 bans “domain”, but Common.txt §4.2 mandates it: “ALWAYS use "range" exclusively for $f(S)$ where $S$ is the entire domain of definition of $f$.”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'

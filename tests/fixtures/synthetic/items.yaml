@@ -1,0 +1,337 @@
+# SYNTHETIC — hand-written demonstration content, NOT extracted from any source.
+# Provenance fields below are fabricated placeholders. See docs/SLICE-FINDINGS.md.
+items:
+- id: conn
+  type: definition
+  topic: regions
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202601.jpeg
+  slots:
+    form: predicate
+    subject: A set $S$
+    term: connected
+    body: it cannot be expressed as the union of two disjoint nonempty open sets
+- id: dom
+  type: definition
+  topic: regions
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202601.jpeg
+  slots:
+    form: noun
+    article: a
+    term: domain
+    body: a nonempty open connected set
+- id: poly
+  type: proposition
+  topic: regions
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202601.jpeg
+  slots:
+    citation_form: any two points of a domain are joined by a polygonal path lying
+      in that domain
+    hypotheses:
+    - $D$ is a domain
+    - $z_1, z_2 in D$
+    conclusion: there is a polygonal path from $z_1$ to $z_2$ lying in $D$
+    proofs: []
+- id: harm
+  type: definition
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202601.jpeg
+  slots:
+    form: predicate
+    context: $D$ be a domain
+    subject: A function $u(x, y)$
+    term: harmonic
+    scope: on $D$
+    body: it has continuous partial derivatives of the first and second order in $D$
+      and satisfies Laplace's equation in $D$
+- id: lapl
+  type: definition
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202601.jpeg
+  slots:
+    form: noun
+    article: none
+    term: Laplace's equation
+    body: the equation $nabla^2 u = 0$
+- id: anal-harm
+  type: theorem
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202602.jpeg
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202603.jpeg
+  title: null
+  slots:
+    citation_form: the real and imaginary parts of an analytic function are harmonic
+      in its domain
+    hypotheses:
+    - $f(z) = u(x, y) + i v(x, y)$ is analytic in a domain $D$
+    conclusion: $u$ and $v$ are harmonic in $D$
+    proofs:
+    - method: direct
+      steps:
+      - claim: $u$ and $v$ have continuous partial derivatives of all orders in $D$
+        justification:
+          kind: by-fact
+          fact: an analytic function has derivatives of all orders
+      - claim: $u_x = v_y$ and $u_y = -v_x$ in $D$
+        justification:
+          kind: by-fact
+          fact: the Cauchy–Riemann equations hold in $D$
+      - claim: $u_(x x) = v_(y x)$ and $u_(y y) = -v_(x y)$
+        justification:
+          kind: by-computation
+      - claim: $v_(x y) = v_(y x)$
+        justification:
+          kind: by-fact
+          fact: the mixed partial derivatives of $v$ are continuous
+      - claim: $u$ is harmonic in $D$
+        justification:
+          kind: by-previous-step
+      - claim: $v$ is harmonic in $D$
+        justification:
+          kind: by-computation
+      conclusion: $u$ and $v$ are harmonic in $D$
+- id: hconj
+  type: definition
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202604.jpeg
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202609.jpeg
+  slots:
+    form: predicate
+    context: $u$ and $v$ be functions on a domain $D$
+    subject: The function $v$
+    term: harmonic conjugate
+    scope: of $u$ in $D$
+    body: $u$ and $v$ are harmonic in $D$ and their first-order partial derivatives
+      satisfy the Cauchy–Riemann equations $u_x = v_y$ and $u_y = -v_x$
+- id: iff
+  type: theorem
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202604.jpeg
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202609.jpeg
+  slots:
+    citation_form: a function is analytic in a domain if and only if its imaginary
+      part is a harmonic conjugate of its real part there
+    hypotheses:
+    - $f(z) = u(x, y) + i v(x, y)$ is defined on a domain $D$
+    conclusion: $f$ is analytic in $D$ if and only if $v$ is a harmonic conjugate
+      of $u$ in $D$
+    proofs:
+    - method: iff-pair
+      forward:
+      - claim: $u$ and $v$ are harmonic in $D$
+        justification:
+          kind: by-ref
+          ref: anal-harm
+      - claim: the Cauchy–Riemann equations hold in $D$
+        justification:
+          kind: by-fact
+          fact: $f$ is analytic
+      backward:
+      - claim: $f$ is analytic in $D$
+        justification:
+          kind: by-fact
+          fact: the Cauchy–Riemann equations hold and the first-order partial derivatives
+            of $u$ and $v$ are continuous
+      forward_conclusion: $v$ is a harmonic conjugate of $u$ in $D$
+      conclusion: $f$ is analytic in $D$ if and only if $v$ is a harmonic conjugate
+        of $u$ in $D$
+- id: nonsym
+  type: claim
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202605.jpeg
+  slots:
+    citation_form: being a harmonic conjugate is not a symmetric relation
+    body: 'being a harmonic conjugate is not a symmetric relation: there exist $u,
+      v$ such that $v$ is a harmonic conjugate of $u$ but $u$ is not a harmonic conjugate
+      of $v$'
+    proofs:
+    - method: construction
+      setup: the pair $u = x^2 - y^2$, $v = 2 x y$
+      steps:
+      - claim: $v$ is a harmonic conjugate of $u$ in $CC$
+        justification:
+          kind: by-fact
+          fact: $f(z) = z^2 = (x^2 - y^2) + i(2 x y)$ is analytic in $CC$
+      - claim: $g = 2 x y + i(x^2 - y^2)$ fails the Cauchy–Riemann equations off the
+          origin
+        justification:
+          kind: by-computation
+      - claim: $g$ is not analytic in any domain
+        justification:
+          kind: by-ref
+          ref: iff
+      conclusion: the relation is not symmetric
+- id: sc-exist
+  type: proposition
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202605.jpeg
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202607.jpeg
+  slots:
+    citation_form: a function harmonic in a simply connected domain has a harmonic
+      conjugate there
+    hypotheses:
+    - $u$ is harmonic in a simply connected domain $D$
+    conclusion: $u$ has a harmonic conjugate in $D$
+    proofs: []
+- id: no-hc
+  type: claim
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202605.jpeg
+  slots:
+    citation_form: a harmonic function need not have a harmonic conjugate in its domain
+    body: there exist a domain $D$ and a function $u$ harmonic in $D$ such that $u$
+      has no harmonic conjugate in $D$
+    proofs: []
+- id: uniq
+  type: theorem
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202607.jpeg
+  slots:
+    citation_form: two harmonic conjugates of the same function differ by a constant
+    hypotheses:
+    - $v_1$ and $v_2$ are harmonic conjugates of $u$ in a domain $D$
+    conclusion: $v_1 - v_2$ is constant in $D$
+    proofs:
+    - method: direct
+      steps:
+      - claim: $(v_1)_y = u_x = (v_2)_y$ and $(v_1)_x = -u_y = (v_2)_x$
+        justification:
+          kind: by-definition
+          term: harmonic conjugate
+          ref: hconj
+      - claim: $nabla (v_1 - v_2) = 0$ in $D$
+        justification:
+          kind: by-computation
+      - claim: $v_1 - v_2$ is constant in $D$
+        justification:
+          kind: by-fact
+          fact: a function with vanishing gradient in a domain is constant
+      conclusion: the two conjugates differ by a constant
+- id: orth
+  type: theorem
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202608.jpeg
+  slots:
+    citation_form: the level curves of the real and imaginary parts of an analytic
+      function are orthogonal at every point where the derivative is non-zero
+    hypotheses:
+    - $f = u + i v$ is analytic in a domain $D$
+    - $z_0 in D$ and $f'(z_0) != 0$
+    conclusion: the level curves $u(x, y) = c_1$ and $v(x, y) = c_2$ through $z_0$
+      intersect orthogonally at $z_0$
+    proofs:
+    - method: direct
+      steps:
+      - claim: $nabla u dot nabla v = u_x v_x + u_y v_y$
+        justification:
+          kind: by-computation
+      - claim: $nabla u dot nabla v = u_x (-u_y) + u_y u_x = 0$
+        justification:
+          kind: by-fact
+          fact: the Cauchy–Riemann equations hold
+      - claim: $nabla u (z_0) != 0$ and $nabla v (z_0) != 0$, and both level curves
+          are smooth at $z_0$ with normal vectors $nabla u (z_0)$ and $nabla v (z_0)$
+        justification:
+          kind: by-fact
+          fact: $abs(f')^2 = u_x^2 + u_y^2 = v_x^2 + v_y^2$ and $f'(z_0) != 0$
+      - claim: the normal vectors are orthogonal at $z_0$
+        justification:
+          kind: by-previous-step
+      conclusion: the level curves intersect orthogonally at $z_0$
+- id: mvp
+  type: theorem
+  topic: harmonic
+  provenance:
+  - source: ca-lectures-2026s
+    kind: board
+    session: '2026-05-03'
+    photo: 03_05_202609.jpeg
+  slots:
+    citation_form: the value of a harmonic function at a point is the mean of its
+      values on any sufficiently small circle centred at that point
+    hypotheses:
+    - $u$ is harmonic in a domain $D$
+    - $z_0 in D$
+    conclusion: $u(z_0) = 1/(2 pi) integral_0^(2 pi) u(z_0 + r e^(i theta)) dif theta$
+      for all sufficiently small $r > 0$
+    proofs: []
+outline:
+- - Regions in the Complex Plane
+  - - conn
+    - dom
+    - poly
+- - Harmonic Functions
+  - - harm
+    - lapl
+    - anal-harm
+    - hconj
+    - iff
+    - nonsym
+    - sc-exist
+    - no-hc
+    - uniq
+    - orth
+    - mvp

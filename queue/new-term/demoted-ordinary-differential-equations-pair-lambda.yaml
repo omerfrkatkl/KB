@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-ordinary-differential-equations-pair-lambda
+payload:
+  field: ordinary-differential-equations
+  term: $lambda$
+  proposed_canonical: $r_1$
+  section: ode §8.1
+  evidence: 'Standard form: $a r^2 + b r + c = 0$. Roots: ALWAYS denoted $r_1$ and $r_2$. NEVER use $lambda$
+    for roots of the characteristic equation of a scalar ODE — $lambda$ is reserved for eigenvalues of
+    matrices (see Section 13).'
+  why: 'ode §8.1 bans “$lambda$”, but ode.txt §13.2 mandates it: “ALWAYS use $lambda$ for eigenvalues.”.
+    Enforcing the pair would rewrite text the documents require. A conflicting use is a fact about the
+    documents, so no allowlist entry overrides it.'
+context_paths: []

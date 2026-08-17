@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-ordinary-differential-equations-pair-degree-of-the-differential-equation
+payload:
+  field: ordinary-differential-equations
+  term: degree of the differential equation
+  proposed_canonical: order of the equation
+  section: ode §1.1
+  evidence: ALWAYS write "order of the equation" for the highest derivative that appears. NEVER 
+    write "degree of the equation" or "degree of the differential equation" for the order.
+  why: ode §1.1 attaches a qualifier to the prohibition (“for the order”), so the ban is narrower 
+    than an unconditional substitution. The compiler represents unconditional pairs only and 
+    therefore fails closed. Add the pair to rules/enforcement-allowlist.yaml if the qualifier does 
+    not actually narrow the ban.
+context_paths: []

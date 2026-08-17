@@ -1,0 +1,13 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-transformation
+payload:
+  field: complex-analysis
+  term: transformation
+  proposed_canonical: mapping
+  section: complex-analysis §5.5
+  evidence: ALWAYS use "mapping" — NEVER "transformation" for the act of applying $f$.
+  why: 'complex-analysis §5.5 bans “transformation”, but complex-analysis.txt §13 mandates it: “ALWAYS
+    use "linear fractional transformation".”. Enforcing the pair would rewrite text the documents require.
+    A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+context_paths: []

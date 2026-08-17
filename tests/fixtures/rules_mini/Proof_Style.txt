@@ -1,0 +1,15 @@
+// Proof Style compiles to FRAMES ONLY. Nothing in this file may
+// reach the lexicon, the symbol registry, or the validators —
+// the golden test asserts exactly that.
+
+= 3. Universal Language Rules
+
+== 3.2 Proof Transitions
+
+ALWAYS use `Hence` for the final concluding sentence.
+NEVER use `Therefore` or `Then` as the final closing sentence.
+
+== 3.3 Proof Closing
+
+ALWAYS write "In all cases" — NEVER "Hence" to close a proof
+by cases.

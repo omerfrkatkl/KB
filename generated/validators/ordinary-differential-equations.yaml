@@ -1,0 +1,575 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+rules:
+- id: abbr-evt
+  section: Common §17
+  kind: substitute
+  pattern: \bEVT\b
+  message: "'EVT' must be written in full as 'Extreme Value Theorem' (Common §17)"
+  fix: Extreme Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-ftc
+  section: Common §17
+  kind: substitute
+  pattern: \bFTC\b
+  message: "'FTC' must be written in full as 'Fundamental Theorem of Calculus' (Common §17)"
+  fix: Fundamental Theorem of Calculus
+  scope: prose
+  except_phrases: []
+- id: abbr-ivt
+  section: Common §17
+  kind: substitute
+  pattern: \bIVT\b
+  message: "'IVT' must be written in full as 'Intermediate Value Theorem' (Common §17)"
+  fix: Intermediate Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-mvt
+  section: Common §17
+  kind: substitute
+  pattern: \bMVT\b
+  message: "'MVT' must be written in full as 'Mean Value Theorem' (Common §17)"
+  fix: Mean Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-t-i
+  section: Common §17
+  kind: substitute
+  pattern: \bT\.I\.
+  message: "'T.I.' must be written in full as 'Triangle Inequality' (Common §17)"
+  fix: Triangle Inequality
+  scope: prose
+  except_phrases: []
+- id: forbid-clearly
+  section: Common §14
+  kind: forbidden
+  pattern: \bclearly\b
+  message: "'clearly' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-it-follows-that
+  section: Common §14
+  kind: forbidden
+  pattern: \bit\ follows\ that\b
+  message: "'it follows that' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-it-is-easy-to-see
+  section: Common §14
+  kind: forbidden
+  pattern: \bit\ is\ easy\ to\ see\b
+  message: "'it is easy to see' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-obviously
+  section: Common §14
+  kind: forbidden
+  pattern: \bobviously\b
+  message: "'obviously' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-one-can-show
+  section: Common §14
+  kind: forbidden
+  pattern: \bone\ can\ show\b
+  message: "'one can show' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-so
+  section: Common §14
+  kind: forbidden
+  pattern: \bso\b
+  message: "'so' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases:
+  - and so on
+  - do so
+  - even so
+  - if so
+- id: forbid-thus
+  section: Common §14
+  kind: forbidden
+  pattern: \bthus\b
+  message: "'thus' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-trivially
+  section: Common §14
+  kind: forbidden
+  pattern: \btrivially\b
+  message: "'trivially' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-we
+  section: Common §14
+  kind: forbidden
+  pattern: \bwe\b
+  message: "'we' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: hyph-finite-dimensional
+  section: Common §13
+  kind: hyphenation
+  pattern: \bfinitedimensional\b
+  message: "'finitedimensional' must be written 'finite-dimensional' (Common §13)"
+  fix: finite-dimensional
+  scope: prose
+  except_phrases: []
+- id: hyph-infinite-dimensional
+  section: Common §13
+  kind: hyphenation
+  pattern: \binfinitedimensional\b
+  message: "'infinitedimensional' must be written 'infinite-dimensional' (Common §13)"
+  fix: infinite-dimensional
+  scope: prose
+  except_phrases: []
+- id: hyph-non-commutative
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnoncommutative\b
+  message: "'noncommutative' must be written 'non-commutative' (Common §13)"
+  fix: non-commutative
+  scope: prose
+  except_phrases: []
+- id: hyph-non-degenerate
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnondegenerate\b
+  message: "'nondegenerate' must be written 'non-degenerate' (Common §13)"
+  fix: non-degenerate
+  scope: prose
+  except_phrases: []
+- id: hyph-non-empty
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonempty\b
+  message: "'nonempty' must be written 'non-empty' (Common §13)"
+  fix: non-empty
+  scope: prose
+  except_phrases: []
+- id: hyph-non-negative
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonnegative\b
+  message: "'nonnegative' must be written 'non-negative' (Common §13)"
+  fix: non-negative
+  scope: prose
+  except_phrases: []
+- id: hyph-non-positive
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonpositive\b
+  message: "'nonpositive' must be written 'non-positive' (Common §13)"
+  fix: non-positive
+  scope: prose
+  except_phrases: []
+- id: hyph-non-singular
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonsingular\b
+  message: "'nonsingular' must be written 'non-singular' (Common §13)"
+  fix: non-singular
+  scope: prose
+  except_phrases: []
+- id: hyph-non-trivial
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnontrivial\b
+  message: "'nontrivial' must be written 'non-trivial' (Common §13)"
+  fix: non-trivial
+  scope: prose
+  except_phrases: []
+- id: hyph-non-zero
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonzero\b
+  message: "'nonzero' must be written 'non-zero' (Common §13)"
+  fix: non-zero
+  scope: prose
+  except_phrases: []
+- id: hyph-well-defined
+  section: Common §13
+  kind: hyphenation
+  pattern: \bwelldefined\b
+  message: "'welldefined' must be written 'well-defined' (Common §13)"
+  fix: well-defined
+  scope: prose
+  except_phrases: []
+- id: hyph-well-ordered
+  section: Common §13
+  kind: hyphenation
+  pattern: \bwellordered\b
+  message: "'wellordered' must be written 'well-ordered' (Common §13)"
+  fix: well-ordered
+  scope: prose
+  except_phrases: []
+- id: nota-a-0
+  section: ode §12.1
+  kind: notation
+  pattern: \$a_0\$
+  message: $a_0$ is banned — always $a_0 / 2$ (ode §12.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-arrow-v
+  section: Common §10
+  kind: notation
+  pattern: \$arrow\(v\)\$
+  message: $arrow(v)$ is banned by Common §10; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-big
+  section: Common §12
+  kind: notation
+  pattern: \$big\$
+  message: $big$ is banned — always $lr((...))$ (Common §12)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-diameter
+  section: Common §2.2
+  kind: notation
+  pattern: \$diameter\$
+  message: $diameter$ is banned — always $emptyset$ (Common §2.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-diff-f-diff-x
+  section: Common §6
+  kind: notation
+  pattern: \$\(diff\ f\)\ /\ \(diff\ x\)\$
+  message: $(diff f) / (diff x)$ is banned by Common §6; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-epsilon-neighborhood
+  section: Common §8
+  kind: notation
+  pattern: \$epsilon\$\ neighborhood
+  message: $epsilon$ neighborhood is banned by Common §8; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-f-g
+  section: Common §4.3
+  kind: notation
+  pattern: \$f\(g\)\$
+  message: $f(g)$ is banned — always $f compose g$ (Common §4.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-implicit-solution
+  section: ode §7.3
+  kind: notation
+  pattern: implicit\ solution
+  message: implicit solution is banned — always solutions are defined implicitly by $psi(x, y) = c$ (ode §7.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-inf-e
+  section: Common §7
+  kind: notation
+  pattern: \$inf\ E\$
+  message: $inf E$ is banned — always $inf(E)$ (Common §7)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-l-y
+  section: ode §4.3
+  kind: notation
+  pattern: \$L\(y\)\$
+  message: $L(y)$ is banned — always $L[y] = y'' + p(t) y' + q(t) y$ (ode §4.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-partial-x-f
+  section: Common §6
+  kind: notation
+  pattern: \$partial_x\ f\$
+  message: $partial_x f$ is banned by Common §6; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-period-t
+  section: ode §12.1
+  kind: notation
+  pattern: period\ \$T\$
+  message: period $T$ is banned — always period $2L$ (ode §12.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-sup-e
+  section: Common §7
+  kind: notation
+  pattern: \$sup\ E\$
+  message: $sup E$ is banned — always $sup(E)$ (Common §7)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-w-t
+  section: ode §8.2
+  kind: notation
+  pattern: \$W\(t\)\$
+  message: $W(t)$ is banned — always $t$ (ode §8.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-w-y-1-y-2
+  section: ode §8.2
+  kind: notation
+  pattern: \$W\(y_1,\ y_2\)\$
+  message: $W(y_1, y_2)$ is banned — always $W[y_1, y_2](t)$ (ode §8.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-x
+  section: Common §2.4
+  kind: notation
+  pattern: \$\|\$
+  message: '$|$ is banned — always ${ x in A : P(x) }$ (Common §2.4)'
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-y-c-1-e-r-t-c-2-t-e-r-t
+  section: ode §8.5
+  kind: notation
+  pattern: \$y\ =\ c_1\ e\^\(r\ t\)\ \+\ c_2\ t\ e\^\(r\ t\)\$
+  message: $y = c_1 e^(r t) + c_2 t e^(r t)$ is banned — always $y = (c_1 + c_2 t) e^(r t)$ (ode §8.5)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-y-t
+  section: ode §2.3
+  kind: notation
+  pattern: \$y\(t\)\$
+  message: $y(t)$ is banned by ode §2.3; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-y-t-t-0-y-0
+  section: ode §6
+  kind: notation
+  pattern: \$y\|_\(t=t_0\)\ =\ y_0\$
+  message: $y|_(t=t_0) = y_0$ is banned — always $y(t_0) = y_0$ (ode §6)
+  fix:
+  scope: any
+  except_phrases: []
+- id: sub-auxiliary-equation
+  section: ode §8.1
+  kind: substitute
+  pattern: \bauxiliary\ equation\b
+  message: "'auxiliary equation' is banned — always 'characteristic equation' (ode §8.1)"
+  fix: characteristic equation
+  scope: prose
+  except_phrases: []
+- id: sub-basis-of-solutions
+  section: ode §8.3
+  kind: substitute
+  pattern: \bbasis\ of\ solutions\b
+  message: "'basis of solutions' is banned — always 'fundamental set of solutions' (ode §8.3)"
+  fix: fundamental set of solutions
+  scope: prose
+  except_phrases: []
+- id: sub-cauchy-euler-equation
+  section: ode §10.2
+  kind: substitute
+  pattern: \bCauchy\-Euler\ equation\b
+  message: "'Cauchy-Euler equation' is banned — always 'Euler equation' (ode §10.2)"
+  fix: Euler equation
+  scope: prose
+  except_phrases: []
+- id: sub-characteristic-function
+  section: ode §15.2
+  kind: substitute
+  pattern: \bcharacteristic\ function\b
+  message: "'characteristic function' is banned — always 'eigenfunction' (ode §15.2)"
+  fix: eigenfunction
+  scope: prose
+  except_phrases: []
+- id: sub-d-alembert-s-method
+  section: ode §8.6
+  kind: substitute
+  pattern: \bd'Alembert's\ method\b
+  message: "\"d'Alembert's method\" is banned — always 'reduction of order' (ode §8.6)"
+  fix: reduction of order
+  scope: prose
+  except_phrases: []
+- id: sub-decoupled-boundary-conditions
+  section: ode §15.2
+  kind: substitute
+  pattern: \bdecoupled\ boundary\ conditions\b
+  message: "'decoupled boundary conditions' is banned — always 'separated boundary conditions' (ode §15.2)"
+  fix: separated boundary conditions
+  scope: prose
+  except_phrases: []
+- id: sub-equidimensional-equation
+  section: ode §10.2
+  kind: substitute
+  pattern: \bequidimensional\ equation\b
+  message: "'equidimensional equation' is banned — always 'Euler equation' (ode §10.2)"
+  fix: Euler equation
+  scope: prose
+  except_phrases: []
+- id: sub-fundamental-system
+  section: ode §8.3
+  kind: substitute
+  pattern: \bfundamental\ system\b
+  message: "'fundamental system' is banned — always 'fundamental set of solutions' (ode §8.3)"
+  fix: fundamental set of solutions
+  scope: prose
+  except_phrases: []
+- id: sub-heaviside-function
+  section: ode §11.4
+  kind: substitute
+  pattern: \bHeaviside\ function\b
+  message: "'Heaviside function' is banned — always 'unit step function' (ode §11.4)"
+  fix: unit step function
+  scope: prose
+  except_phrases: []
+- id: sub-indicial-polynomial-equation
+  section: ode §10.2
+  kind: substitute
+  pattern: \bindicial\ polynomial\ equation\b
+  message: "'indicial polynomial equation' is banned — always 'indicial equation' (ode §10.2)"
+  fix: indicial equation
+  scope: prose
+  except_phrases: []
+- id: sub-irregular-singularity
+  section: ode §10.1
+  kind: substitute
+  pattern: \birregular\ singularity\b
+  message: "'irregular singularity' is banned — always 'irregular singular point' (ode §10.1)"
+  fix: irregular singular point
+  scope: prose
+  except_phrases: []
+- id: sub-ivp
+  section: ode §6
+  kind: substitute
+  pattern: \bIVP\b
+  message: "'IVP' is banned — always 'initial value problem' (ode §6)"
+  fix: initial value problem
+  scope: prose
+  except_phrases: []
+- id: sub-kick
+  section: ode §11.5
+  kind: substitute
+  pattern: \bkick\b
+  message: "'kick' is banned — always 'impulse' (ode §11.5)"
+  fix: impulse
+  scope: prose
+  except_phrases: []
+- id: sub-orbit
+  section: ode §14.1
+  kind: substitute
+  pattern: \borbit\b
+  message: "'orbit' is banned — always 'trajectory' (ode §14.1)"
+  fix: trajectory
+  scope: prose
+  except_phrases: []
+- id: sub-path
+  section: ode §14.1
+  kind: substitute
+  pattern: \bpath\b
+  message: "'path' is banned — always 'trajectory' (ode §14.1)"
+  fix: trajectory
+  scope: prose
+  except_phrases: []
+- id: sub-pde
+  section: ode §1.1
+  kind: substitute
+  pattern: \bPDE\b
+  message: "'PDE' is banned — always 'partial differential equation' (ode §1.1)"
+  fix: partial differential equation
+  scope: prose
+  except_phrases: []
+- id: sub-piecewise-smooth
+  section: ode §11.3
+  kind: substitute
+  pattern: \bpiecewise\ smooth\b
+  message: "'piecewise smooth' is banned — always 'piecewise continuous' (ode §11.3)"
+  fix: piecewise continuous
+  scope: prose
+  except_phrases: []
+- id: sub-regular-singularity
+  section: ode §10.1
+  kind: substitute
+  pattern: \bregular\ singularity\b
+  message: "'regular singularity' is banned — always 'regular singular point' (ode §10.1)"
+  fix: regular singular point
+  scope: prose
+  except_phrases: []
+- id: sub-s-t
+  section: Common §1.3
+  kind: substitute
+  pattern: \bs\.t\.
+  message: "'s.t.' is banned — always 'such that' (Common §1.3)"
+  fix: such that
+  scope: prose
+  except_phrases: []
+- id: sub-slope-field
+  section: ode §1.3
+  kind: substitute
+  pattern: \bslope\ field\b
+  message: "'slope field' is banned — always 'direction field' (ode §1.3)"
+  fix: direction field
+  scope: prose
+  except_phrases: []
+- id: sub-solution-curves
+  section: ode §5.2
+  kind: substitute
+  pattern: \bsolution\ curves\b
+  message: "'solution curves' is banned — always 'integral curves' (ode §5.2)"
+  fix: integral curves
+  scope: prose
+  except_phrases: []
+- id: sub-st
+  section: Common §1.3
+  kind: substitute
+  pattern: \bst\b
+  message: "'st' is banned — always 'such that' (Common §1.3)"
+  fix: such that
+  scope: prose
+  except_phrases: []
+- id: sub-system-of-odes
+  section: ode §1.1
+  kind: substitute
+  pattern: \bsystem\ of\ ODEs\b
+  message: "'system of ODEs' is banned — always 'system of differential equations' (ode §1.1)"
+  fix: system of differential equations
+  scope: prose
+  except_phrases: []
+- id: sub-undetermined-coefficients-method
+  section: ode §9.2
+  kind: substitute
+  pattern: \bundetermined\ coefficients\ method\b
+  message: "'undetermined coefficients method' is banned — always 'method of undetermined coefficients' (ode §9.2)"
+  fix: method of undetermined coefficients
+  scope: prose
+  except_phrases: []
+- id: sub-variation-of-parameters-method
+  section: ode §9.2
+  kind: substitute
+  pattern: \bvariation\ of\ parameters\ method\b
+  message: "'variation of parameters method' is banned — always 'method of variation of parameters' (ode §9.2)"
+  fix: method of variation of parameters
+  scope: prose
+  except_phrases: []
+- id: sub-vector-field
+  section: ode §1.3
+  kind: substitute
+  pattern: \bvector\ field\b
+  message: "'vector field' is banned — always 'direction field' (ode §1.3)"
+  fix: direction field
+  scope: prose
+  except_phrases: []

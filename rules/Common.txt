@@ -1,0 +1,462 @@
+// ============================================================
+// Common.typ
+// Universal notation and language conventions
+// Applies to all fields and all documents
+// ============================================================
+
+// ------------------------------------------------------------
+// HOW TO READ THIS FILE
+//
+// Each rule is stated in one of three forms:
+//
+//   ALWAYS   — the only acceptable form, no exceptions
+//   NEVER    — forbidden in all contexts, no exceptions
+//   IF...THEN — context-dependent rule, fully specified
+//
+// No rule is open to interpretation. Every rule has exactly
+// one correct output for every input situation.
+// ------------------------------------------------------------
+
+// ------------------------------------------------------------
+// PRECEDENCE — applies to all four rule files
+//
+// On any conflict, the more specific file wins:
+//
+//   field file (Complex Analysis / ODE)   highest
+//   Proof_Style.txt
+//   Common.txt                            lowest
+//
+// OWNERSHIP — each rule has exactly one home. A rule is stated
+// once, in its owning file, and referenced from elsewhere by
+// pointer. Never restate a rule in a second file.
+//
+//   Common.txt       notation, universal language, and the
+//                    STATEMENT forms (definitions, theorem-
+//                    class statements) — Section 21
+//   Proof_Style.txt  everything inside a proof: justification,
+//                    transitions, closings, proof-type structure
+//   field files      field notation, terminology, theorem names
+// ------------------------------------------------------------
+
+= 1. Quantifiers and Logic
+
+== 1.1 For All / There Exists
+
+IF inside $...$:
+  ALWAYS use symbols — $forall$, $exists$, $exists!$
+
+IF outside $...$ (prose):
+  ALWAYS use words — "for all", "there exists",
+  "there exists a unique"
+  NEVER use $forall$, $exists$, $exists!$ in prose
+
+This rule applies in all environments without exception.
+The environments active in the knowledge base are:
+#thm, #def, #lem, #prop, #cor, #axiom, #claim, #remark,
+#notation, #proof.
+The only criterion is whether the text is inside $...$ or not.
+
+== 1.2 If and Only If
+
+ALWAYS write "if and only if" in full in prose.
+NEVER write "iff" in prose.
+In mathematical expressions inside $...$: use $<==>$.
+
+== 1.3 Such That
+
+ALWAYS write "such that" in full.
+NEVER write "s.t." or "st".
+
+== 1.4 Implies
+
+In mathematical expressions: ALWAYS use $=>$.
+In prose: ALWAYS write "implies" in full.
+NEVER use $=>$ in prose.
+
+== 1.5 Without Loss of Generality
+
+ALWAYS write "WLOG assume that [statement]."
+ALWAYS place WLOG at the beginning of the sentence.
+ALWAYS follow WLOG with "assume that", never "suppose that".
+NEVER write "without loss of generality" in full.
+NEVER write "WLOG suppose", "WLOG we may assume", or "wlog".
+
+= 2. Set Theory
+
+== 2.1 Subset
+
+ALWAYS use $subset.eq$ to mean "subset or equal to".
+ALWAYS use $subset.neq$ to mean "proper subset".
+NEVER use $subset$ alone — it is ambiguous and forbidden.
+
+== 2.2 Empty Set
+
+ALWAYS use $emptyset$.
+NEVER use $diameter$ or any other variant.
+
+== 2.3 Set Operations
+
+Intersection: ALWAYS $inter$
+Union: ALWAYS $union$
+Set difference: ALWAYS $A without B$
+Complement: ALWAYS $A^c$
+Element of: ALWAYS $in$
+Not element of: ALWAYS $in.not$
+
+== 2.4 Set Builder Notation
+
+ALWAYS write ${ x in A : P(x) }$ with a colon.
+NEVER use $|$ inside set builder notation — it conflicts
+with absolute value.
+
+= 3. Number Sets
+
+ALWAYS use the following symbols:
+
+  $NN$ — natural numbers, starting from 1. Zero is excluded.
+  $NN_0$ — natural numbers including zero. Use explicitly
+            when zero must be included.
+  $ZZ$ — integers
+  $QQ$ — rationals
+  $RR$ — real numbers
+  $CC$ — complex numbers
+  $FF$ — arbitrary field (used in linear algebra contexts)
+
+NEVER use $mathbb(N)$, $mathbb(R)$, etc. — always use the
+shorthand forms above.
+
+= 4. Functions and Maps
+
+== 4.1 Function Introduction
+
+ALWAYS introduce a function as:
+  "Let $f : A -> B$ be a [adjective] function."
+
+NEVER write "Define $f$ by", "Consider $f$", or introduce
+a function without the full $f : A -> B$ form.
+
+== 4.2 Image and Preimage
+
+Image of a set $A$ under $f$: ALWAYS $f(A)$
+Preimage of a set $B$ under $f$: ALWAYS $f^(-1)(B)$
+Image of the entire domain: ALWAYS $"Im"(f)$
+
+ALWAYS use "image" for the image of any subset $A$ under $f$.
+ALWAYS use "range" exclusively for $f(S)$ where $S$ is the
+entire domain of definition of $f$.
+NEVER use "range" for the image of a proper subset.
+ALWAYS use the word "preimage". NEVER use "inverse image".
+
+== 4.3 Composition
+
+ALWAYS write $f compose g$.
+NEVER write $f(g)$, $f circ g$, or $f g$.
+
+== 4.4 Inverse Function
+
+ALWAYS write $f^(-1)$ for the inverse function.
+
+= 5. Sequences
+
+ALWAYS use parenthesis notation: $(a_n)$.
+NEVER use curly brace notation.
+
+IF the index set is $NN$: ALWAYS write $(a_n)$ without subscript.
+IF the index set is not $NN$: ALWAYS write the full
+subscript form, for example $(a_n)_(n in ZZ)$ or
+$(a_n)_(n >= 2)$.
+
+For convergence, ALWAYS write one of:
+  "$a_n -> a$ as $n -> infinity$" (in prose)
+  "$lim_(n -> infinity) a_n = a$" (in display math)
+
+NEVER write "$a_n$ tends to $a$" or "$a_n$ goes to $a$".
+
+= 6. Derivatives
+
+ALWAYS use prime notation for all derivatives:
+  $f'(x)$, $f''(x)$, $f^((n))(x)$
+
+NEVER use Leibniz notation $dif y \/ dif x$, $dif^2 y \/ dif x^2$,
+or $dif^n y \/ dif x^n$ for a derivative in any document.
+
+(The ODE file does not override this section; it restates the
+prime rule for emphasis and applies it to $y$. There is no
+conflict between the two.)
+
+Partial derivatives:
+  ALWAYS use subscript notation — $f_x$, $f_y$, $u_x$, $v_y$
+  NEVER use $(diff f) / (diff x)$ or $partial_x f$
+
+Higher order derivatives:
+  ALWAYS use $f''(x)$, $f'''(x)$ up to third order.
+  For order $n >= 4$: ALWAYS use $f^((n))(x)$.
+
+NEVER use $dot(f)$ (Newton notation) in any context.
+NEVER use $D f$ or $D^n f$.
+
+= 7. Supremum and Infimum
+
+ALWAYS write $sup(E)$ and $inf(E)$ with parentheses.
+NEVER write $sup E$ or $inf E$ without parentheses.
+
+= 8. Neighborhoods
+
+ALWAYS write "$epsilon$-neighborhood" with a hyphen between
+$epsilon$ and "neighborhood".
+NEVER write "$epsilon$ neighborhood" without a hyphen.
+
+= 9. Norms and Absolute Value
+
+Absolute value: ALWAYS $|x|$
+Norm of a vector: ALWAYS $norm(bold(x))$
+Complex modulus: ALWAYS $|z|$
+
+= 10. Vectors and Matrices
+
+Vectors: ALWAYS bold — $bold(v)$, $bold(u)$, $bold(0)$
+NEVER use arrow notation $arrow(v)$ for vectors.
+
+Matrices: ALWAYS capital letters — $A$, $B$, $M$
+Zero vector: ALWAYS $bold(0)$
+Identity matrix: ALWAYS $I$
+
+= 11. Ellipsis
+
+In lists and sets: ALWAYS $dots.h$
+  Example: ${x_1, dots.h, x_n}$
+
+In algebraic expressions: ALWAYS $dots.c$
+  Example: $a_1 + dots.c + a_n$
+
+NEVER use plain $..$ or $dots$ — always specify $dots.h$
+or $dots.c$.
+
+= 12. Parentheses and Delimiters
+
+ALWAYS use automatic sizing via $lr((...))$ for all
+delimiters that contain tall expressions.
+NEVER manually size delimiters with $big$, $Big$,
+$bigg$, $Bigg$.
+
+= 13. Compound Adjectives
+
+ALWAYS hyphenate the following:
+
+  non-zero, non-empty, non-negative, non-positive,
+  non-degenerate, non-trivial, non-commutative,
+  non-singular, well-defined, well-ordered,
+  finite-dimensional, infinite-dimensional
+
+NEVER write these without hyphens.
+
+= 14. Forbidden Words and Phrases
+
+The following are NEVER used in any proof or mathematical
+text, with no exceptions:
+
+  "clearly" — forbidden
+  "trivially" — forbidden
+  "obviously" — forbidden
+  "we" — forbidden as a token, in every phrase and every
+  position, including "we have", "we get", "we need to show",
+  "we observe", "we conclude", "we obtain", "we see", "we know",
+  "we consider", "we proceed", "we show", "we construct".
+  Structural proof openings that formerly used "we" are
+  imperative instead — see Proof_Style.txt Section 4.
+  "it is easy to see" — forbidden
+  "one can show" — forbidden
+  "thus" — forbidden
+  "so" — NEVER write "so" to connect logical steps.
+  ALWAYS write "so" only in fixed phrases: "and so on",
+  "do so", "if so", "even so". In all other contexts
+  NEVER write "so".
+  "it follows that" — forbidden
+
+= 15. Proof Language
+
+== 15.1 Assume vs. Suppose vs. Let — word meanings
+
+These three words have fixed, non-overlapping meanings in all
+text, inside proofs and outside them.
+
+"Let" — ALWAYS introduces a new object, variable, or parameter
+  for the first time.
+  Example: "Let $epsilon > 0$." / "Let $f : A -> B$ be analytic."
+
+"Assume that" — ALWAYS accepts a condition about an object that
+  already exists: a hypothesis, or the negation in a proof by
+  contrapositive.
+  Example: "Assume that $f$ is continuous at $z_0$."
+
+"Suppose that" — ALWAYS used exclusively for proof by
+  contradiction, when assuming the negation of the goal.
+
+NEVER use these three interchangeably.
+NEVER write "suppose" in a non-contradiction context.
+NEVER write "assume" to open a proof by contradiction.
+NEVER use "let" to state a hypothesis — use "assume that".
+
+For which word opens which proof type, see Proof_Style.txt
+Section 4.
+
+== 15.2 Logical Transitions Within a Proof
+
+[MOVED] Transition words inside a proof are owned by
+Proof_Style.txt Section 3.2, which selects the transition from
+the kind of justification the step uses. This section formerly
+mandated "Therefore" for every intermediate step; that rule is
+withdrawn and must not be applied.
+
+== 15.3 Let
+
+[MERGED] See Section 15.1, which now states the meanings of
+Let, Assume that, and Suppose that together.
+
+== 15.4 Referencing Results
+
+[MOVED] Owned by Proof_Style.txt Section 3.4.
+
+== 15.5 Proof Closing
+
+[MOVED] Owned by Proof_Style.txt Section 3.3, together with the
+template's QED behavior.
+
+= 16. Positive vs. Non-Negative
+
+"positive" — ALWAYS means strictly greater than zero: $x > 0$
+"non-negative" — ALWAYS means greater than or equal to zero:
+  $x >= 0$
+
+NEVER use "positive" to mean $x >= 0$.
+NEVER use "non-negative" to mean $x > 0$.
+
+= 17. Theorem and Definition Names
+
+ALWAYS write theorem and definition names in full.
+NEVER abbreviate.
+
+  Extreme Value Theorem — NEVER EVT
+  Mean Value Theorem — NEVER MVT
+  Intermediate Value Theorem — NEVER IVT
+  Fundamental Theorem of Calculus — NEVER FTC
+  Triangle Inequality — NEVER T.I.
+
+= 18. Miscellaneous Language Rules
+
+"that is" — ALWAYS in full. NEVER "i.e." or "i.e"
+"for example" — ALWAYS in full. NEVER "e.g." or "e.g"
+"cannot" — ALWAYS one word. NEVER "can not"
+"and" — ALWAYS written in full in prose. The symbol &
+  is reserved exclusively for mathematical alignment
+  environments (align, cases, matrix).
+
+= 19. Display Math vs. Inline Math
+
+In Typst the two are distinguished by whitespace inside the
+delimiters. This is the only difference and it is significant:
+
+Display math — ALWAYS $ x = y $ (a space after the opening $
+  and before the closing $). Renders as a centred block.
+  ALWAYS use for important results, key inequalities, and any
+  expression requiring careful reading.
+
+Inline math — ALWAYS $x = y$ (no spaces inside the delimiters).
+  ALWAYS use for short expressions embedded in a sentence.
+
+ALWAYS use display math for any expression containing
+two or more inequality or equality signs in sequence.
+NEVER place such an expression in inline math.
+
+= 20. Proof Structure
+
+[MOVED] Step labels, case labels, biconditional direction
+markers, and subclaim format are owned by Proof_Style.txt
+Section 4. This section formerly restated them, including a
+biconditional arrow pair that disagreed with Proof_Style.txt;
+the correct pair is fixed in Proof_Style.txt Section 4.5.
+
+= 21. Statement Forms
+
+Every definition and every theorem-class statement in the
+knowledge base is rendered from these fixed frames. Nothing
+else is permitted. The frames apply to the STATEMENT of a
+result; the proof of it is governed by Proof_Style.txt.
+
+== 21.1 Definitions
+
+Two forms exist, chosen by what is being defined.
+
+NOUN form — defining an object.
+  ALWAYS "[Article] *[term]* is [body]."
+  The article is one of "a", "an", "the", or none.
+  ALWAYS "the" for a unique object.
+    Example: "The *complex plane* is [body]."
+  ALWAYS no article for a possessive or proper-name term.
+    Example: "*Laplace's equation* is the equation $nabla^2 u = 0$."
+
+PREDICATE form — defining a property of an object.
+  ALWAYS "[Subject] is *[term]* [scope] if [body]."
+    Example: "A function $u(x, y)$ is *harmonic* in $D$ if
+    [body]."
+
+IF ambient assumptions are needed, ALWAYS prefix them with
+"Let [context]. " in a single sentence before the frame.
+  Example: "Let $D$ be a domain. A function $u(x, y)$ is
+  *harmonic* in $D$ if [body]."
+
+ALWAYS set the term being defined in bold (*term*) at its
+defining occurrence, and nowhere else.
+
+== 21.2 Theorem-Class Statements
+
+Applies to theorem, lemma, proposition, corollary, claim,
+axiom, and counterexample.
+
+IF the result has hypotheses:
+  ALWAYS "Assume that [hypotheses]. Then [conclusion]."
+  Hypotheses are joined as "A and B" for two, and
+  "A, B, and C" for three or more.
+
+IF the result has no hypotheses:
+  ALWAYS state the conclusion alone as a single sentence.
+
+NEVER open a statement with "If ... then ..." — the fixed
+frame above replaces it.
+NEVER write the hypotheses as a bulleted or numbered list.
+
+== 21.3 Citation Form
+
+Every theorem-class statement ALWAYS carries a citation form:
+the result expressed as a single subordinate clause that reads
+correctly after "by the fact that".
+
+  Example (for the result that the real and imaginary parts of
+  an analytic function are harmonic):
+    "the real and imaginary parts of an analytic function are
+    harmonic in its domain"
+
+ALWAYS write the citation form as a clause, never as a full
+sentence, and never with a leading capital or a final period.
+ALWAYS make it self-contained — it must be readable with no
+reference to the surrounding proof.
+
+This is the text used by Proof_Style.txt Section 3.4 when the
+result has no standard name.
+
+== 21.4 Counterexamples
+
+A counterexample is admitted ONLY when it establishes one of:
+  (a) that the converse of a stated result is false, or
+  (b) that a hypothesis of a stated result is necessary.
+
+  Converse: ALWAYS "The converse of [result] is false:
+  [witness] [witness properties]."
+  Necessity: ALWAYS "Hypothesis [H] in [result] is necessary:
+  [witness] [witness properties]."
+
+NEVER write a counterexample in question-then-solution form.
+NEVER admit a counterexample that only demonstrates or applies
+a result without establishing (a) or (b); such content is
+excluded entirely.
+

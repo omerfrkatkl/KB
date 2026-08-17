@@ -1,0 +1,712 @@
+// ============================================================
+// Proof_Style.typ
+// Universal proof writing conventions
+// Applies to all fields and all documents
+// Supplement to Common.typ and field-specific files
+// ============================================================
+
+// ------------------------------------------------------------
+// HOW TO READ THIS FILE
+//
+// Each rule is stated in one of three forms:
+//
+//   ALWAYS   — the only acceptable form, no exceptions
+//   NEVER    — forbidden in all contexts, no exceptions
+//   IF...THEN — context-dependent rule, fully specified
+//
+// No rule is open to interpretation. Every rule has exactly
+// one correct output for every input situation.
+//
+// PRECEDENCE and OWNERSHIP: see the header of Common.txt.
+// This file owns everything inside a proof. Statement forms
+// (definitions, theorem statements, citation forms) are owned
+// by Common.txt Section 21.
+// ------------------------------------------------------------
+
+= 1. Core Philosophy
+
+A proof is a finite sequence of statements. Every statement
+is either a hypothesis, a definition, an axiom, or follows
+from previous statements by a named justification.
+
+= 2. Justification Rule
+
+The single criterion for whether a justification is required
+is document membership — not position, and not familiarity:
+
+IF the fact used appears anywhere in the same document:
+  ALWAYS write the justification.
+  EXCEPTION: IF the identical justification was already given
+  in the immediately preceding step of the same proof:
+    NEVER repeat it verbatim.
+    ALWAYS omit it entirely — the reader sees the pattern.
+  A result stated later in the document may still be cited;
+  membership is what matters, not order.
+
+IF the fact used does not appear anywhere in the document:
+  NEVER write a justification. State the step alone.
+
+No other criterion applies. "Standard", "classical", or
+"well-known" are not criteria. Only document membership is.
+
+EVALUATION TIME: membership is determined when the document is
+built, not when the proof is written. A proof therefore gains
+justifications automatically as the surrounding document grows,
+and the same proof may render with fewer justifications in a
+small document than in a large one. This is intended.
+
+== 2.1 Justification Formats
+
+IF the fact has a name:
+  ALWAYS write `by the [Name]`
+  Example: `by the Cauchy–Riemann Theorem`
+
+IF the fact has no name:
+  ALWAYS write `by the fact that [citation form of the fact]`
+  The citation form is the result expressed as a single
+  subordinate clause and is carried by the result itself —
+  see Common.txt Section 21.3.
+  Example: `by the fact that the real and imaginary parts of an
+  analytic function are harmonic in its domain`
+
+NEVER compose the citation from the result's hypotheses and
+conclusion ("by the fact that if ..., then ...") — that form is
+a fallback which indicates a missing citation form.
+
+IF the fact was established earlier in the same proof:
+  ALWAYS write either `[Statement], since [content of that
+  result].` or `Since [content of that result], [Statement].`
+  Both orderings are permitted.
+  Example: `Therefore $f$ is analytic at $z_0$, since
+  $u_x = v_y$ was established above.`
+  Example: `Since $a$ is nilpotent, there exists $n$ such
+  that $a^n = 0$.`
+
+IF the fact is a hypothesis of the theorem being proved:
+  ALWAYS write `by hypothesis`
+
+IF the fact is the inductive hypothesis:
+  ALWAYS write `by the inductive hypothesis`
+
+NEVER write separate steps for observations that follow
+from the same single justification — combine them into
+one sentence.
+  NEVER: `Then $a = b$ by commutativity.
+  Then $c = d$ by commutativity.`
+  ALWAYS: `Then $a = b$ and $c = d$ by commutativity of
+  real numbers.`
+
+ALWAYS place `by the [Name]` and `by the fact that [content]`
+justifications at the end of the sentence:
+  `[Statement] by the [Name].`
+
+NEVER place `by the [Name]` or `by the fact that` at the
+beginning:
+  NEVER `By the [Name], [Statement].`
+
+EXCEPTION: `Since [reason], [statement].` is always
+permitted at the beginning of a sentence — this is the
+one justification form that goes first, not last.
+
+= 3. Universal Language Rules
+
+== 3.1 Introducing Objects and Hypotheses
+
+ALWAYS use `Let` when a new object, variable, or parameter
+is introduced into the proof for the first time.
+  Example: `Let $epsilon > 0$.`
+  Example: `Let $f : D -> CC$ be an analytic function.`
+
+ALWAYS use `Assume that` when a condition is accepted about
+an already-introduced object.
+  Example: `Assume that $f$ is continuous at $z_0$.`
+
+NEVER use `Let` and `Assume that` interchangeably.
+
+== 3.2 Proof Transitions
+
+For every intermediate step, choose the transition word
+by answering: does this step introduce a new "why"?
+
+  IF a theorem, definition, or named fact was applied:
+    ALWAYS use "Therefore".
+    Example: "The Cauchy–Riemann equations hold. Therefore
+    $f$ is analytic at $z_0$."
+
+  IF the step is pure algebra or arithmetic with no new
+  named justification:
+    ALWAYS use "Then".
+    Example: "Then $z_1 z_2 = (x_1 x_2 - y_1 y_2) +
+    i(x_1 y_2 + x_2 y_1)$ by expanding the product."
+
+  IF a mechanical operation was applied to both sides
+  (dividing, taking modulus, substituting):
+    ALWAYS use "This gives".
+    Example: "Divide both sides by $|f(z)|$. This gives
+    $|F(z) - 1| < 1$."
+
+  IF an auxiliary observation is needed before the main
+  argument continues:
+    ALWAYS use "Note that".
+    Example: "Note that $|F(z) - 1| = |g(z)|/|f(z)| < 1$."
+
+  IF the argument for this case or direction is symmetric
+  to one already given:
+    ALWAYS use "Similarly".
+    Example: "Similarly, $L$ cannot be greater than $0$."
+    NEVER repeat the full argument — "Similarly" signals
+    that the identical reasoning applies.
+
+  IF an additional parallel property is being added:
+    ALWAYS use "Moreover".
+    Example: "Moreover, the polynomial f(t) does not split
+    over R since its discriminant is negative."
+
+ALWAYS use `Hence` for the final concluding sentence.
+
+EXCEPTIONS — proofs with no `Hence`:
+  Proof by cases closes with "In all cases, [conclusion]."
+  Proof by induction closes with "By induction, [conclusion]
+  for all $n in NN$."
+
+EXCEPTIONS — proofs with multiple closing sentences:
+  Biconditional proof: first direction closes with
+  "Therefore [conclusion].", second direction closes with
+  "Hence [conclusion]." — only the last direction uses Hence.
+
+NEVER use `Therefore` or `Then` as the final closing sentence.
+NEVER use `Hence` in any intermediate step.
+NEVER use `thus`, `so`, `it follows that`, `clearly`,
+`trivially`, `obviously`, `one can show`, `it is easy to see`.
+NEVER use the token `we` anywhere, in any phrase and any
+position. Structural proof openings are imperative instead;
+see Section 4.
+
+== 3.3 Proof Closing
+
+Every proof ALWAYS ends with exactly one of three fixed closing
+phrases, chosen by proof type:
+
+  Standard proof:      "Hence [conclusion]."
+  Proof by cases:      "In all cases, [conclusion]."
+  Proof by induction:  "By induction, [conclusion] for all
+                        $n in NN$."
+
+NEVER use any other closing phrase.
+NEVER use "Hence" to close a proof by cases or by induction.
+NEVER use "In all cases" or "By induction" outside their
+respective proof types.
+NEVER use "Therefore" or "Then" as the final sentence.
+NEVER write `This completes the proof.`
+NEVER write `QED`.
+
+TEMPLATE BEHAVIOR — main proofs:
+The #proof[] environment adds $square.filled$ automatically.
+NEVER write $square.filled$ in a main proof body. Write only
+the closing phrase above.
+
+TEMPLATE BEHAVIOR — subclaim proofs:
+The template does not add $square.filled$ for a subclaim.
+ALWAYS write $square.filled$ manually at the end of each
+subclaim proof (see Section 3.6).
+NEVER use $square$ (open square) for subclaims — always
+$square.filled$.
+
+== 3.4 Referencing Results
+
+IF the result has a standard name:
+  ALWAYS cite by name: `by the Cauchy Integral Formula`
+
+IF the result has no standard name:
+  ALWAYS write: `by the fact that [content]`
+
+NEVER cite by theorem number, equation number, or section
+number.
+NEVER write `by the above`, `by the previous result`,
+`by the previous theorem`, `by (*)`, or `by (1)`.
+The single permitted use of the word "above" is `by the claim
+above`, for a subclaim proved earlier in the same proof
+(Section 3.6).
+
+ALWAYS write the name or the citation form — the reader must
+never be required to search elsewhere to verify the
+justification.
+
+== 3.5 Mathematics in Prose
+
+ALWAYS begin a sentence with a word, never with a symbol.
+  NEVER: `$f$ is analytic at $z_0$.`
+  ALWAYS: `The function $f$ is analytic at $z_0$.`
+
+Punctuation placement differs by math type:
+  Display math — ALWAYS place the punctuation INSIDE the
+    delimiters when the expression ends a sentence.
+    ALWAYS: `$ f'(z_0) = u_x + i v_x. $`
+  Inline math — ALWAYS place the punctuation OUTSIDE the
+    closing delimiter.
+    ALWAYS: `the value $f'(z_0)$.`
+
+NEVER place two consecutive display math blocks without
+connecting prose between them.
+
+NEVER write a comma before "where" when introducing
+variable definitions at the start of a proof.
+  NEVER: `Let $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$,
+  where $x_1, y_1, x_2, y_2$ are real numbers.`
+  ALWAYS: `Let $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$
+  where $x_1, y_1, x_2, y_2$ are real numbers.`
+
+
+
+== 3.6 Claim Within a Proof
+
+ALWAYS use the following format for a subclaim:
+
+  `Claim: [statement].`
+
+  `Proof of claim: [proof]. $square.filled$`
+
+After the claim is proved, cite it as:
+  `by the claim above`
+
+ALWAYS write the proof of claim immediately after the claim.
+NEVER leave a claim unproved.
+
+= 4. Proof Types
+
+== 4.1 Direct Proof
+
+Opening: ALWAYS begin with `Let` or `Assume that` or both.
+
+Closing: ALWAYS `Hence [conclusion].`
+
+== 4.2 Proof by Contradiction
+
+Opening: ALWAYS `Suppose that [negation of conclusion].`
+
+NEVER write `Suppose for contradiction that`.
+NEVER write `Assume for contradiction that`.
+
+Closing: ALWAYS
+  `This contradicts [named or described fact].
+  Hence [conclusion].`
+
+ALWAYS name what is contradicted — NEVER write
+`This is a contradiction.` alone.
+
+== 4.3 Proof by Cases
+
+Opening: ALWAYS `Consider [n] cases.`
+
+Each case: ALWAYS
+  `*Case [k]:* [condition]. [steps].
+  Therefore [conclusion of this case].`
+ALWAYS set the case label in bold, as `*Case 1:*`.
+NEVER write `Case (1):` with parentheses.
+
+Closing: ALWAYS `In all cases, [conclusion].`
+
+NEVER use `Hence` inside a case — ALWAYS use `Therefore`.
+NEVER use `Hence` before the final closing line.
+
+Cases must satisfy two conditions:
+  ALWAYS exhaustive — every possibility is covered.
+  ALWAYS mutually exclusive — no overlap between cases.
+
+IF two cases are symmetric:
+  ALWAYS write `WLOG assume that [condition]. The case
+  [other condition] follows by symmetry, since [reason].`
+  NEVER write `by symmetry` without stating the reason.
+
+NEVER open cases when the result follows without splitting.
+
+== 4.4 Proof by Induction
+
+Opening: ALWAYS `Proceed by induction on $n$.`
+
+Base case: ALWAYS
+  `*Base case:* For $n = 1$, [verification].
+  Therefore $A(1)$ is true.`
+
+Inductive step opening: ALWAYS
+  `*Inductive step:* Assume that $A(n)$ is true for some
+  $n >= 1$, that is, [state inductive hypothesis explicitly].`
+
+ALWAYS state the inductive hypothesis explicitly, introduced by
+`that is` — NEVER by `i.e.` (Common.txt Section 18).
+NEVER announce what will be shown; the steps show it.
+ALWAYS write `by the inductive hypothesis` at every use.
+
+Inductive step closing: ALWAYS `Therefore $A(n+1)$ is true.`
+
+Final closing: ALWAYS
+  `By induction, [conclusion] for all $n in NN$.`
+
+== 4.5 Biconditional Proof
+
+Opening: NONE. The direction markers carry the structure, and
+an announcing sentence adds nothing.
+
+First direction: ALWAYS
+  `$(=>)$ Assume that $P$. [steps]. Therefore $Q$.`
+
+Second direction: ALWAYS
+  `$(arrow.l.double)$ Assume that $Q$. [steps]. Hence $P$.`
+
+ARROW NOTATION — verified against the Typst compiler:
+  `$=>$`              renders ⇒  (U+21D2)  — correct
+  `$arrow.l.double$`  renders ⇐  (U+21D0)  — correct
+  `$<=$`              renders ≤  (U+2264)  — NEVER use as an
+                      arrow; it is the relation "less than or
+                      equal to".
+NEVER use the long pair `$==>$` / `$<==$` (⟹ / ⟸).
+
+ALWAYS treat each direction as a complete separate proof
+with its own opening, body, and closing.
+NEVER use `Hence` in the first direction — ALWAYS `Therefore`.
+ALWAYS use `Hence` in the second direction — it is the
+final sentence of the overall proof.
+NEVER combine both directions in one paragraph.
+
+== 4.6 Proof by Contrapositive
+
+Opening: ALWAYS
+  `Prove the contrapositive. Assume that [negation of Q].`
+
+Closing: ALWAYS `Hence [negation of P].`
+
+ALWAYS state `Prove the contrapositive.` explicitly.
+NEVER begin a contrapositive proof without this statement.
+
+== 4.7 Existence and Uniqueness
+
+IF proving existence by construction:
+  ALWAYS `Construct [object] explicitly.`
+  Then construct the object and verify all conditions.
+  Closing: ALWAYS `Hence [object] exists.`
+
+IF proving existence non-constructively:
+  ALWAYS open with `Assume that [hypotheses].` and proceed;
+  NEVER announce what will be shown.
+  Closing: ALWAYS `Hence [object] exists.`
+
+IF proving uniqueness:
+  ALWAYS `Assume that $x$ and $y$ both satisfy [condition].
+  [steps]. Therefore $x = y$.`
+  Closing: ALWAYS `Hence [object] is unique.`
+
+IF proving both existence and uniqueness:
+  ALWAYS use step labels:
+  `*(i)* Existence. [proof]. Therefore [object] exists.`
+  `*(ii)* Uniqueness. [proof]. Hence [object] is unique.`
+  NEVER use `Hence` in step (i) — it is not the final sentence.
+  ALWAYS use `Hence` in step (ii) — it is the final sentence.
+
+== 4.8 Multi-Step Proofs
+
+IF a proof naturally splits into independent parts:
+  ALWAYS label steps as *(i)*, *(ii)*, *(iii)* in bold.
+  NEVER use `Step 1`, `Step (1)`, or arabic numerals.
+
+IF a proof is a single continuous argument:
+  NEVER use step labels.
+
+IF the proof involves a standard algorithm or procedure
+(for example Gram-Schmidt, Gaussian elimination, or the
+Euclidean algorithm):
+  `Step 1:`, `Step 2:`, etc. are PERMITTED for labeling
+  the stages of the algorithm.
+  NEVER use `Step N` labels for logical proof steps that
+  are not part of a named algorithm.
+
+= 5. Special Techniques
+
+== 5.1 Epsilon-N Proof (Sequence Limit)
+
+ALWAYS follow this structure exactly:
+
+  `Let $epsilon > 0$.`
+  `Choose $N in NN$ such that [condition on N], by [justification].`
+  `Then for all $n > N$:`
+  `  $|a_n - a| = [computation] < epsilon.$`
+  `Hence $a_n -> a$ as $n -> infinity$.`
+
+ALWAYS introduce $epsilon$ before $N$.
+NEVER choose $N$ before introducing $epsilon$.
+
+== 5.2 Epsilon-Delta Proof (Function Limit)
+
+ALWAYS follow this structure exactly:
+
+  `Let $epsilon > 0$. Set $delta = [expression in epsilon]$.`
+  `Assume that $0 < |[var] - [var_0]| < delta$. Then:`
+  `  $|f([var]) - L| = [computation] < epsilon.$`
+  `Hence $lim_([var] -> [var_0]) f([var]) = L$.`
+
+ALWAYS introduce $epsilon$ before $delta$.
+ALWAYS use `Set $delta = [...]$` — NEVER `Choose $delta$`.
+ALWAYS use `Assume that $0 < |[var] - [var_0]| < delta$.`
+where [var] is the appropriate variable for the field:
+  Complex Analysis: ALWAYS $z$ and $z_0$
+  Real analysis or ODE: ALWAYS $x$ and $x_0$, or $t$ and $t_0$
+NEVER use `Suppose that` — this is not a contradiction proof.
+
+== 5.3 Epsilon/2 Technique
+
+IF a proof requires two separate bounds to hold simultaneously:
+
+ALWAYS introduce $epsilon > 0$ first.
+
+ALWAYS find $N_1$ and $N_2$ separately:
+  `There exists $N_1 in NN$ such that $n > N_1$ implies
+  $|dots.c| < epsilon / 2$, since [sequence 1 converges].`
+  `There exists $N_2 in NN$ such that $n > N_2$ implies
+  $|dots.c| < epsilon / 2$, since [sequence 2 converges].`
+
+ALWAYS set $N = max{N_1, N_2}$.
+NEVER use $N_1$ or $N_2$ directly in the final bound.
+
+ALWAYS conclude:
+  `Hence for all $n > N$,
+  $|dots.c| <= |dots.c| + |dots.c| < epsilon/2 + epsilon/2
+  = epsilon$, by the Triangle Inequality.`
+
+== 5.4 Squeeze Argument
+
+IF a proof shows $lim a_n = L$ by bounding:
+
+ALWAYS establish explicitly: $b_n <= a_n <= c_n$ for all
+$n > N$ for some $N in NN$.
+
+ALWAYS show $lim_(n -> infinity) b_n = L$ and
+$lim_(n -> infinity) c_n = L$ separately, each justified.
+
+ALWAYS conclude:
+  `Hence $lim_(n -> infinity) a_n = L$,
+  by the Squeeze Theorem.`
+
+NEVER apply the Squeeze Theorem without first establishing
+all three conditions explicitly.
+
+= 6. Complex Analysis Proof Patterns
+
+== 6.1 Proving Analyticity via Cauchy–Riemann
+
+ALWAYS follow this structure:
+
+  `Let $f(z) = u(x, y) + i v(x, y)$ be defined on a
+  domain $D$.`
+  `[Show existence and continuity of first-order partial
+  derivatives of $u$ and $v$.]`
+  `Then $u_x = v_y$ and $u_y = -v_x$ at $(x_0, y_0)$,
+  by direct computation.`
+  `Hence $f$ is analytic at $z_0$,
+  by the Cauchy–Riemann Theorem.`
+
+ALWAYS introduce $f$ with $f(z) = u(x, y) + i v(x, y)$.
+ALWAYS write both Cauchy–Riemann equations explicitly.
+NEVER conclude analyticity without stating both equations.
+
+== 6.2 Proving a Function is Harmonic
+
+ALWAYS follow this structure:
+
+  `Let $u(x, y)$ be defined on a domain $D$.`
+  `[Compute $u_x$, $u_y$, $u_(x x)$, $u_(y y)$.]`
+  `Then $u_(x x) + u_(y y) = [computation] = 0$,
+  by direct computation.`
+  `Hence $u$ is harmonic in $D$.`
+
+ALWAYS compute second-order partial derivatives explicitly
+before stating that $u$ is harmonic.
+ALWAYS name the equation as $nabla^2 u = 0$ and show the
+computation as $u_(x x) + u_(y y)$ (Complex Analysis Section 6).
+ALWAYS write `harmonic in $D$` — NEVER `harmonic on $D$`.
+
+== 6.3 Contour Integral via Cauchy's Residue Theorem
+
+ALWAYS follow this structure:
+
+  `Let $C$ denote a positively oriented simple closed contour.`
+  `[Identify singular points of $f$ and determine which lie
+  interior to $C$.]`
+  `Therefore the singular points of $f$ interior to $C$ are
+  $z_1, z_2, dots.h, z_n$.`
+  `[Compute the residue at each singular point.]`
+  `Then $op("Res")_(z = z_k) f(z) = [value]$,
+  by direct computation, for $k = 1, 2, dots.h, n$.`
+  `Hence $integral_C f(z) dif z = 2 pi i sum_(k=1)^n
+  op("Res")_(z = z_k) f(z) = [value]$,
+  by Cauchy's Residue Theorem.`
+
+ALWAYS identify singular points before computing residues.
+ALWAYS write `interior to $C$` — NEVER `inside $C$`.
+
+== 6.4 Laurent Series Expansion
+
+ALWAYS follow this structure:
+
+  `Let $f$ be defined on the punctured disk
+  $0 < |z - z_0| < R$.`
+  `[Derive the series from known series or by direct
+  computation.]`
+  `Then $f(z) = sum_(n = -infinity)^(infinity)
+  c_n (z - z_0)^n$, by direct computation,
+  where $c_n = [value]$.`
+  `Hence the Laurent series of $f$ about $z_0$ is
+  $f(z) = sum_(n = -infinity)^(infinity) c_n (z - z_0)^n$
+  on the punctured disk $0 < |z - z_0| < R$.`
+
+ALWAYS write the validity condition in the final sentence.
+ALWAYS use the combined form $sum_(n=-infinity)^(infinity)$.
+ALWAYS write `Laurent series about $z_0$` —
+NEVER `Laurent series at $z_0$`.
+
+== 6.5 Liouville's Theorem Application
+
+ALWAYS follow this structure:
+
+  `Assume that $f$ is entire and bounded, that is, there exists
+  $M > 0$ such that $|f(z)| <= M$ for all $z in CC$.`
+  `Therefore $f'(z) = 0$ for all $z in CC$,
+  by Liouville's Theorem.`
+  `Therefore $f$ is constant on $CC$,
+  by the fact that $f' = 0$ on a domain implies $f$
+  is constant.`
+  `Hence $f$ is constant.`
+
+ALWAYS state boundedness explicitly with $M > 0$.
+ALWAYS use `entire` — NEVER `analytic everywhere`.
+
+== 6.6 Maximum Modulus Principle Application
+
+ALWAYS follow this structure:
+
+  `Assume that $f$ is analytic on a domain $D$ and
+  continuous on its closure $overline(D)$.`
+  `Assume that $f$ is not constant on $D$.`
+  `Therefore $|f(z)|$ attains its maximum on the boundary
+  $partial D$, not in the interior of $D$,
+  by the Maximum Modulus Principle.`
+  `Therefore $max_(z in overline(D)) |f(z)| =
+  max_(z in partial D) |f(z)|$.`
+  `Hence [conclusion].`
+
+ALWAYS state both conditions: analytic on $D$ and
+continuous on $overline(D)$.
+ALWAYS state explicitly that $f$ is not constant.
+
+== 6.7 Analytic Continuation Argument
+
+ALWAYS follow this structure:
+
+  `Assume that $f$ and $g$ are analytic in a domain $D$.`
+  `Assume that $f(z) = g(z)$ for all $z$ in a subset
+  $S subset.eq D$ where $S$ has an accumulation point in $D$.`
+  `Therefore $f(z) = g(z)$ for all $z in D$,
+  by the fact that two analytic functions that agree on a
+  set with an accumulation point in a domain agree on the
+  entire domain.`
+  `Hence $f = g$ on $D$.`
+
+ALWAYS state that $S$ has an accumulation point in $D$.
+ALWAYS write `agree on $D$` — NEVER `equal on $D$`.
+
+= 7. ODE Proof Patterns
+
+== 7.1 Finding the General Solution
+
+ALWAYS follow this structure:
+
+  `[Write the equation in standard form.]`
+  `Assume that $y = e^(r t)$ is a solution.`
+  `Then the characteristic equation is
+  $a r^2 + b r + c = 0$, by direct computation.`
+  `Then the roots are $r_1 = [value]$ and
+  $r_2 = [value]$, by direct computation.`
+  `[State the form of the general solution based on the
+  type of roots.]`
+  `Hence the general solution is $y = y_c (t) + Y(t)$,
+  by the fact that [structure of general solution].`
+
+ALWAYS write the characteristic equation in standard form
+$a r^2 + b r + c = 0$.
+ALWAYS state the type of roots explicitly — real distinct,
+complex, or repeated.
+ALWAYS use $y_c (t)$ for the complementary solution and
+$Y(t)$ for the particular solution.
+
+== 7.2 Verifying a Fundamental Set via Wronskian
+
+ALWAYS follow this structure:
+
+  `[Introduce $y_1$ and $y_2$.]`
+  `Then $W[y_1, y_2](t) = mat(y_1, y_2; y_1', y_2')
+  = [computation] = [value]$, by direct computation.`
+  `Therefore $W[y_1, y_2](t) != 0$ on $I$,
+  by the fact that [reason the value is nonzero].`
+  `Hence ${y_1, y_2}$ is a fundamental set of solutions
+  on $I$, by the fact that $W[y_1, y_2](t) != 0$.`
+
+ALWAYS write the Wronskian in determinant format:
+$mat(y_1, y_2; y_1', y_2')$.
+ALWAYS specify the interval $I$.
+
+== 7.3 Method of Variation of Parameters
+
+ALWAYS follow this structure:
+
+  `[The complementary solution $y_c (t) = c_1 y_1 (t) +
+  c_2 y_2 (t)$ must already be established.]`
+  `Assume that $Y(t) = u_1 (t) y_1 (t) + u_2 (t) y_2 (t)$.`
+  `Therefore $u_1' (t)$ and $u_2' (t)$ satisfy the system:`
+  `$ u_1' y_1 + u_2' y_2 = 0 $`
+  `$ u_1' y_1' + u_2' y_2' = g(t), $`
+  `by the method of variation of parameters.`
+  `Then $u_1' (t) = [value]$ and $u_2' (t) = [value]$,
+  by direct computation using $W[y_1, y_2](t)$.`
+  `Then $u_1 (t) = [integral]$ and
+  $u_2 (t) = [integral]$, by direct computation.`
+  `Hence $Y(t) = u_1 (t) y_1 (t) + u_2 (t) y_2 (t)$.`
+
+ALWAYS establish $y_c (t)$ before applying this method.
+ALWAYS use $W[y_1, y_2](t)$ to compute $u_1'$ and $u_2'$.
+
+== 7.4 Solving an IVP via Laplace Transform
+
+ALWAYS follow this structure:
+
+  `[Write the equation in standard form.]`
+  `Assume that $y(t)$ satisfies the initial value problem.`
+  `Therefore $cal(L){y'} = s cal(L){y} - y(0)$ and
+  $cal(L){y''} = s^2 cal(L){y} - s y(0) - y'(0)$,
+  by the fact that these are standard Laplace transform
+  properties.`
+  `[Apply the Laplace transform to each term.]`
+  `Then $cal(L){y(t)} = F(s) = [value]$,
+  by direct computation.`
+  `[Apply partial fractions or use a table.]`
+  `Hence $y(t) = cal(L)^(-1){F(s)} = [value]$,
+  by inverting the transform.`
+
+ALWAYS use $cal(L){y}$ — NEVER $Y(s)$ or any other letter.
+ALWAYS write `by inverting the transform` —
+NEVER `by taking the inverse Laplace transform`.
+
+== 7.5 Existence and Uniqueness for a First-Order IVP
+
+ALWAYS follow this structure:
+
+  `[Write the equation in standard form: $y' + p(t) y = g(t)$.]`
+  `Therefore the equation is linear and of first order,
+  by the fact that [standard form].`
+  `Assume that $p(t)$ and $g(t)$ are continuous on an open
+  interval $I$ containing $t_0$.`
+  `Therefore a unique solution $phi(t)$ exists on $I$,
+  by the Existence and Uniqueness Theorem.`
+  `Hence the initial value problem has a unique solution
+  $phi(t)$ on $I$.`
+
+ALWAYS write the equation in standard form first.
+ALWAYS state continuity of $p(t)$ and $g(t)$ explicitly.
+ALWAYS use $phi(t)$ for the solution function.

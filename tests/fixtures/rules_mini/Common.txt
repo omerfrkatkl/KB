@@ -1,0 +1,49 @@
+// ============================================================
+// A miniature Common.txt for the golden compilation test.
+// Written to exercise every shape the compiler recognises, and
+// three it must refuse.
+// ============================================================
+
+= 13. Compound Adjectives
+
+ALWAYS hyphenate the following:
+
+  non-zero, non-empty, well-defined
+
+NEVER write these without hyphens.
+
+= 14. Forbidden Words and Phrases
+
+The following are NEVER used:
+
+  "clearly" — forbidden
+  "so" — NEVER write "so" to connect logical steps.
+  ALWAYS write "so" only in fixed phrases: "and so on",
+  "do so". In all other contexts NEVER write "so".
+
+= 15. Proof Language
+
+== 15.2 Logical Transitions Within a Proof
+
+[MOVED] Owned by Proof_Style.txt Section 3.2. This section
+formerly mandated ALWAYS "Therefore" for every intermediate
+step — NEVER "Then". That rule is withdrawn.
+
+= 16. Positive vs. Non-Negative
+
+"positive" — ALWAYS means strictly greater than zero.
+NEVER use "positive" to mean $x >= 0$.
+
+= 17. Theorem and Definition Names
+
+ALWAYS write theorem names in full.
+
+  Mean Value Theorem — NEVER MVT
+
+= 18. Miscellaneous Language Rules
+
+"that is" — ALWAYS in full. NEVER "i.e." or "i.e"
+
+= 2. Set Theory
+
+ALWAYS use $subset.eq$ — NEVER $subset$.

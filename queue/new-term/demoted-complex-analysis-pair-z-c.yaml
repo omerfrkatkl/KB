@@ -1,0 +1,14 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-z-c
+payload:
+  field: complex-analysis
+  term: $z^c$
+  proposed_canonical: $z^c = exp(c dot.op log(z))$
+  section: complex-analysis §3.4
+  evidence: 'For $z^c$ where $c$ is complex: ALWAYS define via $z^c = exp(c dot.op log(z))$ and state
+    which branch of $log(z)$ is being used. NEVER write $z^c$ without specifying the branch.'
+  why: 'complex-analysis §3.4 bans “$z^c$”, but complex-analysis.txt §17.9 mandates it: “ALWAYS "principal
+    branch of $z^c$" — NEVER "principal value branch".”. Enforcing the pair would rewrite text the documents
+    require. A conflicting use is a fact about the documents, so no allowlist entry overrides it.'
+context_paths: []

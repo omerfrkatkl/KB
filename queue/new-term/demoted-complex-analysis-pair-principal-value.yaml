@@ -1,0 +1,16 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-complex-analysis-pair-principal-value
+payload:
+  field: complex-analysis
+  term: principal value
+  proposed_canonical: principal branch
+  section: complex-analysis §3.3
+  evidence: ALWAYS use "principal branch" when referring to $Log(z)$. NEVER use "principal value" 
+    for the logarithm.
+  why: 'complex-analysis §3.3 bans “principal value”, but complex-analysis.txt §15 mandates it: “When
+    the Cauchy principal value of an improper integral is meant: ALWAYS write "Cauchy principal value
+    of $integral_(-infinity)^(infinity) f(x) dif x$" in full.”. Enforcing the pair would rewrite text
+    the documents require. A conflicting use is a fact about the documents, so no allowlist entry overrides
+    it.'
+context_paths: []

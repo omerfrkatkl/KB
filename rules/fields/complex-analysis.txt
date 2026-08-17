@@ -1,0 +1,663 @@
+// ============================================================
+// Complex Analysis.typ
+// Field-specific notation and language conventions
+// Applies to all Complex Analysis documents
+// Supplement to Common.typ — both files apply simultaneously
+// Primary source: Brown & Churchill, Complex Variables and
+// Applications, 9th edition
+// ============================================================
+
+// ------------------------------------------------------------
+// HOW TO READ THIS FILE
+//
+// Each rule is stated in one of three forms:
+//
+//   ALWAYS   — the only acceptable form, no exceptions
+//   NEVER    — forbidden in all contexts, no exceptions
+//   IF...THEN — context-dependent rule, fully specified
+//
+// No rule is open to interpretation. Every rule has exactly
+// one correct output for every input situation.
+//
+// PRECEDENCE and OWNERSHIP: see the header of Common.txt.
+// This file has highest precedence for Complex Analysis
+// documents and wins over Common.txt and Proof_Style.txt on
+// any conflict.
+// ------------------------------------------------------------
+
+= 1. Complex Numbers
+
+== 1.1 Standard Form
+
+ALWAYS write a complex number as $z = x + i y$.
+NEVER write $z = x + y i$.
+The imaginary unit is ALWAYS $i$.
+NEVER use $j$ for the imaginary unit.
+
+== 1.2 Real and Imaginary Parts
+
+ALWAYS write $Re(z)$ and $Im(z)$ with parentheses.
+NEVER write $Re z$ or $Im z$ without parentheses.
+This applies regardless of how simple the argument is:
+  ALWAYS $Re(z)$, $Re(z_0)$, $Re(z_1 + z_2)$, $Re(e^z)$
+
+The following identities hold by definition and are always
+written in this form:
+  $Re(z) = (z + overline(z)) / 2$
+  $Im(z) = (z - overline(z)) / (2i)$
+
+== 1.3 Modulus
+
+The modulus of $z$ is ALWAYS written $|z|$.
+NEVER write $"mod"(z)$, $abs(z)$, or $r$ without defining it.
+
+The following identity is standard and written as:
+  $|z|^2 = [Re(z)]^2 + [Im(z)]^2$
+
+ALWAYS use square brackets around $Re(z)$ and $Im(z)$
+when they are raised to a power, to avoid ambiguity.
+
+== 1.4 Complex Conjugate
+
+ALWAYS write $overline(z)$ for the complex conjugate of $z$.
+NEVER use $z^*$ or $z^"c"$ or any other notation.
+
+Standard identities written in fixed form:
+  $z dot.op overline(z) = |z|^2$
+  $overline(z_1 + z_2) = overline(z_1) + overline(z_2)$
+  $overline(z_1 z_2) = overline(z_1) dot.op overline(z_2)$
+
+= 2. Polar Form and Argument
+
+== 2.1 Polar Form
+
+ALWAYS write the polar (exponential) form as $z = r e^(i theta)$.
+NEVER write $z = r(cos theta + i sin theta)$ except when
+stating Euler's formula itself.
+
+Euler's formula is stated as:
+  $e^(i theta) = cos(theta) + i sin(theta)$
+
+This is the ONLY context where trigonometric polar form appears.
+
+== 2.2 Argument
+
+Multi-valued argument: ALWAYS $arg(z)$ with parentheses.
+Principal argument: ALWAYS $Arg(z)$ with capital A and parentheses.
+NEVER write $arg z$ or $Arg z$ without parentheses.
+NEVER write $"arg"(z)$ — use the upright $arg$ operator.
+
+The principal argument satisfies $-pi < Arg(z) <= pi$.
+
+The relation between argument and principal argument:
+  $arg(z) = Arg(z) + 2n pi$ where $n = 0, plus.minus 1,
+  plus.minus 2, dots.h$
+
+ALWAYS write $n = 0, plus.minus 1, plus.minus 2, dots.h$
+when listing the integer parameter — NEVER write
+$n in ZZ$ for this purpose.
+
+== 2.3 Exponential Form
+
+IF the exponent is of the form $i alpha$ where $alpha$ is
+a single symbol (one letter, possibly subscripted):
+  ALWAYS use $e^(i alpha)$
+  Examples: $e^(i theta)$, $e^(i theta_0)$, $e^(i z)$
+
+IF the exponent contains a negative sign, arithmetic
+operations, or multiple terms:
+  ALWAYS use $exp(dots.c)$
+  Examples: $exp(-i theta)$, $exp(i(theta_1 + theta_2)/2)$,
+  $exp(-i z)$
+
+NEVER mix these forms for the same expression.
+
+= 3. Logarithm and Power Functions
+
+== 3.1 Real Logarithm
+
+ALWAYS use $ln$ for the real natural logarithm.
+NEVER use $log$ for the real logarithm.
+
+== 3.2 Complex Logarithm
+
+Multi-valued complex logarithm: ALWAYS $log(z)$ with parentheses.
+Principal branch: ALWAYS $Log(z)$ with capital L and parentheses.
+NEVER write $log z$ or $Log z$ without parentheses.
+
+Standard form of the complex logarithm:
+  $log(z) = ln r + i(theta + 2n pi)$
+  where $r = |z|$ and $theta = arg(z)$
+
+Standard form of the principal branch:
+  $Log(z) = ln r + i Theta$
+  where $Theta = Arg(z)$ and $-pi < Theta <= pi$
+
+Relation: $log(z) = Log(z) + 2n pi i$
+
+== 3.3 Branches
+
+ALWAYS use the phrase "branch of $log(z)$" — not
+"branch of the logarithm" alone.
+
+ALWAYS use "principal branch" when referring to $Log(z)$.
+NEVER use "principal value" for the logarithm.
+
+ALWAYS use "branch cut" (two words, no hyphen).
+ALWAYS use "branch point" (two words, no hyphen).
+NEVER write "branchcut" or "branch-cut".
+
+== 3.4 Complex Powers
+
+For $z^c$ where $c$ is complex: ALWAYS define via
+  $z^c = exp(c dot.op log(z))$
+and state which branch of $log(z)$ is being used.
+NEVER write $z^c$ without specifying the branch.
+
+== 3.5 Roots
+
+The $n$-th roots of $z$ are ALWAYS written as a set:
+  ${ w : w^n = z }$
+
+A specific $n$-th root is ALWAYS indexed: $c_k$ for
+$k = 0, 1, dots.h, n-1$.
+The principal root is $c_0$.
+NEVER write $z^(1/n)$ without clarifying which root.
+
+= 4. Elementary Functions
+
+== 4.1 Trigonometric Functions
+
+Definitions in terms of exponentials:
+  $sin(z) = (e^(i z) - exp(-i z)) / (2i)$
+  $cos(z) = (e^(i z) + exp(-i z)) / 2$
+
+ALWAYS write $sin(z)$, $cos(z)$, $tan(z)$, $cot(z)$,
+$sec(z)$, $csc(z)$ with parentheses.
+
+== 4.2 Hyperbolic Functions
+
+ALWAYS write $sinh(z)$, $cosh(z)$, $tanh(z)$ with parentheses.
+NEVER write $sinh z$ or $cosh z$ without parentheses.
+
+== 4.3 Inverse Functions
+
+ALWAYS use $arcsin(z)$, $arccos(z)$, $arctan(z)$.
+NEVER use $sin^(-1)(z)$, $cos^(-1)(z)$, $tan^(-1)(z)$.
+
+ALWAYS use $"arcsinh"(z)$, $"arccosh"(z)$, $"arctanh"(z)$.
+NEVER use $sinh^(-1)(z)$, etc.
+
+== 4.4 Zeros of Functions
+
+ALWAYS use "a zero of $f$" for a point where $f(z) = 0$.
+NEVER use "a root of $f$" — reserve "root" for equations,
+not for zeros of functions.
+
+ALWAYS use "zero of order $m$" — NEVER "zero of multiplicity $m$".
+
+= 5. Analytic Functions
+
+== 5.1 Terminology for Analyticity
+
+ALWAYS use "analytic" for the property of complex
+differentiability in a neighborhood.
+NEVER use "regular" or "holomorphic" — these are synonyms
+but are forbidden for consistency.
+
+ALWAYS use "entire function" for a function analytic
+everywhere in the complex plane.
+ALWAYS write "an entire function" — NEVER "entire" as a
+standalone adjective without "function".
+
+== 5.2 Cauchy–Riemann Equations
+
+ALWAYS write the Cauchy–Riemann equations as:
+  $u_x = v_y, quad u_y = -v_x$
+
+In polar coordinates:
+  $r u_r = v_theta, quad u_theta = -r v_r$
+
+NEVER write Cauchy–Riemann equations using $diff$ notation.
+The subscript form is the ONLY acceptable form.
+
+== 5.3 Component Functions
+
+When $f(z) = u(x, y) + i v(x, y)$:
+  $u$ ALWAYS denotes the real part of $f$
+  $v$ ALWAYS denotes the imaginary part of $f$
+
+NEVER use other letters for the real and imaginary components
+of a complex function without explicit redefinition.
+
+== 5.4 Domain and Domain of Definition
+
+These are two different concepts and the words are not
+interchangeable.
+
+"domain" — ALWAYS means a connected open set, and nothing else.
+  Example: "Let $D$ be a domain."
+
+"domain of definition" — ALWAYS the full phrase, for the set on
+  which a function is defined.
+  Example: "the domain of definition of $f$"
+  NEVER write "domain" alone in this sense.
+
+== 5.5 Mapping Terminology
+
+ALWAYS use "mapping" — NEVER "transformation" for
+the act of applying $f$.
+ALWAYS write $w = f(z)$ for a mapping from the $z$ plane
+to the $w$ plane.
+NEVER write $f : z mapsto w$ in any context.
+
+Image of a set $A$: ALWAYS $f(A)$.
+Range of $f$: ALWAYS $f(S)$ where $S$ is the domain
+of definition. The word "range" is used only for this case.
+NEVER use "range" for the image of a proper subset.
+NEVER use "codomain".
+
+= 6. Harmonic Functions
+
+ALWAYS use the phrase "[function] is harmonic in $D$"
+where [function] is whatever letter denotes the function.
+NEVER write "harmonic on $D$" — always "harmonic in $D$".
+
+Laplace's equation: ALWAYS named and stated as $nabla^2 u = 0$.
+NEVER write $Delta u = 0$ for it.
+NEVER write $u_(x x) + u_(y y) = 0$ as the NAME of the equation.
+
+The subscript form is permitted, and required, when SHOWING the
+computation of the partial derivatives:
+  ALWAYS "Then $u_(x x) + u_(y y) = [computation] = 0$, by
+  direct computation."
+  ALWAYS conclude with "Hence $u$ is harmonic in $D$." — never
+  by restating Laplace's equation as a justification.
+
+ALWAYS use "harmonic conjugate of $u$" — NEVER "conjugate
+harmonic function".
+
+= 7. Curves and Contours
+
+== 7.1 Curve Terminology
+
+ALWAYS use "simple arc" — NEVER "Jordan arc".
+ALWAYS use "simple closed curve" — NEVER "Jordan curve".
+ALWAYS use "smooth arc" for a differentiable arc with
+non-zero derivative on the open interval.
+ALWAYS use "contour" for a piecewise smooth arc.
+
+== 7.2 Orientation
+
+ALWAYS use "positively oriented" for counterclockwise
+orientation.
+ALWAYS use "negatively oriented" for clockwise orientation.
+NEVER write "counterclockwise direction" or "clockwise
+direction" as the primary description — use the orientation
+terminology above.
+
+== 7.3 Contour Operations
+
+Reversed contour: ALWAYS $-C$.
+Sum of contours: ALWAYS $C = C_1 + C_2$.
+Difference: ALWAYS $C = C_1 - C_2$.
+
+== 7.4 Punctured Disk
+
+ALWAYS use "punctured disk" for the set $0 < |z - z_0| < R$.
+NEVER use "deleted neighborhood" for the set
+$0 < |z - z_0| < R$.
+
+The ban is scoped to that set. A neighborhood of infinity is
+$|z| > 1/epsilon$ (Section 17.1), which is not a disk, so
+"punctured disk" is NEVER the substitute there.
+
+= 8. Contour Integrals
+
+ALWAYS write $integral_C f(z) dif z$ — the contour $C$
+appears as a subscript.
+ALWAYS write $dif z$ for the differential — this is the
+correct Typst notation for the differential operator.
+NEVER write $d z$ (with space) or $dz$ (without space,
+not a differential in Typst).
+
+ALWAYS use "contour integral" — NEVER "line integral"
+when referring to integration in the complex plane.
+
+Reversed contour: $integral_(-C) f(z) dif z = -integral_C f(z) dif z$
+
+Contour sum: $integral_(C_1 + C_2) f(z) dif z =
+integral_(C_1) f(z) dif z + integral_(C_2) f(z) dif z$
+
+Double integrals over a region $R$: ALWAYS $integral.double_R$.
+NEVER write $integral integral_R$.
+
+= 9. Key Theorems
+
+The complete list of theorem names is owned by Section 18.
+ALWAYS cite by the full name given there. NEVER cite by
+theorem number. If a result has no standard name, cite it by
+its citation form (Common.txt Section 21.3).
+
+= 9.1 "Interior to and on C"
+
+ALWAYS write "interior to and on $C$" — this phrase is fixed.
+NEVER write "inside and on $C$" or "within and on $C$".
+
+= 10. Series
+
+== 10.1 Taylor Series
+
+ALWAYS write:
+  $f(z) = sum_(n=0)^(infinity) a_n (z - z_0)^n
+  quad (|z - z_0| < R_0)$
+
+The validity condition is ALWAYS written immediately after
+the series, in the same line, inside parentheses.
+
+Taylor coefficients: ALWAYS $a_n = f^((n))(z_0) / n!$
+
+ALWAYS write "Taylor series about $z_0$".
+NEVER write "Taylor series at $z_0$" or "Taylor series
+centered at $z_0$".
+
+The special case $z_0 = 0$: ALWAYS "Maclaurin series".
+NEVER "Taylor series about the origin".
+
+Remainder term: ALWAYS $rho_N (z)$.
+
+== 10.2 Laurent Series
+
+ALWAYS write the combined form:
+  $f(z) = sum_(n=-infinity)^(infinity) c_n (z - z_0)^n
+  quad (R_1 < |z - z_0| < R_2)$
+
+NEVER write the split form with separate $a_n$ and $b_n$
+series — the combined form is the ONLY acceptable form.
+
+Laurent coefficients:
+  $c_n = 1/(2 pi i) integral_C f(z)/(z - z_0)^(n+1) dif z
+  quad (n = 0, plus.minus 1, plus.minus 2, dots.h)$
+
+"Principal part of $f$ at $z_0$":
+  ALWAYS this phrase for the negative-power terms.
+  NEVER "singular part".
+
+= 11. Residues and Poles
+
+== 11.1 Residue Notation
+
+ALWAYS write:
+  $op("Res")_(z = z_0) f(z)$
+
+NEVER write $"Res"(f, z_0)$ or $"res"_(z=z_0) f(z)$
+(lowercase r is forbidden).
+NEVER abbreviate as $B$, $B_k$, or any other letter.
+
+Residue at infinity: ALWAYS $op("Res")_(z = infinity) f(z)$.
+
+== 11.2 Singular Points
+
+ALWAYS use "isolated singular point" — NEVER "isolated singularity".
+ALWAYS use "removable singular point" — NEVER "removable singularity".
+ALWAYS use "essential singular point" — NEVER "essential singularity".
+
+Pole terminology:
+  Order 1: ALWAYS "simple pole" — NEVER "pole of order 1".
+  Order $m >= 2$: ALWAYS "pole of order $m$".
+
+== 11.3 Auxiliary Function at Poles
+
+When writing $f(z) = phi(z) / (z - z_0)^m$:
+  ALWAYS use $phi$ for the auxiliary analytic function.
+  ALWAYS verify and state that $phi(z_0) != 0$.
+
+Residue formula:
+  $op("Res")_(z = z_0) f(z) = phi^((m-1))(z_0) / (m-1)!$
+
+== 11.4 Cauchy's Residue Theorem
+
+$integral_C f(z) dif z = 2 pi i sum_(k=1)^(n)
+op("Res")_(z = z_k) f(z)$
+
+ALWAYS name the singular points as $z_k$ ($k = 1, 2, dots.h, n$).
+
+== 11.5 Cauchy Integral Formula
+
+$f(z_0) = 1/(2 pi i) integral_C f(z)/(z - z_0) dif z$
+
+Extended form:
+$f^((n))(z_0) = n!/(2 pi i) integral_C f(z)/(z - z_0)^(n+1) dif z
+quad (n = 0, 1, 2, dots.h)$
+
+IF two variables are needed in the integrand (fixed point $z$
+and integration variable): ALWAYS use $s$ for the integration
+variable and $z$ for the fixed point.
+
+= 12. Conformal Mappings
+
+ALWAYS use "conformal mapping" — NEVER "conformal map"
+(use the full word "mapping").
+NEVER use "transformation" as a generic descriptor for a
+conformal mapping.
+EXCEPTION: The following are proper names and must always
+be cited in full — the word "transformation" in these names
+is not a generic descriptor:
+  "Schwarz–Christoffel Transformation"
+  "linear fractional transformation"
+
+ALWAYS write "$f$ is conformal at $z_0$" when $f$ is analytic
+and $f'(z_0) != 0$.
+ALWAYS write "$f$ is a conformal mapping in $D$" for the
+domain-wide property.
+
+ALWAYS use "critical point of $f$" for a point where $f'(z_0) = 0$.
+ALWAYS use "isogonal mapping" for an angle-magnitude-preserving
+but not angle-sense-preserving map.
+
+Image of a curve $C$: ALWAYS denoted $Gamma$.
+
+= 13. Linear Fractional Transformations
+
+ALWAYS use "linear fractional transformation".
+NEVER use "Möbius transformation" or "bilinear transformation".
+
+Standard form: ALWAYS $w = (a z + b) / (c z + d)$
+with condition $(a d - b c != 0)$ written explicitly.
+
+ALWAYS use "extended $z$ plane" when $z$ is the domain
+variable. For the full rule on extended planes, see
+Section 17.1.
+NEVER use "Riemann sphere" in linear fractional transformation
+context — it is reserved for stereographic projection only.
+
+= 14. Fluid Flow Terminology
+
+These conventions apply when complex analysis is used in
+physical applications.
+
+ALWAYS use "velocity potential" for $phi(x, y)$.
+ALWAYS use "stream function" for $psi(x, y)$.
+ALWAYS use "complex potential" for $F(z) = phi + i psi$.
+ALWAYS use "equipotential" (one word, no hyphen) for
+level curves $phi(x, y) = c_1$.
+ALWAYS use "streamline" (one word, no hyphen) for
+level curves $psi(x, y) = c_2$.
+
+= 15. Improper Integrals
+
+When the Cauchy principal value of an improper integral
+is meant: ALWAYS write "Cauchy principal value of
+$integral_(-infinity)^(infinity) f(x) dif x$" in full.
+NEVER abbreviate as "P.V." or "p.v.".
+
+= 16. Variable Naming Conventions
+
+In complex analysis, the following letter assignments are
+fixed unless explicitly redefined:
+
+  $z = x + i y$ — complex variable in the domain
+  $w = u + i v$ — complex variable in the codomain
+  $f, g, h$ — complex-valued functions
+  $u, v$ — real and imaginary components of $f$
+  $r, theta$ — polar coordinates of $z$
+  $R$ — radius (of a disk, circle, or region)
+  $epsilon, delta$ — small positive real numbers
+  $n, m, k$ — integer indices
+  $a_n, c_n$ — series coefficients
+  $phi$ — auxiliary analytic function at a pole
+  $Gamma$ — image of a curve under a mapping
+  $C$ — contour in the $z$ plane
+  $C_rho$ — circle of radius $rho$ centered at $z_0$
+
+NEVER reassign these letters without explicit statement.
+
+= 17. Additional Terminology
+
+== 17.1 Regions and Topology
+
+ALWAYS use "region" for a domain together with some,
+none, or all of its boundary points.
+NEVER use "region" as a synonym for "domain".
+
+ALWAYS use "simply connected domain" — NEVER "simply
+connected region".
+ALWAYS use "multiply connected domain" — NEVER "multiply
+connected region".
+
+ALWAYS use "accumulation point" — NEVER "limit point".
+
+ALWAYS use "the point at infinity" — ALWAYS with "the".
+NEVER write "infinity" alone as a point.
+
+Neighborhood of infinity: ALWAYS $|z| > 1/epsilon$.
+
+Extended planes:
+  ALWAYS "extended complex plane" — for $CC union {infinity}$
+  in general context.
+  ALWAYS "extended $z$ plane" — when $z$ is the domain variable.
+  ALWAYS "extended $w$ plane" — when $w$ is the codomain variable.
+  ALWAYS "Riemann sphere" — only for the geometric sphere model
+  in the context of stereographic projection.
+  NEVER use these interchangeably.
+
+== 17.2 Differentiability
+
+ALWAYS "differentiable at $z_0$" — NEVER "has a derivative
+at $z_0$" or "is derivable at $z_0$".
+
+$Delta z$ and $Delta w$: ALWAYS use upright Delta.
+NEVER use $delta z$ (lowercase delta) for increments.
+
+== 17.3 Meromorphic Functions
+
+ALWAYS "meromorphic in $D$" — NEVER "meromorphic on $D$".
+
+== 17.4 Antiderivatives
+
+ALWAYS "antiderivative of $f$" — NEVER "primitive of $f$"
+or "indefinite integral of $f$".
+
+ALWAYS "independent of path" — NEVER "path-independent".
+
+Evaluation: ALWAYS $F(z) |_(z_1)^(z_2) = F(z_2) - F(z_1)$.
+NEVER $[F(z)]_(z_1)^(z_2)$.
+
+== 17.5 ML Inequality
+
+ALWAYS "the ML inequality" when referring to the bound
+$|integral_C f(z) dif z| <= M L$.
+NEVER cite by theorem number.
+$L$ ALWAYS denotes the length of the contour $C$.
+
+== 17.6 Argument Principle
+
+ALWAYS "Argument Principle" with capital letters.
+
+Winding number: ALWAYS "winding number of $Gamma$ with
+respect to the origin".
+Notation: ALWAYS $Delta_C arg(f(z))$ for the change in
+argument as $z$ traverses $C$.
+
+In the Argument Principle:
+  ALWAYS $Z$ for the number of zeros interior to $C$.
+  ALWAYS $P$ for the number of poles interior to $C$.
+
+== 17.7 Rouché's Theorem
+
+ALWAYS "Rouché's Theorem" — with accent on the e.
+NEVER "Rouche's Theorem" without accent.
+
+== 17.8 Reflection Principle
+
+ALWAYS "Reflection Principle" — NEVER "Schwarz Reflection
+Principle".
+
+== 17.9 Power Functions
+
+ALWAYS "principal branch of $z^c$" — NEVER "principal
+value branch".
+ALWAYS "principal value of $z^c$" written in full —
+NEVER "P.V. $z^c$".
+
+When defining $z^c$: ALWAYS state which branch of $log(z)$
+is being used.
+
+== 17.10 Inverse Laplace Transforms
+
+ALWAYS "Bromwich integral" for
+$1/(2 pi i) integral_(gamma - i infinity)^(gamma + i infinity)
+e^(s t) F(s) dif s$.
+
+Laplace transform pair:
+  ALWAYS $F(s)$ for the transform.
+  ALWAYS $f(t)$ for the original function.
+
+== 17.11 Boundary Value Problems
+
+ALWAYS "Dirichlet problem" — NEVER "Dirichlet boundary
+value problem".
+ALWAYS "Neumann problem" — NEVER "Neumann boundary value
+problem".
+ALWAYS "normal derivative" — NEVER "outward normal
+derivative" in any context.
+The normal derivative $partial u \/ partial n$ is ALWAYS taken
+with respect to the OUTWARD normal. This convention is fixed
+here once so that the unqualified phrase is unambiguous
+wherever it appears; it is what makes the ban above lossless.
+
+Poisson kernel: ALWAYS $P(r_0, r, phi - theta)$ with all
+three arguments.
+ALWAYS "Poisson Integral Formula" — listed under theorem
+names.
+ALWAYS "Poisson kernel" — NEVER "Poisson integral kernel".
+
+== 17.12 Inverse Points
+
+ALWAYS "the inverse of $z$ with respect to the circle" —
+NEVER "reflection of $z$" or "symmetric point of $z$".
+
+= 18. Complete Theorem Name List
+
+The single authoritative list. ALWAYS cite by the full name
+below. NEVER cite by number. If a result is not on this list
+and has no standard name, cite it by its citation form
+(Common.txt Section 21.3).
+
+  Argument Principle
+  Bromwich integral (not a theorem name — see Section 17.10)
+  Cauchy Integral Formula
+  Cauchy's Inequality
+  Cauchy's Residue Theorem
+  Cauchy–Goursat Theorem (em dash)
+  Fundamental Theorem of Algebra
+  Liouville's Theorem
+  Maximum Modulus Principle
+  ML inequality (see Section 17.5)
+  Picard's Theorem
+  Poisson Integral Formula
+  Reflection Principle
+  Rouché's Theorem (accent required)
+  Schwarz–Christoffel Transformation (em dash)
+  Taylor's Theorem
+  Laurent's Theorem

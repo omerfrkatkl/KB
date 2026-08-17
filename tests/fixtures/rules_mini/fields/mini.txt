@@ -1,0 +1,24 @@
+// A miniature field document.
+
+= 1. Terminology
+
+ALWAYS use "analytic" — NEVER "holomorphic" or "regular".
+
+ALWAYS write "an entire function" — NEVER "entire" as a
+standalone adjective without "function".
+
+ALWAYS use "mapping" — NEVER "transformation" for the act of
+applying $f$.
+
+ALWAYS use "linear fractional transformation".
+NEVER use "Möbius transformation".
+
+= 2. Two-sentence rulings are proposals, not rulings
+
+ALWAYS use "branch cut" (two words, no hyphen).
+ALWAYS use "branch point" (two words, no hyphen).
+NEVER write "branchcut" or "branch-cut".
+
+= 3. Notation
+
+ALWAYS write $overline(z)$ — NEVER $z^*$.

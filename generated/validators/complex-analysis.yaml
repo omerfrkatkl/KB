@@ -1,0 +1,751 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+rules:
+- id: abbr-evt
+  section: Common §17
+  kind: substitute
+  pattern: \bEVT\b
+  message: "'EVT' must be written in full as 'Extreme Value Theorem' (Common §17)"
+  fix: Extreme Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-ftc
+  section: Common §17
+  kind: substitute
+  pattern: \bFTC\b
+  message: "'FTC' must be written in full as 'Fundamental Theorem of Calculus' (Common §17)"
+  fix: Fundamental Theorem of Calculus
+  scope: prose
+  except_phrases: []
+- id: abbr-ivt
+  section: Common §17
+  kind: substitute
+  pattern: \bIVT\b
+  message: "'IVT' must be written in full as 'Intermediate Value Theorem' (Common §17)"
+  fix: Intermediate Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-mvt
+  section: Common §17
+  kind: substitute
+  pattern: \bMVT\b
+  message: "'MVT' must be written in full as 'Mean Value Theorem' (Common §17)"
+  fix: Mean Value Theorem
+  scope: prose
+  except_phrases: []
+- id: abbr-t-i
+  section: Common §17
+  kind: substitute
+  pattern: \bT\.I\.
+  message: "'T.I.' must be written in full as 'Triangle Inequality' (Common §17)"
+  fix: Triangle Inequality
+  scope: prose
+  except_phrases: []
+- id: forbid-clearly
+  section: Common §14
+  kind: forbidden
+  pattern: \bclearly\b
+  message: "'clearly' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-it-follows-that
+  section: Common §14
+  kind: forbidden
+  pattern: \bit\ follows\ that\b
+  message: "'it follows that' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-it-is-easy-to-see
+  section: Common §14
+  kind: forbidden
+  pattern: \bit\ is\ easy\ to\ see\b
+  message: "'it is easy to see' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-obviously
+  section: Common §14
+  kind: forbidden
+  pattern: \bobviously\b
+  message: "'obviously' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-one-can-show
+  section: Common §14
+  kind: forbidden
+  pattern: \bone\ can\ show\b
+  message: "'one can show' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-so
+  section: Common §14
+  kind: forbidden
+  pattern: \bso\b
+  message: "'so' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases:
+  - and so on
+  - do so
+  - even so
+  - if so
+- id: forbid-thus
+  section: Common §14
+  kind: forbidden
+  pattern: \bthus\b
+  message: "'thus' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-trivially
+  section: Common §14
+  kind: forbidden
+  pattern: \btrivially\b
+  message: "'trivially' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: forbid-we
+  section: Common §14
+  kind: forbidden
+  pattern: \bwe\b
+  message: "'we' is forbidden in all mathematical text (Common §14)"
+  fix:
+  scope: prose
+  except_phrases: []
+- id: hyph-finite-dimensional
+  section: Common §13
+  kind: hyphenation
+  pattern: \bfinitedimensional\b
+  message: "'finitedimensional' must be written 'finite-dimensional' (Common §13)"
+  fix: finite-dimensional
+  scope: prose
+  except_phrases: []
+- id: hyph-infinite-dimensional
+  section: Common §13
+  kind: hyphenation
+  pattern: \binfinitedimensional\b
+  message: "'infinitedimensional' must be written 'infinite-dimensional' (Common §13)"
+  fix: infinite-dimensional
+  scope: prose
+  except_phrases: []
+- id: hyph-non-commutative
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnoncommutative\b
+  message: "'noncommutative' must be written 'non-commutative' (Common §13)"
+  fix: non-commutative
+  scope: prose
+  except_phrases: []
+- id: hyph-non-degenerate
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnondegenerate\b
+  message: "'nondegenerate' must be written 'non-degenerate' (Common §13)"
+  fix: non-degenerate
+  scope: prose
+  except_phrases: []
+- id: hyph-non-empty
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonempty\b
+  message: "'nonempty' must be written 'non-empty' (Common §13)"
+  fix: non-empty
+  scope: prose
+  except_phrases: []
+- id: hyph-non-negative
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonnegative\b
+  message: "'nonnegative' must be written 'non-negative' (Common §13)"
+  fix: non-negative
+  scope: prose
+  except_phrases: []
+- id: hyph-non-positive
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonpositive\b
+  message: "'nonpositive' must be written 'non-positive' (Common §13)"
+  fix: non-positive
+  scope: prose
+  except_phrases: []
+- id: hyph-non-singular
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonsingular\b
+  message: "'nonsingular' must be written 'non-singular' (Common §13)"
+  fix: non-singular
+  scope: prose
+  except_phrases: []
+- id: hyph-non-trivial
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnontrivial\b
+  message: "'nontrivial' must be written 'non-trivial' (Common §13)"
+  fix: non-trivial
+  scope: prose
+  except_phrases: []
+- id: hyph-non-zero
+  section: Common §13
+  kind: hyphenation
+  pattern: \bnonzero\b
+  message: "'nonzero' must be written 'non-zero' (Common §13)"
+  fix: non-zero
+  scope: prose
+  except_phrases: []
+- id: hyph-well-defined
+  section: Common §13
+  kind: hyphenation
+  pattern: \bwelldefined\b
+  message: "'welldefined' must be written 'well-defined' (Common §13)"
+  fix: well-defined
+  scope: prose
+  except_phrases: []
+- id: hyph-well-ordered
+  section: Common §13
+  kind: hyphenation
+  pattern: \bwellordered\b
+  message: "'wellordered' must be written 'well-ordered' (Common §13)"
+  fix: well-ordered
+  scope: prose
+  except_phrases: []
+- id: nota-a-root-of-f
+  section: complex-analysis §4.4
+  kind: notation
+  pattern: a\ root\ of\ \$f\$
+  message: a root of $f$ is banned — always a zero of $f$ (complex-analysis §4.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-arrow-v
+  section: Common §10
+  kind: notation
+  pattern: \$arrow\(v\)\$
+  message: $arrow(v)$ is banned by Common §10; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-big
+  section: Common §12
+  kind: notation
+  pattern: \$big\$
+  message: $big$ is banned — always $lr((...))$ (Common §12)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-conjugate-harmonic-function
+  section: complex-analysis §6
+  kind: notation
+  pattern: conjugate\ harmonic\ function
+  message: conjugate harmonic function is banned — always harmonic conjugate of $u$ (complex-analysis §6)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-cosh-z
+  section: complex-analysis §4.2
+  kind: notation
+  pattern: \$cosh\ z\$
+  message: $cosh z$ is banned by complex-analysis §4.2; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-delta-u-0
+  section: complex-analysis §6
+  kind: notation
+  pattern: \$Delta\ u\ =\ 0\$
+  message: $Delta u = 0$ is banned — always $nabla^2 u = 0$ (complex-analysis §6)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-delta-z
+  section: complex-analysis §17.2
+  kind: notation
+  pattern: \$delta\ z\$
+  message: $delta z$ is banned — always $Delta w$ (complex-analysis §17.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-diameter
+  section: Common §2.2
+  kind: notation
+  pattern: \$diameter\$
+  message: $diameter$ is banned — always $emptyset$ (Common §2.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-diff-f-diff-x
+  section: Common §6
+  kind: notation
+  pattern: \$\(diff\ f\)\ /\ \(diff\ x\)\$
+  message: $(diff f) / (diff x)$ is banned by Common §6; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-epsilon-neighborhood
+  section: Common §8
+  kind: notation
+  pattern: \$epsilon\$\ neighborhood
+  message: $epsilon$ neighborhood is banned by Common §8; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-f-g
+  section: Common §4.3
+  kind: notation
+  pattern: \$f\(g\)\$
+  message: $f(g)$ is banned — always $f compose g$ (Common §4.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-f-z-z-1-z-2
+  section: complex-analysis §17.4
+  kind: notation
+  pattern: \$\[F\(z\)\]_\(z_1\)\^\(z_2\)\$
+  message: $[F(z)]_(z_1)^(z_2)$ is banned — always $F(z) |_(z_1)^(z_2) = F(z_2) - F(z_1)$ (complex-analysis §17.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-harmonic-on-d
+  section: complex-analysis §6
+  kind: notation
+  pattern: harmonic\ on\ \$D\$
+  message: harmonic on $D$ is banned — always [function] is harmonic in $D$ (complex-analysis §6)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-has-a-derivative-at-z-0
+  section: complex-analysis §17.2
+  kind: notation
+  pattern: has\ a\ derivative\ at\ \$z_0\$
+  message: has a derivative at $z_0$ is banned — always differentiable at $z_0$ (complex-analysis §17.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-indefinite-integral-of-f
+  section: complex-analysis §17.4
+  kind: notation
+  pattern: indefinite\ integral\ of\ \$f\$
+  message: indefinite integral of $f$ is banned — always antiderivative of $f$ (complex-analysis §17.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-inf-e
+  section: Common §7
+  kind: notation
+  pattern: \$inf\ E\$
+  message: $inf E$ is banned — always $inf(E)$ (Common §7)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-inside-and-on-c
+  section: complex-analysis §9.1
+  kind: notation
+  pattern: inside\ and\ on\ \$C\$
+  message: inside and on $C$ is banned — always interior to and on $C$ (complex-analysis §9.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-integral-integral-r
+  section: complex-analysis §8
+  kind: notation
+  pattern: \$integral\ integral_R\$
+  message: $integral integral_R$ is banned — always $integral.double_R$ (complex-analysis §8)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-is-derivable-at-z-0
+  section: complex-analysis §17.2
+  kind: notation
+  pattern: is\ derivable\ at\ \$z_0\$
+  message: is derivable at $z_0$ is banned — always differentiable at $z_0$ (complex-analysis §17.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-log
+  section: complex-analysis §3.1
+  kind: notation
+  pattern: \$log\$
+  message: $log$ is banned — always $ln$ (complex-analysis §3.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-meromorphic-on-d
+  section: complex-analysis §17.3
+  kind: notation
+  pattern: meromorphic\ on\ \$D\$
+  message: meromorphic on $D$ is banned — always meromorphic in $D$ (complex-analysis §17.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-mod-z
+  section: complex-analysis §1.3
+  kind: notation
+  pattern: \$"mod"\(z\)\$
+  message: $"mod"(z)$ is banned — always $|z|$ (complex-analysis §1.3)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-n-in-zz
+  section: complex-analysis §2.2
+  kind: notation
+  pattern: \$n\ in\ ZZ\$
+  message: $n in ZZ$ is banned — always $n = 0, plus.minus 1, plus.minus 2, dots.h$ (complex-analysis §2.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-p-v
+  section: complex-analysis §15
+  kind: notation
+  pattern: P\.V\.
+  message: P.V. is banned — always Cauchy principal value of $integral_(-infinity)^(infinity) f(x) dif x$ (complex-analysis §15)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-partial-x-f
+  section: Common §6
+  kind: notation
+  pattern: \$partial_x\ f\$
+  message: $partial_x f$ is banned by Common §6; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-primitive-of-f
+  section: complex-analysis §17.4
+  kind: notation
+  pattern: primitive\ of\ \$f\$
+  message: primitive of $f$ is banned — always antiderivative of $f$ (complex-analysis §17.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-principal-value-branch
+  section: complex-analysis §17.9
+  kind: notation
+  pattern: principal\ value\ branch
+  message: principal value branch is banned — always principal branch of $z^c$ (complex-analysis §17.9)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-reflection-of-z
+  section: complex-analysis §17.12
+  kind: notation
+  pattern: reflection\ of\ \$z\$
+  message: reflection of $z$ is banned — always the inverse of $z$ with respect to the circle (complex-analysis §17.12)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-sin-1-z
+  section: complex-analysis §4.3
+  kind: notation
+  pattern: \$sin\^\(\-1\)\(z\)\$
+  message: $sin^(-1)(z)$ is banned by complex-analysis §4.3; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-singular-part
+  section: complex-analysis §10.2
+  kind: notation
+  pattern: singular\ part
+  message: singular part is banned — always Principal part of $f$ at $z_0$ (complex-analysis §10.2)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-sinh-1-z
+  section: complex-analysis §4.3
+  kind: notation
+  pattern: \$sinh\^\(\-1\)\(z\)\$
+  message: $sinh^(-1)(z)$ is banned by complex-analysis §4.3; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-sinh-z
+  section: complex-analysis §4.2
+  kind: notation
+  pattern: \$sinh\ z\$
+  message: $sinh z$ is banned by complex-analysis §4.2; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-sup-e
+  section: Common §7
+  kind: notation
+  pattern: \$sup\ E\$
+  message: $sup E$ is banned — always $sup(E)$ (Common §7)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-symmetric-point-of-z
+  section: complex-analysis §17.12
+  kind: notation
+  pattern: symmetric\ point\ of\ \$z\$
+  message: symmetric point of $z$ is banned — always the inverse of $z$ with respect to the circle (complex-analysis §17.12)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-taylor-series-at-z-0
+  section: complex-analysis §10.1
+  kind: notation
+  pattern: Taylor\ series\ at\ \$z_0\$
+  message: Taylor series at $z_0$ is banned — always Taylor series about $z_0$ (complex-analysis §10.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-taylor-series-centered-at-z-0
+  section: complex-analysis §10.1
+  kind: notation
+  pattern: Taylor\ series\ centered\ at\ \$z_0\$
+  message: Taylor series centered at $z_0$ is banned — always Taylor series about $z_0$ (complex-analysis §10.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-within-and-on-c
+  section: complex-analysis §9.1
+  kind: notation
+  pattern: within\ and\ on\ \$C\$
+  message: within and on $C$ is banned — always interior to and on $C$ (complex-analysis §9.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-x
+  section: Common §2.4
+  kind: notation
+  pattern: \$\|\$
+  message: '$|$ is banned — always ${ x in A : P(x) }$ (Common §2.4)'
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-z
+  section: complex-analysis §1.4
+  kind: notation
+  pattern: \$z\^\*\$
+  message: $z^*$ is banned — always $overline(z)$ (complex-analysis §1.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-z-1-n
+  section: complex-analysis §3.5
+  kind: notation
+  pattern: \$z\^\(1/n\)\$
+  message: $z^(1/n)$ is banned by complex-analysis §3.5; see the rule document for the mandated form
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-z-c
+  section: complex-analysis §1.4
+  kind: notation
+  pattern: \$z\^"c"\$
+  message: $z^"c"$ is banned — always $z$ (complex-analysis §1.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-z-r-cos-theta-i-sin-theta
+  section: complex-analysis §2.1
+  kind: notation
+  pattern: \$z\ =\ r\(cos\ theta\ \+\ i\ sin\ theta\)\$
+  message: $z = r(cos theta + i sin theta)$ is banned — always $z = r e^(i theta)$ (complex-analysis §2.1)
+  fix:
+  scope: any
+  except_phrases: []
+- id: nota-zero-of-multiplicity-m
+  section: complex-analysis §4.4
+  kind: notation
+  pattern: zero\ of\ multiplicity\ \$m\$
+  message: zero of multiplicity $m$ is banned — always zero of order $m$ (complex-analysis §4.4)
+  fix:
+  scope: any
+  except_phrases: []
+- id: sub-bilinear-transformation
+  section: complex-analysis §13
+  kind: substitute
+  pattern: \bbilinear\ transformation\b
+  message: "'bilinear transformation' is banned — always 'linear fractional transformation' (complex-analysis §13)"
+  fix: linear fractional transformation
+  scope: prose
+  except_phrases: []
+- id: sub-conformal-map
+  section: complex-analysis §12
+  kind: substitute
+  pattern: \bconformal\ map\b
+  message: "'conformal map' is banned — always 'conformal mapping' (complex-analysis §12)"
+  fix: conformal mapping
+  scope: prose
+  except_phrases: []
+- id: sub-dirichlet-boundary-value-problem
+  section: complex-analysis §17.11
+  kind: substitute
+  pattern: \bDirichlet\ boundary\ value\ problem\b
+  message: "'Dirichlet boundary value problem' is banned — always 'Dirichlet problem' (complex-analysis §17.11)"
+  fix: Dirichlet problem
+  scope: prose
+  except_phrases: []
+- id: sub-essential-singularity
+  section: complex-analysis §11.2
+  kind: substitute
+  pattern: \bessential\ singularity\b
+  message: "'essential singularity' is banned — always 'essential singular point' (complex-analysis §11.2)"
+  fix: essential singular point
+  scope: prose
+  except_phrases: []
+- id: sub-holomorphic
+  section: complex-analysis §5.1
+  kind: substitute
+  pattern: \bholomorphic\b
+  message: "'holomorphic' is banned — always 'analytic' (complex-analysis §5.1)"
+  fix: analytic
+  scope: prose
+  except_phrases: []
+- id: sub-isolated-singularity
+  section: complex-analysis §11.2
+  kind: substitute
+  pattern: \bisolated\ singularity\b
+  message: "'isolated singularity' is banned — always 'isolated singular point' (complex-analysis §11.2)"
+  fix: isolated singular point
+  scope: prose
+  except_phrases: []
+- id: sub-jordan-arc
+  section: complex-analysis §7.1
+  kind: substitute
+  pattern: \bJordan\ arc\b
+  message: "'Jordan arc' is banned — always 'simple arc' (complex-analysis §7.1)"
+  fix: simple arc
+  scope: prose
+  except_phrases: []
+- id: sub-jordan-curve
+  section: complex-analysis §7.1
+  kind: substitute
+  pattern: \bJordan\ curve\b
+  message: "'Jordan curve' is banned — always 'simple closed curve' (complex-analysis §7.1)"
+  fix: simple closed curve
+  scope: prose
+  except_phrases: []
+- id: sub-limit-point
+  section: complex-analysis §17.1
+  kind: substitute
+  pattern: \blimit\ point\b
+  message: "'limit point' is banned — always 'accumulation point' (complex-analysis §17.1)"
+  fix: accumulation point
+  scope: prose
+  except_phrases: []
+- id: sub-m-bius-transformation
+  section: complex-analysis §13
+  kind: substitute
+  pattern: \bMöbius\ transformation\b
+  message: "'Möbius transformation' is banned — always 'linear fractional transformation' (complex-analysis §13)"
+  fix: linear fractional transformation
+  scope: prose
+  except_phrases: []
+- id: sub-multiply-connected-region
+  section: complex-analysis §17.1
+  kind: substitute
+  pattern: \bmultiply\ connected\ region\b
+  message: "'multiply connected region' is banned — always 'multiply connected domain' (complex-analysis §17.1)"
+  fix: multiply connected domain
+  scope: prose
+  except_phrases: []
+- id: sub-neumann-boundary-value-problem
+  section: complex-analysis §17.11
+  kind: substitute
+  pattern: \bNeumann\ boundary\ value\ problem\b
+  message: "'Neumann boundary value problem' is banned — always 'Neumann problem' (complex-analysis §17.11)"
+  fix: Neumann problem
+  scope: prose
+  except_phrases: []
+- id: sub-outward-normal-derivative
+  section: complex-analysis §17.11
+  kind: substitute
+  pattern: \boutward\ normal\ derivative\b
+  message: "'outward normal derivative' is banned — always 'normal derivative' (complex-analysis §17.11)"
+  fix: normal derivative
+  scope: prose
+  except_phrases: []
+- id: sub-path-independent
+  section: complex-analysis §17.4
+  kind: substitute
+  pattern: \bpath\-independent\b
+  message: "'path-independent' is banned — always 'independent of path' (complex-analysis §17.4)"
+  fix: independent of path
+  scope: prose
+  except_phrases: []
+- id: sub-poisson-integral-kernel
+  section: complex-analysis §17.11
+  kind: substitute
+  pattern: \bPoisson\ integral\ kernel\b
+  message: "'Poisson integral kernel' is banned — always 'Poisson kernel' (complex-analysis §17.11)"
+  fix: Poisson kernel
+  scope: prose
+  except_phrases: []
+- id: sub-pole-of-order-1
+  section: complex-analysis §11.2
+  kind: substitute
+  pattern: \bpole\ of\ order\ 1\b
+  message: "'pole of order 1' is banned — always 'simple pole' (complex-analysis §11.2)"
+  fix: simple pole
+  scope: prose
+  except_phrases: []
+- id: sub-regular
+  section: complex-analysis §5.1
+  kind: substitute
+  pattern: \bregular\b
+  message: "'regular' is banned — always 'analytic' (complex-analysis §5.1)"
+  fix: analytic
+  scope: prose
+  except_phrases: []
+- id: sub-removable-singularity
+  section: complex-analysis §11.2
+  kind: substitute
+  pattern: \bremovable\ singularity\b
+  message: "'removable singularity' is banned — always 'removable singular point' (complex-analysis §11.2)"
+  fix: removable singular point
+  scope: prose
+  except_phrases: []
+- id: sub-rouche-s-theorem
+  section: complex-analysis §17.7
+  kind: substitute
+  pattern: \bRouche's\ Theorem\b
+  message: "\"Rouche's Theorem\" is banned — always \"Rouché's Theorem\" (complex-analysis §17.7)"
+  fix: Rouché's Theorem
+  scope: prose
+  except_phrases: []
+- id: sub-s-t
+  section: Common §1.3
+  kind: substitute
+  pattern: \bs\.t\.
+  message: "'s.t.' is banned — always 'such that' (Common §1.3)"
+  fix: such that
+  scope: prose
+  except_phrases: []
+- id: sub-schwarz-reflection-principle
+  section: complex-analysis §17.8
+  kind: substitute
+  pattern: \bSchwarz\ Reflection\ Principle\b
+  message: "'Schwarz Reflection Principle' is banned — always 'Reflection Principle' (complex-analysis §17.8)"
+  fix: Reflection Principle
+  scope: prose
+  except_phrases: []
+- id: sub-simply-connected-region
+  section: complex-analysis §17.1
+  kind: substitute
+  pattern: \bsimply\ connected\ region\b
+  message: "'simply connected region' is banned — always 'simply connected domain' (complex-analysis §17.1)"
+  fix: simply connected domain
+  scope: prose
+  except_phrases: []
+- id: sub-st
+  section: Common §1.3
+  kind: substitute
+  pattern: \bst\b
+  message: "'st' is banned — always 'such that' (Common §1.3)"
+  fix: such that
+  scope: prose
+  except_phrases: []
+- id: sub-taylor-series-about-the-origin
+  section: complex-analysis §10.1
+  kind: substitute
+  pattern: \bTaylor\ series\ about\ the\ origin\b
+  message: "'Taylor series about the origin' is banned — always 'Maclaurin series' (complex-analysis §10.1)"
+  fix: Maclaurin series
+  scope: prose
+  except_phrases: []

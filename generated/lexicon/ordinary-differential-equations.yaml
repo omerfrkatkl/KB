@@ -1,0 +1,78 @@
+# GENERATED — do not hand-edit. Compiled from rules/ by `make rules`.
+# Fix the rule document and regenerate; the pre-commit hook enforces this.
+canonical:
+- term: Dirac delta function
+  section: ode §11.5
+- term: Euler equation
+  section: ode §10.2
+- term: Euler-Fourier formulas
+  section: ode §12.2
+- term: characteristic equation
+  section: ode §8.1
+- term: direction field
+  section: ode §1.3
+- term: eigenfunction
+  section: ode §15.2
+- term: fundamental set of solutions
+  section: ode §8.3
+- term: impulse
+  section: ode §11.5
+- term: indicial equation
+  section: ode §10.2
+- term: initial value problem
+  section: ode §6
+- term: integral curves
+  section: ode §5.2
+- term: irregular singular point
+  section: ode §10.1
+- term: method of undetermined coefficients
+  section: ode §9.2
+- term: method of variation of parameters
+  section: ode §9.2
+- term: order of the equation
+  section: ode §1.1
+- term: ordinary differential equation
+  section: ode §1.1
+- term: partial differential equation
+  section: ode §1.1
+- term: phase plane
+  section: ode §14.1
+- term: piecewise continuous
+  section: ode §11.3
+- term: reduction of order
+  section: ode §8.6
+- term: regular singular point
+  section: ode §10.1
+- term: separated boundary conditions
+  section: ode §15.2
+- term: system of differential equations
+  section: ode §1.1
+- term: trajectory
+  section: ode §14.1
+- term: unit step function
+  section: ode §11.4
+banned:
+  Cauchy-Euler equation: Euler equation
+  Heaviside function: unit step function
+  IVP: initial value problem
+  PDE: partial differential equation
+  auxiliary equation: characteristic equation
+  basis of solutions: fundamental set of solutions
+  characteristic function: eigenfunction
+  d'Alembert's method: reduction of order
+  decoupled boundary conditions: separated boundary conditions
+  equidimensional equation: Euler equation
+  fundamental system: fundamental set of solutions
+  indicial polynomial equation: indicial equation
+  irregular singularity: irregular singular point
+  kick: impulse
+  orbit: trajectory
+  path: trajectory
+  piecewise smooth: piecewise continuous
+  regular singularity: regular singular point
+  slope field: direction field
+  solution curves: integral curves
+  system of ODEs: system of differential equations
+  undetermined coefficients method: method of undetermined coefficients
+  variation of parameters method: method of variation of parameters
+  vector field: direction field

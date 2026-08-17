@@ -1,0 +1,24 @@
+# Originals and outputs are never tracked; Drive + inbox/ is the archive (A13).
+#
+# Every path here is anchored with a leading slash, and that is not cosmetic.
+# An unanchored `build/` matches at ANY depth, so it silently excluded
+# `src/knowledge_base/build/` — the numbering simulation, frames, the emitter,
+# compile and publish. The working tree had the files, a fresh clone did not,
+# and `make check` therefore passed here and failed there.
+/inbox/
+/derived/
+/build/
+/state/
+/logs/
+/tools/
+/fonts/
+# Generated output; the spec places compiled artifacts under build/<field>/, not output/.
+/output/
+# Original source documents. A13: originals live in inbox/ + Drive, never in git.
+/source/
+# generated/ IS tracked — it is the compiled form of rules/ and must be reviewable
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/

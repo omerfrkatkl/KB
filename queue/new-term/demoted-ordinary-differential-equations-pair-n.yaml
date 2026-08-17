@@ -1,0 +1,13 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-ordinary-differential-equations-pair-n
+payload:
+  field: ordinary-differential-equations
+  term: $n$
+  proposed_canonical: $m$
+  section: ode §12.1
+  evidence: ALWAYS use $m$ as the summation index — NEVER $n$ for Fourier series.
+  why: 'ode §12.1 bans “$n$”, but Proof_Style.txt §4.4 mandates it: “Opening: ALWAYS `Proceed by induction
+    on $n$.`”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact
+    about the documents, so no allowlist entry overrides it.'
+context_paths: []

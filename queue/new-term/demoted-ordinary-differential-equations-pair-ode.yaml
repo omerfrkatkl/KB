@@ -1,0 +1,15 @@
+kind: new-term
+created: '2026-08-13T03:03:36+00:00'
+id: demoted-ordinary-differential-equations-pair-ode
+payload:
+  field: ordinary-differential-equations
+  term: ODE
+  proposed_canonical: ordinary differential equation
+  section: ode §1.1
+  evidence: ALWAYS write "ordinary differential equation" in full. NEVER abbreviate as "ODE" in 
+    mathematical text.
+  why: "ode §1.1 bans “ODE”, but ode.txt §3 mandates it: “ALWAYS use prime notation throughout all ODE
+    documents: $y'$ for the first derivative $y''$ for the second derivative $y^((n))$ for the $n$-th
+    derivative”. Enforcing the pair would rewrite text the documents require. A conflicting use is a fact
+    about the documents, so no allowlist entry overrides it."
+context_paths: []
