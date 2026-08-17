@@ -1,5 +1,7 @@
 # Personal Knowledge Base Pipeline — Implementation Plan
 
+**Revision 17.** The autonomous-operation layer introduced in revision 13 is removed. It contradicted PART II, whose phase gates were owner-reviewed from revision 4 and were never changed to match: "you review scorecard", "you read the chapter-1 PDF end-to-end and accept every item", "overlap trial report accepted". The two protocol documents it added, `docs/AUTONOMY-PROTOCOL.md` and `docs/AUTONOMOUS-OPERATION.md`, also disagreed with each other — different hard-stop lists, and two different procedures for the same measurement (`resolution_floor_px` at the 5th percentile in one, the 10th in the other). Both are deleted; §I-13 is now the working protocol, one step at a time under owner approval. PART II is unchanged. `STATE.md` is introduced as the single live record of position, and `DECISIONS-TAKEN.md` continues as the append-only record of why each decision was made.
+
 **Revision 16.** Runnability pass on the prepared repository. Two day-one blockers found and fixed: `make bootstrap` called a module that was never written, and `make check` failed with 144 lint errors — both commands in the README's getting-started block were broken. `ops/bootstrap.py` now exists and has been executed end to end (typst 0.15.1 and six fonts fetched, hashed, pinned, re-verified, idempotent on re-run); ruff carries an explicit rule set and the genuine defects are fixed rather than silenced; a minimal `knowledge-base` CLI makes the declared console script resolve and reports which work package builds each pending stage. Full suite green including the parity test, which previously skipped for want of a toolchain. A26 resolved. Also flagged: the configured fields hold no board captures, which gates Phase 3 and nothing earlier.
 
 **Revision 15.** A27 resolved: colour carries no meaning in v1, and the prompt's colour heuristic is removed in favour of "judge every region by what it says" — a simplification, since a heuristic that fires on emphasis would have mis-routed content the lecturer merely wanted to highlight. Also corrected an error in revisions 13–14, which claimed no register entry could block an unattended run while A26 was open with no default: A26 now carries one, and the claim is true as stated.
@@ -9,8 +11,6 @@
 **Revision 13.** Zero-interaction setup specified: `docs/AUTONOMY-PROTOCOL.md` (never ask; documented default, else fallback ordering; three hard stops only; measurements taken not requested) and `DECISIONS-TAKEN.md` (autonomous choices logged for later review, with pre-recorded defaults for every open register item). Phase gates are self-certifying against a completion checklist rather than owner-reviewed mid-run.
 
 **Revision 12.** Twenty real board photographs read directly (docs/BOARD-CONTENT-ANALYSIS.md) — the project's first content-grounded evidence. One stated assumption broken: a fully-visible board from a *different course* shared the frame, which the "ignore clipped content" rule cannot catch; new `foreign-subject` exclusion class added to taxonomy and both prompts. Also: consecutive photographs overlap far more than assumed (dedup load from day one), board content is labelled where textbook prose is not, and a real counterexample of the A12 hypothesis-necessary kind was observed. Plus the zero-interaction startup protocol (§I-13).
-
-**Revision 13.** Zero-interaction setup specified: `docs/AUTONOMY-PROTOCOL.md` (never ask; documented default, else fallback ordering; three hard stops only; measurements taken not requested) and `DECISIONS-TAKEN.md` (autonomous choices logged for later review, with pre-recorded defaults for every open register item). Phase gates are self-certifying against a completion checklist rather than owner-reviewed mid-run.
 
 **Revision 12.** Twenty real board photographs read (docs/BOARD-EXTRACTION-FINDINGS.md) — the first actual content analysis in this project. B1 resolved: legibility is not the problem. B7 partially resolved and the schema extended: real proofs required `double-inclusion` and `verify-criteria` methods and a `sufficiency` setup form. Three unanticipated behaviours found and specified into the extraction prompt: a fully visible board can belong to a different course, boards are corrected in place, and coloured chalk carries meaning. New: **[A27]**, **[A28]**.
 
@@ -231,22 +231,32 @@ to a single owner, nine defects corrected, and the statement-form gap filled as 
 `[MOVED]`/`[MERGED]` stubs preserve section numbering, so a compiler keyed on section numbers
 stays valid. The compiler MUST treat a stub as empty and follow its pointer, never parse it.
 
-## I-13. Autonomous operation
+## I-13. Working protocol
 
-Setup runs without interactive decisions. The protocol is `docs/AUTONOMOUS-OPERATION.md`
-and is binding on the coding agent: never ask; apply the documented default, log it to
-`DECISIONS-TAKEN.md`, continue. Every decision is a documented default, a measurable
-value with a stated procedure, or one of three hard stops — missing credential, a
-Phase-0 measurement that contradicts this plan, or threatened store corruption.
+Work proceeds one step at a time under owner approval. The coding agent implements
+exactly what the current instruction specifies, stops, and waits. It does not
+continue to the next work package, does not begin adjacent work it judges useful,
+and does not decide questions the instruction leaves open — it reports them and
+stops.
 
-This covers setup only. Content decisions still route to review queues, because
-force-fitting unclassifiable material is the one error regeneration cannot repair
-(A7, A12, §8.1). The queues are made *rare* rather than removed, chiefly by
-pre-seeding the lexicon from the rule documents in WP1.4A — roughly 150
-canonical/banned pairs that become rulings never needing to be asked.
+An open question is reported, not resolved. Where this plan is silent or
+ambiguous, state the ambiguity and the options in the final report and stop.
+Choosing a default and continuing is what this protocol exists to prevent: a
+choice made silently is a choice the owner cannot review at the point where it
+still costs nothing to change.
 
-Phase gates are scripts, not conversations: each passes on evidence and, on failure,
-writes the evidence and stops.
+Completion is established by the owner testing the result, not by the agent
+reporting success.
+
+This covers how work is sequenced. It does not change how content is handled:
+unclassifiable material still routes to review queues, because force-fitting it
+is the one error regeneration cannot repair (A7, A12, §8.1). Queues are made rare
+rather than removed, chiefly by pre-seeding the lexicon from the rule documents in
+WP1.4A — roughly 150 canonical/banned pairs that become rulings never needing to
+be asked.
+
+Phase gates are defined in PART II and are owner-reviewed. A gate script that
+checks evidence may support that review; it does not replace it.
 
 ## I-6. Ingestion
 

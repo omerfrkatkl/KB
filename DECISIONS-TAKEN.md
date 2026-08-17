@@ -1,21 +1,24 @@
-# Decisions taken autonomously
+# Decisions taken
 
-Append one entry per decision made without consulting the owner, per
-`docs/AUTONOMY-PROTOCOL.md`. He reviews this file after setup; he does not read
-it during. Newest last.
+The record of why each non-obvious decision in this project was made. Append one
+entry per decision; never edit or delete an existing entry. Newest last.
+
+Entries dated 2026-08-04 and 2026-08-14 were made under an autonomous-operation
+protocol that has since been removed (plan revision 17). They are kept because the
+reasoning is sound and several of them record defects that cost real time to find.
+Read them as history, not as precedent for deciding without asking.
+
+From revision 17 onward, decisions are made with the owner before implementation,
+and the entry records the decision that was agreed.
 
 Format:
 
-```
-## <date> · <short title>
-Context   : what forced a choice
-Chosen    : what you did
-Authority : rule document § / plan § / fallback ordering rule N / UNFORESEEN
-Reversal  : cheap | moderate | expensive — and what undoing it would touch
-```
+<date> · <short title>
 
-`Reversal: expensive` entries are the ones to read first. Keep them few, and
-prefer the reversible option whenever the choice is close.
+Context   : what forced a choice
+Chosen    : what was decided
+Authority : rule document § / plan § / owner decision
+Reversal  : cheap | moderate | expensive — and what undoing it would touch
 
 ---
 

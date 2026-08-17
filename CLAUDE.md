@@ -9,6 +9,38 @@ screenshots of textbook sections become a canonical store of typed items, which
 renders to one typeset PDF per field of study. It is built once and used for
 decades, across every subject its owner studies.
 
+## Working protocol
+
+Do one step at a time. The step is what the current instruction says, and nothing
+more. When it is done, stop and report. Do not continue to the next piece of work,
+do not start adjacent work that seems useful, and do not fix things you noticed
+along the way — report them instead.
+
+**Ask rather than decide.** If the instruction is ambiguous, or the specification
+is silent, or two documents disagree, stop and report it. Do not choose a default
+and continue. A choice made without the owner is a choice he cannot review while
+changing it is still free.
+
+**Reporting "Done" does not complete a step.** The owner tests the result and
+approves it. Until then the step is open.
+
+**Do not update `STATE.md` on your own initiative.** It is updated only when the
+owner confirms a step is tested and approved, and only when the instruction says
+to update it.
+
+## Environment
+
+**Not yet settled. Do not guess.**
+
+The specification (plan §I-1) assumes WSL2 Ubuntu with Python 3.12 and `uv`. The
+owner's machine currently runs this repository under native Windows with Python
+3.14 and no `uv` on PATH, so the Makefile, `bin/*.sh`, the file locks and the
+rclone paths have not been exercised as specified.
+
+Until this section says otherwise: do not create a virtual environment, do not
+install dependencies, do not run `make`, and do not run the test suite. If a step
+appears to require any of these, stop and report that the environment is unsettled.
+
 ## The invariant that defines the architecture
 
 **A language model never writes a sentence that reaches the PDF.**
@@ -29,35 +61,27 @@ uncertainty B15 in the plan.
 ## Authoritative documents, in order
 
 1. **`docs/implementation-plan.md`** — the specification. Part I is the system,
-   Part II is the build order as work packages, Part III holds the decision
-   register (25 resolved, none open unconditionally) and the uncertainty register
-   (open, with the mechanism that resolves each). When this file and the plan
-   disagree, the plan wins.
+   Part II is the build order as work packages and its owner-reviewed phase gates,
+   Part III holds the decision register and the uncertainty register. When this
+   file and the plan disagree, the plan wins.
 2. **`rules/`** — four authored documents defining every notation, terminology,
    statement, and proof convention. Precedence: field file > Proof_Style >
    Common. Ownership headers are in `rules/Common.txt`. These are hand-edited by
    the owner; you may propose changes but never silently rewrite them.
 3. **`docs/*FINDINGS*.md`, `docs/S3-RESULTS.md`** — what was learned by executing
    parts of this system on real material. Read before re-deriving anything.
+4. **`STATE.md`** — where the work currently stands and what the open step is.
+   Read it before starting anything. It is the only live status record; every
+   other status statement in this repository is a dated historical report.
 
-## Current state — what is already verified
+## What is already built
 
-These are not drafts. They were executed against the real toolchain and their
-results are recorded. **Do not rewrite them; extend them.**
+A large amount of this system is built and tested. `STATE.md` says what, and
+`docs/SETUP-REPORT.md` (2026-08-04) records how it got there.
 
-| Artifact | Status |
-|---|---|
-| `template/star.patch`, `template-star.typ` | exam-star marker, compiled and visually verified |
-| `src/knowledge_base/build/numbering_sim.py` | at parity with `typst query` across chapters, stars, refs; B5 resolved empirically (`unnumbered_advances = false`) |
-| `src/knowledge_base/build/frames.py` | Proof Style + Common §21 implemented in the renderer, every schema method covered; tied to `rules/` by `tests/test_frames_conformance.py`, which reads the mandated strings out of the documents at test time |
-| `prompts/*.j2`, `src/knowledge_base/extract/prompts.py` | render deterministically; verified against a real three-capture batch |
-| ingest · rules compiler · validation · emitter · build · dedup · queues · review CLI · relint · photo chain · continuation · figures · audit · nightly | built, tested offline, `make check` green |
-
-**What is not built is not code — it is measurement.** The four Phase-0 spikes
-(B1 at runtime, B3, B12, B16) need real captures and Google Drive, and no
-extraction has ever been performed by this system. Every extraction-side claim
-in this repository is unverified. `docs/SETUP-REPORT.md` states exactly where the
-build stopped and why.
+**Do not rewrite existing modules; extend them.** Where a module exists, it was
+built against the specification and in several cases verified against the real
+toolchain. If you believe one is wrong, say so and stop — do not replace it.
 
 ## Drive layout this repository expects
 
@@ -78,76 +102,9 @@ the image, because `kind` decides the exam star. Everything under
 `10-Source-Captures` is immutable: it is the only path back from an item to the
 pixels it came from.
 
-## Running without interruption
-
-The owner starts you once and expects setup to complete unattended. **Do not ask
-questions.** `docs/AUTONOMY-PROTOCOL.md` is binding: every foreseen decision has a
-default, every unforeseen one has a fallback ordering, and only three conditions
-justify stopping. Record what you chose in `DECISIONS-TAKEN.md` and keep going.
-
-Two consequences worth internalising. First, `make rules` runs before any
-extraction — compiling the rule documents into the lexicon converts about 150
-terminology rulings into decisions already made, and is the largest single
-reducer of mid-run interruption. Second, a gap in the specification is not a
-reason to stop; it is a reason to take the reversible option and log it.
-
-## One thing to raise with the owner, once, before Phase 3
-
-The configured fields are Complex Analysis and Ordinary Differential Equations.
-The material in Drive is a Complex Analysis textbook PDF plus roughly 200 board
-photographs of **Linear Algebra and Abstract Algebra**, which are not configured
-fields. Phases 0 through 2 are textbook-driven and run fine on the PDF. Phase 3 is
-board-driven and, as configured, has nothing to ingest.
-
-Do not stop for this and do not guess. Carry on through Phase 2, and when you reach
-Phase 3 report the choice: promote Linear Algebra and Abstract Algebra to fields
-(each needs a field rule document, roughly the length of `rules/fields/ode.txt`),
-or wait for board captures in a configured field. Building a book for a subject he
-did not ask for is the expensive mistake here; the reversible one is to ask at the
-point where it actually matters.
-
-## If you are running as a cloud session
-
-Cloud sessions are isolated VMs with no Google Drive access — only the first-party
-GitHub integration is available, so `rclone`, the Drive OAuth flow, and every
-capture in `inbox/` are out of reach. They also share the account's rate limits
-with all other Claude usage.
-
-What this means concretely:
-
-- **Buildable here:** everything that does not need source material. WP0.1,
-  porting the verified WP0.2 artefacts, the rule compiler (WP1.4A), models and
-  store (WP1.1), validation, dedup, queues, the emitter, the frames conformance
-  test, the CLI. That is the bulk of Phases 0–2 by volume.
-- **Not buildable here:** ingestion from Drive, the extraction runner's live
-  behaviour, the nightly scheduler, and any measurement that needs real captures
-  (B1 fidelity at runtime, B3, B11, B12, B16).
-- **Network:** `make bootstrap` and `pip` need `github.com`,
-  `raw.githubusercontent.com`, `pypi.org`, and `files.pythonhosted.org` on the
-  session's allowlist. If they are absent, that is hard stop 3 — report it rather
-  than working around it with an unpinned toolchain.
-
-Build what is buildable, drive it with tests rather than with real material, and
-stop at the first stage that genuinely requires a capture. Do not simulate
-captures to keep going: a fabricated fixture that looks like evidence is the one
-failure this project has already had once, and `docs/SLICE-FINDINGS.md` records
-what it cost.
-
 ## Where to start
 
-**Read `docs/SETUP-REPORT.md` first.** Phases 0–4 have been built as far as they
-go without Drive; that report says what was executed, what was found, and what
-each remaining item is waiting on.
-
-The next work is **WP0.3 and WP0.4**, the Phase-0 spikes, and both need a
-desktop with Drive access. Everything downstream of them is built and waiting.
-
-Phase 0 exists because four things are genuinely unknown and cannot be settled by
-reasoning: board-photo extraction fidelity (B1), whether the weekly volume fits
-the Pro subscription's limits (B3), continuation behaviour on real lecture flow
-(B12), and the resolution floor below which subscripts are lost (B16). Do not
-skip ahead of them. If a measurement contradicts the plan, the measurement wins —
-report it and stop rather than building on a false premise.
+Read `STATE.md`. It names the open step. Do that step, and nothing beyond it.
 
 ## Hard rules
 
@@ -203,8 +160,9 @@ and Common §21. The deterministic link to the documents is a **conformance test
 the rule files contain many literal mandated strings ("Hence [conclusion].",
 "Consider [n] cases.", "by the inductive hypothesis"), and `make check` must
 assert that `frames.py` emits exactly those. When a rule changes, the test fails
-and frames must be updated. That test does not exist yet — writing it is a good
-early task, and it belongs in WP1.5.
+and frames must be updated. That test exists: `tests/test_frames_conformance.py`
+reads the mandated strings out of `rules/` at test time and asserts that
+`frames.py` emits them.
 
 ## One thing in the history to distrust
 
@@ -215,23 +173,3 @@ you: **no extraction has ever been performed by this system.** Treat every
 extraction-side claim as unverified, and treat `tests/fixtures/synthetic/` as a
 renderer regression fixture only, never as evidence about extraction quality.
 
-## Autonomous operation — do not ask questions during setup
-
-The owner starts you once and does not answer questions while you work. Read
-`docs/AUTONOMOUS-OPERATION.md` before beginning; it is binding.
-
-The rule: **never ask — choose the documented default, log it to
-`DECISIONS-TAKEN.md`, continue.** Every setup decision is either a documented
-default, a measurable value with a stated procedure, or one of exactly three hard
-stops (missing credential, a Phase-0 measurement contradicting the plan, or
-threatened store corruption). A decision fitting none of those means this
-documentation has a gap: take the conservative option, log it as
-`UNDOCUMENTED-DEFAULT`, and keep going.
-
-This applies to *setup*. It does not apply to content: unclassifiable material still
-goes to a review queue rather than being force-fitted, because that is the one call
-that cannot be reversed by regenerating. A filling queue is not a reason to stop.
-
-If you find the plan is wrong, say so in your final report and propose the
-correction — several sections exist because earlier assumptions were caught that
-way — but correct course and continue rather than waiting.
